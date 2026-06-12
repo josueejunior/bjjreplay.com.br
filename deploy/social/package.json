@@ -1,0 +1,13 @@
+{
+  "name": "bjj-replay-social",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "capture": "node capture.mjs",
+    "render": "node render-posts.mjs",
+    "all": "node capture.mjs && node render-posts.mjs"
+  },
+  "dependencies": {
+    "puppeteer": "^24.43.1"
+  }
+}

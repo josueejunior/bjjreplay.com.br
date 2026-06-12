@@ -1,0 +1,177 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* BJJ Replay — paleta do kimono */
+  --bjj-white: #f8fafc;
+  --bjj-kimono-blue: #1e3a8a;
+  --bjj-kimono-blue-light: #2563eb;
+  --bjj-kimono-blue-dark: #0f172a;
+  --bjj-belt-black: #0a0a0a;
+  --bjj-ponteira-red: #dc2626;
+  --bjj-cyber-green: #22ff88;
+  --bjj-cyber-green-dim: #00cc6a;
+
+  --background: #050a14;
+  --surface: #0c1424;
+  --surface-raised: #111c32;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+
+  /* Accent principal = vermelho da ponteira da faixa */
+  --neon: #dc2626;
+  --neon-dim: #b91c1c;
+  --neon-faint: rgba(220, 38, 38, 0.14);
+  --neon-glow: rgba(220, 38, 38, 0.28);
+  --neon-glow-strong: rgba(220, 38, 38, 0.42);
+  --belt-gradient: linear-gradient(135deg, #f8fafc 0%, #ef4444 45%, #dc2626 100%);
+  --bjj-cyber-green: #22ff88;
+  --metallic: #c0c0c0;
+}
+
+* {
+  border-color: theme('colors.zinc.800');
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
+::selection {
+  background-color: var(--neon-faint);
+}
+
+/* Scrollbar discreta dark */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Skeleton com shimmer */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--surface);
+  border: 1px solid rgba(59, 130, 246, 0.08);
+  border-radius: 0.75rem;
+}
+.skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.045), transparent);
+  animation: shimmer 1.8s infinite;
+}
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Card com gradiente sutil */
+.card-premium {
+  background:
+    linear-gradient(180deg, rgba(59, 130, 246, 0.04) 0%, rgba(255, 255, 255, 0) 40%),
+    var(--surface);
+}
+
+/* Linha de brilho no topo de um card */
+.top-shine {
+  position: relative;
+}
+.top-shine::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--neon-glow), transparent);
+}
+
+/* Marquee infinito da galeria */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+.animate-marquee-reverse {
+  animation: marquee 48s linear infinite reverse;
+}
+.marquee-paused:hover .animate-marquee,
+.marquee-paused:hover .animate-marquee-reverse {
+  animation-play-state: paused;
+}
+
+/* Texto com gradiente metálico */
+.text-metallic {
+  background: linear-gradient(135deg, #e4e4e7 0%, #71717a 50%, #d4d4d8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-neon-gradient {
+  background: var(--belt-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Range input do player */
+input[type='range'].player-range {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+input[type='range'].player-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--neon);
+  box-shadow: 0 0 8px var(--neon-glow);
+}
+input[type='range'].player-range::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border: none;
+  border-radius: 50%;
+  background: var(--neon);
+  box-shadow: 0 0 8px var(--neon-glow);
+}

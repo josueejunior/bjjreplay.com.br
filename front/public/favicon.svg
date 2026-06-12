@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="BJJ Replay">
+  <rect width="32" height="32" rx="7" fill="#3b82f6"/>
+  <text x="16" y="21" text-anchor="middle" font-family="Arial Black, Helvetica, sans-serif" font-weight="900" font-size="13" fill="#ffffff">BJJ</text>
+  <circle cx="26" cy="6" r="3" fill="#ef4444"/>
+</svg>

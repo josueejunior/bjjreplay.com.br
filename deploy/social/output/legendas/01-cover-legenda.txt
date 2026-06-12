@@ -1,0 +1,15 @@
+Imagem: ig-feed/01-cover-hero.png
+Formato: Carrossel slide 1/5 · Feed 4:5 (1080×1350)
+
+---
+
+Novo case no ar 🥋🔥
+
+Apresentamos o **BJJ Replay** — plataforma para academias de Jiu-Jitsu entregarem replay de lutas, histórico por campeonato e painéis separados para professor e atleta.
+
+Landing premium, cadastro com faixa kids, auth completa e deploy em produção.
+
+👉 bjj-replay.asteron.digital
+Software house · asteron.digital
+
+#bjj #jiujitsu #bjjlife #academiadejiujitsu #software #saas #produto #techbr #desenvolvimento #case #asterondigital #replay #martialarts

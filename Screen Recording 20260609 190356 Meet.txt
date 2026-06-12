@@ -1,0 +1,115 @@
+(Transcrito por TurboScribe. Atualize para Ilimitado para remover esta mensagem.)
+
+A área do atleta? Ele vai receber esses dados aqui no painel, né? Isso, no painel. E aí vai ser automatizado direto na boxe. Beleza.
+
+Entendeu? Então, por exemplo, é o seguinte, são federações. Tem as duas maiores federações. E aí eu já tenho um cursinho em uma delas.
+
+Onde eu vou apresentar esse projeto. A gente colocando um boxe, como não tem campeonato. Tipo assim, dez campeonatos no dia.
+
+Então assim, a gente vai ter três, quatro boxes rodando o Brasil. E tipo assim, o próximo evento é em Fortaleza. Aí leva lá pra Fortaleza.
+
+Próximo evento é em São Paulo. Leva ela pra São Paulo e ela é conectada junto com a transmissão. Porque ele já tem uma equipe de transmissão.
+
+Certo? Só que essa luta fica na nuvem. Fica um negócio... Eles não têm acesso. Sem acesso também.
+
+E aí eu quero criar justamente esse idê. Pra quem se cadastrar no futuro. Ter tipo uma comunidade da própria federação.
+
+Entendeu? Quem lutou com quem. O histórico daquelas lutas. Quem foi, qual ano foi.
+
+Qual faixa foi. Entendeu? Isso é só o primeiro pontapé. Por isso que aí na... No arquivo de cadastro ele tem tudo.
+
+Tem a faixa, tem o grau. Tem o peso do atleta. Entendeu? Então vai a partir disso pra gente poder subir isso depois.
+
+Começar... Vamos dizer... Começar o banco de dados já o mais completo possível pra gente expandir isso no futuro. Entendeu? Então ele vai... Por exemplo, você tá participando do campeonato hoje. Tá lá a boxe do nosso sistema.
+
+Isso aí no final do evento ele já vai ter as lutas dele no... No painel dele. Você lutou com um atleta, tá. Então essa boxe é que ela vai estar configurada com IA.
+
+De reconhecimento facial. E ela vai gravar o momento da luta. Depois que acabar a luta ele pega e finaliza ali e dispara pra nuvem.
+
+Beleza, entendi. Entendeu? Então é basicamente isso aí que a gente desenhou do back-end que também tem essa boxe, né? Esse mini PC. Que já vai pré-configurado, certo? Pra nuvem.
+
+E aí a gente vai ter o servidor VPS. Por isso o servidor VPS é um pouco mais pesado, né? Do que um servidorzinho comum. Pra receber esse tanto de dados, vídeos, né? E disparar.
+
+Dessa boxe você já tem o código? Como assim? Do back-end dela todo? É. Tenho já, já tenho. Já rodamos aqui em uns notebooks aqui e estamos esperando alguns modelos de boxe chegar pra gente fazer os testes só nos modelos de boxe. Entendi.
+
+Entendeu? É basicamente isso. É por isso que a gente precisa fazer esse front com essas especificações tudo de IDE. Só que é o seguinte, ela não vai mapear a pessoa que ela não conhece.
+
+Entendeu? Então eu antes de chegar no campeonato ou ali no campeonato antes de começar, eu tenho que me cadastrar na APIC. Do aplicativo. Entendeu? Aí ele dispara pra boxe a atualização do banco de dados.
+
+Aham. Então ela já vai ter a foto captura daquele atleta. Que aí ele vai mapear pela inteligência artificial né? Pelos... Pelos motores lá de reconhecimento facial que aquele atleta tá lutando.
+
+Aí ele já vai mapear com o ID dele. Então vai ficar mais fácil o acesso dele quando a luta desbloquear. Quando ele terminar a luta que for... Ele já vai escrever a notificação no aplicativo dele.
+
+Com base no reconhecimento ele vai enviar com o ID do lutador? Aí ele vai ver o lutador ali. Aí só são dois. Na hora que eles estão de frente pra começar a luta é onde as câmeras estão.
+
+Estão posicionadas. As câmeras de transmissão deles. Estão posicionadas.
+
+E hoje a transmissão ela é paga. Ela é um pacote pago. Então muita gente não paga.
+
+E às vezes fica perdida essa luta. Ele nunca nem viu mais. E aí por isso que eu quero lançar esse aplicativo junto com as instituições brasileiras de Jiu Jitsu.
+
+As duas federações principais. Que aí ele com aquela boxe ele assina um planozinho frio. Um plano premium. 
+
+Um plano black. E aí ele recebe automaticamente todos esses dados de vídeo dele. Entendeu? Então na hora da luta ele vai fazer o reconhecimento do passado de frente.
+
+Aí ele identifica que o João está lutando com o Pere. Certo? Aí começou a luta. Aí na hora que ele vê que o árbitro parou os dois de frente de novo. 
+
+Levantou a mão de um pro outro. Aí ele encerra a luta. Encerra a gravação e dispara pra API pra fazer o upload.
+
+Beleza. Entendeu? É basicamente isso aí. Só que depois a gente vai evoluir muito essa comunidade.
+
+Já pensamos em comunidade. Integração. Entendeu? Como se fosse mesmo um Strava e um Instagram.
+
+E comunicação lá dentro só sobre o Jiu Jitsu. E aí você conseguiria compartilhar esse código? Não. Hoje não.
+
+Da Box? São vários códigos lá na Box. Qual que tu vai precisar ver? Eu precisava... São vários APIs. Uhum.
+
+Tu quer o de entrega do vídeo? Isso. Porque é o que tu vai precisar linkar com o front, né? É. Pra receber esse vídeo e jogar na área certa do aluno certo. Isso.
+
+Pra mim saber como que ele envia esses dados. É. Por isso que tem o login do professor, né? Porque, por exemplo, se é todo um filiado naquela academia, ele vai ter todos os vídeos aluno dele, né? O professor vai ter. Isso. 
+
+Vai ter todos. Então ele vai ter, por isso vai ter o painel também dele, mas que já tava na API. Mas não é o, vamos dizer, o 0.5. Que eu quero iniciar logo, entendeu? Quero iniciar logo com esse 0.5 pra chegar na 1, ver que tá rodando direitinho, pra gente poder fazer um teste no campeonato que vai ter em julho e ver se vai dar tudo ok.
+
+Beleza. Antes de lançar. Antes de ofertar mesmo. 
+
+Entendeu? Entendi. Por isso que eu quero rodar esse projeto até julho, deixar ele redondinho. Então tem que também as boxes chegam.
+
+As boxes chegam e a gente vai fazer acontecer. Viu? Então tu vai precisar do de entrega, né? Isso. É. Certo. 
+
+Mais alguma dúvida? Quer entender? Daí o painel aqui ele vai ser o vídeo do do atleta, né? Por exemplo, nesse campeonato ele teve seis lutas, aí ele vai fazer o piloto no mesmo dia de seis lutas. Entendeu? Se ele vai demorar um mês pra lutar novamente aí vai subir seis lutas só daqui a um mês. Mas vai ficar na biblioteca dele.
+
+Pra ele baixar, compartilhar, né? Essa é a tapa. Entendi. Entendeu? Porque não é só pra o atleta, é pra as instituições federativas, entendeu? Essa venda vai ser primeiro pra federação, depois pros atletas.
+
+Pra linkar esse sistema com a gravação que ele já tem. Aham. Entendeu? Daí eu instalo a box só no RJ45, recebo do do sistema deles que tá fazendo a gravação e o piloto direto, ao vivo, né? Aí ele só faz o mapeamento, instantâneo.
+
+E ele meio que decora o tempo de cada coisa, de cada câmera e o atleta, né? Aí depois é que ele vai recortar. Entendi. Entendeu? Só quando terminar as lutas é que ele vai recortando.
+
+Não é que ele grava automaticamente, não, entendeu? Ele não tem... Ele não fica com essa função de salvar os dados. Os dados são salvados no HD do NVR, né? O gravador lá das lutas. Quem tá fazendo o streaming e gravação.
+
+Beleza. Entendeu aí mais ou menos o que é? Daí vai ser um painel pro aluno, um pro professor. Isso.
+
+A federação vai ter acesso a todos esses? Vai, mas eu ainda não pensei ainda esse acesso dela, entendeu? Eu não tinha pensado. Porque como é muito grande, vamos dizer, ela faz quatro campeonatos por mês. Imagina o tanto de acesso que ela tem que ter, entendeu? Então, eu não sei o quanto isso é bom fazer nesse início, nesse módulo um que a gente tá fazendo, né? Mas eu quero fazer o quê? Eu quero fazer um teste agora em julho e apresentar pra eles depois.
+
+Beleza. E aí tá aqui o painel do aluno, tá aqui o painel do professor, o tanto que os alunos dele lutaram, tem acesso e tal, e faz essa venda. Entendeu? É basicamente isso.
+
+Aí, Josué, eu queria ver contigo nesse Neon que tu botou no nome lá em cima, só briga um pouquinho até ela, pronto. Boa noite, Josué, né? Isso. Seria como a gente configurar essa cor em Neon por cada faixa? Teria.
+
+Por exemplo, eu sou faixa branca, aí ele vai vir um branco meio Neon, tem uma faixa roxa, faixa azul e o preto. Teria como vir com esse Neon? Aham. Em cada faixa? Dava pra colocar aqui nessa... nesse quadradinho também.
+
+Hã? Colocar nesse quadradinho aqui da... da foto. Certo. Como ele já vai ter a faixa do Atleta, ele já vai vir com aquele, vamos dizer, aquela personalização já automática, né? Pela cor da faixa.
+
+Isso. Entendeu? Daí as cores vão ser igual àquele exemplo que você me enviou? O... Pois é, aqueles não são é... não é definitivo. Eu te mandei realmente pra tu ter uma inspiração, né? Aham.
+
+O que a gente pode fazer. Mas o que eu mais gostei foi esse da faixa. Ele é mais clean, o nome tá em... tá em Evidência, né? Aham.
+
+É DJ Replay só. Esse nome que tá em Evidência. A gente coloca aí e bota pra rodar dessa forma.
+
+Mas eu fico bem aberto a você produzir uma logo aí se você achar alguma coisa que fique melhor de alguma forma. Beleza. E aí a gente tá aberto também a esse... essas outras opiniões.
+
+Aham. Certo? É isso. Pois pronto. 
+
+Mais alguma dúvida? Não. Pois pronto então, pois... Eu te aguardo aí algumas atualizações qualquer coisa. Pode mandar mensagem que eu respondo ligeiro e a gente vai alinhando.
+
+Beleza. Beleza? Tudo combinado, mano. Boa noite, viu? Boa noite.
+
+(Transcrito por TurboScribe. Atualize para Ilimitado para remover esta mensagem.)

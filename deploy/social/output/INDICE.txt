@@ -1,0 +1,30 @@
+INDICE — Pack Instagram BJJ Replay
+====================================
+
+Pasta: deploy/social/output/
+
+FEED (carrossel 5 slides · 1080×1350)
+  ig-feed/01-cover-hero.png
+  ig-feed/02-features.png
+  ig-feed/03-signup-kids.png
+  ig-feed/04-professor.png
+  ig-feed/05-cta.png
+
+STORIES (1080×1920)
+  ig-stories/01-hero-story.png
+  ig-stories/02-signup-story.png
+  ig-stories/03-cta-story.png
+
+CAPTURAS BRUTAS (referência)
+  capturas/*.png
+
+LEGENDAS
+  legendas/*.txt
+
+Regenerar:
+  cd deploy/social
+  npm install
+  npm run all
+
+Site: https://bjj-replay.asteron.digital
+Marca: Asteron Digital · asteron.digital

@@ -1,0 +1,9 @@
+Imagem: ig-feed/04-professor.png · Carrossel 4/5
+
+---
+
+Painel do **professor**: lista de alunos, clique no atleta → lutas dele, biblioteca integrada.
+
+Cada perfil vê só o que precisa. Backend Fastify + SQLite, front Next.js, tudo containerizado.
+
+#bjj #professor #gestão #academia #backend #nextjs #asterondigital
