@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation';
 
 import { motion } from 'framer-motion';
 
-import { Clapperboard, Images, Loader2, RefreshCw } from 'lucide-react';
+import { AlertCircle, Clapperboard, Images, Loader2, RefreshCw } from 'lucide-react';
 
 import { AppShell } from '@/components/layout/AppShell';
 
@@ -17,6 +17,8 @@ import { BibliotecaCard } from '@/components/biblioteca/BibliotecaCard';
 import { BibliotecaTabs, type BibliotecaTab } from '@/components/biblioteca/BibliotecaTabs';
 
 import { FotoCard } from '@/components/biblioteca/FotoCard';
+
+import { LutaNaoApareceuModal } from '@/components/biblioteca/LutaNaoApareceuModal';
 
 import { StatsSidebar } from '@/components/dashboard/StatsSidebar';
 
@@ -43,6 +45,7 @@ export default function BibliotecaPage() {
   const { user } = useAuth();
 
   const [tab, setTab] = useState<BibliotecaTab>('replays');
+  const [showLutaSumidaModal, setShowLutaSumidaModal] = useState(false);
 
   const { data: lutas, loading, error, isPolling, refetch } = useBibliotecaPolling(user?.id);
 
@@ -274,8 +277,28 @@ export default function BibliotecaPage() {
 
           <p className="text-sm text-zinc-400">Nenhuma luta na biblioteca ainda.</p>
 
+          <button
+            onClick={() => setShowLutaSumidaModal(true)}
+            className="mt-2 inline-flex items-center gap-2 rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-2 text-sm font-medium text-amber-400 transition-colors hover:bg-amber-500/20"
+          >
+            <AlertCircle className="h-4 w-4" />
+            Sua luta não apareceu?
+          </button>
+
         </div>
 
+      )}
+
+      {showReplays && lutas && lutas.length > 0 && (
+        <div className="mt-4 flex justify-center">
+          <button
+            onClick={() => setShowLutaSumidaModal(true)}
+            className="inline-flex items-center gap-2 rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-2 text-sm font-medium text-amber-400 transition-colors hover:bg-amber-500/20"
+          >
+            <AlertCircle className="h-4 w-4" />
+            Sua luta não apareceu?
+          </button>
+        </div>
       )}
 
 
@@ -311,6 +334,11 @@ export default function BibliotecaPage() {
         </div>
 
       )}
+
+      <LutaNaoApareceuModal
+        isOpen={showLutaSumidaModal}
+        onClose={() => setShowLutaSumidaModal(false)}
+      />
 
     </AppShell>
 

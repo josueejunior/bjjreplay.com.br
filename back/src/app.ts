@@ -11,6 +11,7 @@ import { usersRoutes } from './routes/users.routes.js';
 import { adminRoutes } from './routes/admin.routes.js';
 import { bibliotecaRoutes } from './routes/biblioteca.routes.js';
 import { professorRoutes } from './routes/professor.routes.js';
+import { matrixRoutes } from './routes/matrix.routes.js';
 
 export function buildApp() {
   const app = Fastify({
@@ -58,6 +59,7 @@ export function buildApp() {
   app.register(adminRoutes);
   app.register(bibliotecaRoutes);
   app.register(professorRoutes);
+  app.register(matrixRoutes);
 
   return app;
 }

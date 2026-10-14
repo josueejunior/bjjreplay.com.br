@@ -97,10 +97,16 @@ function BibliotecaReplayContent() {
             <div className="pointer-events-none absolute -inset-8 -z-10 rounded-[40px] bg-neon/[0.045] blur-3xl" />
 
             {delivered ? (
-              <ReplayPlayer
-                urlHorizontal={luta.url_horizontal!}
-                urlReelsVertical={luta.url_reels_vertical}
-              />
+              <>
+                <div className="mb-3 flex items-center gap-2 rounded-lg bg-amber-500 px-4 py-2.5 text-sm font-medium text-black">
+                  <span className="text-base">⚠️</span>
+                  Este vídeo está em low stream para visualização no site. Para FULL HD clique em baixar.
+                </div>
+                <ReplayPlayer
+                  urlHorizontal={luta.url_horizontal!}
+                  urlReelsVertical={luta.url_reels_vertical}
+                />
+              </>
             ) : (
               <div className="card-premium top-shine overflow-hidden rounded-2xl border border-zinc-800">
                 <ProcessingStatus status={luta.status} />

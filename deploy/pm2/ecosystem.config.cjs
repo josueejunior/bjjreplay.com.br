@@ -18,6 +18,9 @@ module.exports = {
         JWT_SECRET: process.env.JWT_SECRET || 'troque-este-segredo-em-producao',
         CORS_ORIGIN:
           process.env.CORS_ORIGIN || 'https://bjjreplay.com.br,https://www.bjjreplay.com.br',
+        SUPABASE_URL: process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL || '',
+        SUPABASE_SERVICE_ROLE_KEY: process.env.SUPABASE_SERVICE_ROLE_KEY || '',
+        USE_SUPABASE: process.env.USE_SUPABASE || 'true',
       },
     },
     {

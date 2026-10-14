@@ -8,9 +8,10 @@ import { compressImageToDataUrl } from '@/lib/utils/compress-image';
 interface AvatarUploadProps {
   value: string | null;
   onChange: (dataUrl: string | null) => void;
+  required?: boolean;
 }
 
-export function AvatarUpload({ value, onChange }: AvatarUploadProps) {
+export function AvatarUpload({ value, onChange, required = false }: AvatarUploadProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [dragging, setDragging] = useState(false);
 
@@ -69,7 +70,13 @@ export function AvatarUpload({ value, onChange }: AvatarUploadProps) {
       </button>
 
       <p className="text-xs text-zinc-500">
-        Arraste uma imagem ou{' '}
+        {required ? (
+          <>
+            <span className="font-medium text-neon">Obrigatório</span> — arraste ou{' '}
+          </>
+        ) : (
+          <>Arraste uma imagem ou </>
+        )}
         <button
           type="button"
           onClick={() => inputRef.current?.click()}

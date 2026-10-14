@@ -97,3 +97,15 @@ export async function getBibliotecaFotos(alunoId: string): Promise<FotoBibliotec
   const { data } = await api.get<FotoBiblioteca[]>(`/api/biblioteca/${alunoId}/fotos`);
   return data;
 }
+
+/** Relatar luta que não apareceu na biblioteca */
+export async function relatarLutaSumida(payload: {
+  horario_aprox: string;
+  tatame?: string;
+  adversario?: string;
+  evento?: string;
+  observacao?: string;
+}): Promise<{ success: boolean }> {
+  const { data } = await api.post<{ success: boolean }>('/api/biblioteca/relatar-luta-sumida', payload);
+  return data;
+}

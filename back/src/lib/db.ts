@@ -76,6 +76,19 @@ db.exec(`
     event_name  TEXT,
     id_luta     INTEGER
   );
+
+  CREATE TABLE IF NOT EXISTS luta_sumida_relatos (
+    id            INTEGER PRIMARY KEY,
+    aluno_id      TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    aluno_name    TEXT NOT NULL,
+    aluno_email   TEXT NOT NULL,
+    horario_aprox TEXT NOT NULL,
+    tatame        TEXT,
+    evento        TEXT,
+    observacao    TEXT,
+    created_at    TEXT NOT NULL,
+    status        TEXT NOT NULL DEFAULT 'pendente'
+  );
 `);
 
 // ---- Migrações incrementais ----
@@ -86,6 +99,8 @@ function ensureColumn(table: string, column: string, definition: string) {
     db.exec(`ALTER TABLE ${table} ADD COLUMN ${definition}`);
   }
 }
+
+ensureColumn('luta_sumida_relatos', 'adversario', 'adversario TEXT');
 
 ensureColumn('users', 'belt', "belt TEXT NOT NULL DEFAULT 'branca'");
 ensureColumn('users', 'degree', 'degree INTEGER NOT NULL DEFAULT 0');
@@ -211,11 +226,12 @@ export const insertGamificationStmt = db.prepare(`
   VALUES (@userId, @xp, @streakDays, @totalVideos, @totalMinutes, @weeklyRank, @earnedBadgeIds)
 `);
 
-// ---- Seed (somente na primeira execução) ----
+// ---- Seed (somente SQLite local; Supabase usa dados do Matrix) ----
 
-const userCount = db.prepare('SELECT COUNT(*) AS n FROM users').get() as { n: number };
+if (process.env.USE_SUPABASE !== 'true') {
+  const userCount = db.prepare('SELECT COUNT(*) AS n FROM users').get() as { n: number };
 
-if (userCount.n === 0) {
+  if (userCount.n === 0) {
   const seed = seedData();
 
   const insertImage = db.prepare(`
@@ -245,29 +261,27 @@ if (userCount.n === 0) {
       insertImage.run(image);
     }
   })();
-} else {
-  // Sem seed automático de biblioteca para usuários existentes —
-  // replays só entram quando forem registrados/enviados de fato.
+  }
+
+  const demoAtletaMissing = db
+    .prepare('SELECT id FROM users WHERE email = ? COLLATE NOCASE')
+    .get(DEMO_ATLETA_EMAIL) as { id: string } | undefined;
+
+  if (!demoAtletaMissing) {
+    const demoAtleta = buildDemoAtletaUser();
+    db.transaction(() => {
+      insertUserStmt.run({ ...demoAtleta, isAdmin: 0, role: demoAtleta.role, athleteCategory: 'adulto', guardianCpf: null, guardianName: null, birthDate: null });
+      insertGamificationStmt.run({
+        userId: demoAtleta.id,
+        xp: 0,
+        streakDays: 0,
+        totalVideos: 0,
+        totalMinutes: 0,
+        weeklyRank: 999,
+        earnedBadgeIds: '[]',
+      });
+    })();
+  }
+
+  ensureDemoFotos();
 }
-
-const demoAtletaMissing = db
-  .prepare('SELECT id FROM users WHERE email = ? COLLATE NOCASE')
-  .get(DEMO_ATLETA_EMAIL) as { id: string } | undefined;
-
-if (!demoAtletaMissing) {
-  const demoAtleta = buildDemoAtletaUser();
-  db.transaction(() => {
-    insertUserStmt.run({ ...demoAtleta, isAdmin: 0, role: demoAtleta.role, athleteCategory: 'adulto', guardianCpf: null, guardianName: null, birthDate: null });
-    insertGamificationStmt.run({
-      userId: demoAtleta.id,
-      xp: 0,
-      streakDays: 0,
-      totalVideos: 0,
-      totalMinutes: 0,
-      weeklyRank: 999,
-      earnedBadgeIds: '[]',
-    });
-  })();
-}
-
-ensureDemoFotos();

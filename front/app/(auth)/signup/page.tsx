@@ -171,6 +171,10 @@ function SignupFlow() {
   const onFinish = async () => {
     const profile = profileForm.getValues();
     if (!belt || !birthDate) return;
+    if (!avatar) {
+      setError('Foto de rosto obrigatória — a IA precisa dela para te identificar nas lutas.');
+      return;
+    }
     setSubmitting(true);
     setError(null);
     try {
@@ -415,14 +419,22 @@ function SignupFlow() {
             <div className="rounded-xl border border-neon/20 bg-neon/5 p-4 text-center">
               <ScanFace className="mx-auto mb-2 h-8 w-8 text-neon" />
               <p className="text-sm text-zinc-300">
-                Foto de rosto para a boxe mapear {isKids ? 'o atleta' : 'você'} na luta via IA
+                Foto de rosto <strong className="text-neon">obrigatória</strong> — a IA usa para
+                mapear {isKids ? 'o atleta' : 'você'} nas lutas
               </p>
               <p className="mt-1 text-xs text-zinc-500">
-                Enviada automaticamente para o banco da federação antes do campeonato
+                Rosto visível, boa luz, sem óculos escuros. Enviada ao banco antes do campeonato.
               </p>
             </div>
 
-            <AvatarUpload value={avatar} onChange={setAvatar} />
+            <AvatarUpload
+              value={avatar}
+              onChange={(value) => {
+                setAvatar(value);
+                if (value) setError(null);
+              }}
+              required
+            />
 
             {error && <p className="text-center text-sm text-red-400">{error}</p>}
 
@@ -430,8 +442,8 @@ function SignupFlow() {
               <Button variant="ghost" onClick={() => setStep(2)} className="flex-1">
                 <ArrowLeft className="h-4 w-4" /> Voltar
               </Button>
-              <Button loading={submitting} onClick={onFinish} className="flex-1">
-                {avatar ? 'Finalizar cadastro' : 'Pular foto e finalizar'}
+              <Button loading={submitting} disabled={!avatar} onClick={onFinish} className="flex-1">
+                Finalizar cadastro
               </Button>
             </div>
           </motion.div>

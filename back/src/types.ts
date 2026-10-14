@@ -141,3 +141,17 @@ export interface FotoBibliotecaRow {
   event_name: string | null;
   id_luta: number | null;
 }
+
+export interface LutaSumidaRelato {
+  id: number;
+  aluno_id: string;
+  aluno_name: string;
+  aluno_email: string;
+  horario_aprox: string;
+  tatame?: string;
+  adversario?: string;
+  evento?: string;
+  observacao?: string;
+  created_at: string;
+  status: 'pendente' | 'resolvido';
+}

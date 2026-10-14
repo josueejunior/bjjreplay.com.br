@@ -1,6 +1,11 @@
 import type { FastifyInstance } from 'fastify';
 import { z } from 'zod';
 import { db, rowToAdminImage, type AdminImageRow } from '../lib/db.js';
+import {
+  categorizeAdminImage,
+  listAdminImages,
+  supabaseEnabled,
+} from '../services/supabase-store.service.js';
 
 const ALLOWED_CATEGORIES = ['Treino', 'Competição', 'Recuperação', 'Nutrição', 'Equipamento'];
 
@@ -17,11 +22,20 @@ const updateCategory = db.prepare('UPDATE admin_images SET category = ? WHERE id
 
 export async function adminRoutes(app: FastifyInstance) {
   app.get('/api/admin/images', { preHandler: [app.requireAdmin] }, async () => {
+    if (supabaseEnabled()) return listAdminImages();
     return (selectAll.all() as AdminImageRow[]).map(rowToAdminImage);
   });
 
   app.post('/api/admin/categorize', { preHandler: [app.requireAdmin] }, async (request, reply) => {
     const body = categorizeSchema.parse(request.body);
+
+    if (supabaseEnabled()) {
+      const images = await listAdminImages();
+      if (!images.find((i) => i.id === body.imageId)) {
+        return reply.code(404).send({ detail: 'Imagem não encontrada' });
+      }
+      return categorizeAdminImage(body.imageId, body.category);
+    }
 
     const row = selectById.get(body.imageId) as AdminImageRow | undefined;
     if (!row) {

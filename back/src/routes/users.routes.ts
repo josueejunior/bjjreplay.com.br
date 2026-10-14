@@ -2,7 +2,7 @@ import type { FastifyInstance } from 'fastify';
 import { z } from 'zod';
 import { isValidCpf } from '../lib/cpf.js';
 import { categoryFromBirthDate } from '../lib/athlete-age.js';
-import { toPublicUser, updateProfile } from '../services/user.service.js';
+import { findById, toPublicUser, updateProfile } from '../services/user.service.js';
 import type { JwtPayload } from '../plugins/auth.js';
 
 const beltSchema = z.enum([
@@ -72,8 +72,19 @@ export async function usersRoutes(app: FastifyInstance) {
     const body = profileSchema.parse(request.body);
     const payload = request.user as JwtPayload;
 
+    const existing = await findById(payload.sub);
+    if (!existing) return reply.code(404).send({ detail: 'Usuário não encontrado' });
+
+    const nextAvatar =
+      body.avatarUrl !== undefined ? body.avatarUrl : existing.avatarUrl;
+    if (!nextAvatar?.trim()) {
+      return reply.code(400).send({
+        detail: 'Foto de rosto obrigatória — a IA precisa dela para identificar o atleta nas lutas',
+      });
+    }
+
     try {
-      const user = updateProfile(payload.sub, body);
+      const user = await updateProfile(payload.sub, body);
       if (!user) return reply.code(404).send({ detail: 'Usuário não encontrado' });
       return toPublicUser(user);
     } catch (err) {

@@ -34,6 +34,15 @@ import { Logo } from '@/components/brand/Logo';
 import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils/cn';
 
+/** Dados de contato oficiais — fonte única para rodapé e links de suporte. */
+const CONTATO = {
+  telefone: '(86) 98112-9272',
+  whatsapp: 'https://wa.me/5586981129272',
+  email: 'contato@bjjreplay.com.br',
+  cidade: 'Parnaíba — PI, Brasil',
+  cnpj: '60.823.969/0001-94',
+};
+
 type FooterLink = { label: string; href: string; icon: ElementType };
 
 const columns: { title: string; icon: ElementType; links: FooterLink[] }[] = [
@@ -63,7 +72,7 @@ const columns: { title: string; icon: ElementType; links: FooterLink[] }[] = [
     links: [
       { label: 'Fazer login', href: '/login', icon: LogIn },
       { label: 'Inscreva-se gratuitamente', href: '/signup', icon: UserPlus },
-      { label: 'Suporte', href: 'mailto:suporte@bjjreplay.app', icon: MessageCircle },
+      { label: 'Suporte no WhatsApp', href: CONTATO.whatsapp, icon: MessageCircle },
     ],
   },
   {
@@ -73,7 +82,7 @@ const columns: { title: string; icon: ElementType; links: FooterLink[] }[] = [
       { label: 'Termos de uso', href: '#', icon: FileText },
       { label: 'Política de privacidade', href: '#', icon: ShieldCheck },
       { label: 'Política de cookies', href: '#', icon: Cookie },
-      { label: 'Contato', href: 'mailto:contato@bjjreplay.app', icon: Mail },
+      { label: 'Contato', href: `mailto:${CONTATO.email}`, icon: Mail },
     ],
   },
 ];
@@ -88,7 +97,7 @@ const highlights = [
 const socials = [
   { icon: Instagram, label: 'Instagram', href: 'https://instagram.com' },
   { icon: Youtube, label: 'YouTube', href: 'https://youtube.com' },
-  { icon: MessageCircle, label: 'WhatsApp', href: 'https://wa.me/' },
+  { icon: MessageCircle, label: 'WhatsApp', href: CONTATO.whatsapp },
   {
     icon: ({ className }: { className?: string }) => (
       <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden>
@@ -111,9 +120,9 @@ const socials = [
 ];
 
 const contacts = [
-  { icon: Mail, label: 'contato@bjjreplay.app', href: 'mailto:contato@bjjreplay.app' },
-  { icon: MessageCircle, label: 'Suporte via chat', href: 'mailto:suporte@bjjreplay.app' },
-  { icon: MapPin, label: 'Brasil · Eventos parceiros', href: '#' },
+  { icon: MessageCircle, label: CONTATO.telefone, href: CONTATO.whatsapp },
+  { icon: Mail, label: CONTATO.email, href: `mailto:${CONTATO.email}` },
+  { icon: MapPin, label: CONTATO.cidade, href: '#' },
 ];
 
 function FooterLinkItem({ link }: { link: FooterLink }) {
@@ -136,8 +145,14 @@ function FooterLinkItem({ link }: { link: FooterLink }) {
     );
   }
 
+  const externo = link.href.startsWith('http');
+
   return (
-    <a href={link.href} className={className}>
+    <a
+      href={link.href}
+      className={className}
+      {...(externo ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+    >
       {content}
     </a>
   );
@@ -284,6 +299,8 @@ export function Footer() {
           </div>
 
           <p className="text-xs text-zinc-600 lg:text-right">
+            CNPJ {CONTATO.cnpj}
+            <br className="hidden lg:block" />{' '}
             © {new Date().getFullYear()} BJJ Replay. Todos os direitos reservados.
           </p>
         </div>

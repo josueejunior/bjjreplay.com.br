@@ -29,22 +29,20 @@ export function Logo({
   size = 'sm',
   className,
   priority = false,
-  variant = 'default',
+  variant: _variant = 'default',
 }: LogoProps) {
   return (
     <Image
-      src="/logo.png"
+      src="/logo.png?v=4"
       alt="BJJ Replay — Análise e replay automatizados"
       width={LOGO_WIDTH}
       height={LOGO_HEIGHT}
       priority={priority}
+      unoptimized
       className={cn(
         'w-auto object-contain object-left',
         sizeClass[size],
-        variant === 'elevated'
-          ? 'drop-shadow-[0_4px_24px_rgba(220,38,38,0.45),0_0_12px_rgba(239,68,68,0.25)]'
-          : 'drop-shadow-[0_8px_32px_rgba(0,0,0,0.35)]',
-        className
+        className,
       )}
     />
   );
@@ -53,10 +51,11 @@ export function Logo({
 export function LogoMark({ size = 48, className }: { size?: number; className?: string }) {
   return (
     <Image
-      src="/logo.png"
+      src="/logo.png?v=4"
       alt="BJJ Replay"
       width={LOGO_WIDTH}
       height={LOGO_HEIGHT}
+      unoptimized
       className={cn('w-auto object-contain object-left', className)}
       style={{ height: size }}
     />

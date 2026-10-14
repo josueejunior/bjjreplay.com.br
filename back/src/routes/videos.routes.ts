@@ -8,11 +8,11 @@ export async function videosRoutes(app: FastifyInstance) {
   app.get('/api/videos/feed', async (request) => {
     const user = await optionalUser(request);
     const plan: PlanTier = user?.plan ?? 'free';
-    return getFeed(plan);
+    return await getFeed(plan);
   });
 
   app.get<{ Params: { id: string } }>('/api/videos/:id', async (request, reply) => {
-    const video = getById(request.params.id);
+    const video = await getById(request.params.id);
     if (!video) {
       return reply.code(404).send({ detail: 'Vídeo não encontrado' });
     }

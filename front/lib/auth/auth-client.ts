@@ -77,12 +77,18 @@ function extractApiError(err: unknown): string {
   return 'Erro inesperado';
 }
 
-/** Auth contra o back-end Node (usado quando mocks desligados e sem Supabase) */
+async function syncProfileFromApi(): Promise<UserProfile> {
+  const user = await getAuthMe();
+  storeUser(user);
+  return user;
+}
+
+/** Auth contra o back-end Node (SQLite local ou Supabase via API) */
 async function backendAuth(path: 'signup' | 'login', email: string, password: string): Promise<AuthResult> {
   try {
     const { data } = await api.post<{ user: UserProfile; accessToken: string }>(
       `/api/auth/${path}`,
-      { email, password }
+      { email, password },
     );
     storeToken(data.accessToken);
     storeUser(data.user);
@@ -93,6 +99,11 @@ async function backendAuth(path: 'signup' | 'login', email: string, password: st
 }
 
 export async function signUp(email: string, password: string): Promise<AuthResult> {
+  // Produção: cadastro via API (Admin Supabase — sem e-mail de confirmação, evita 429)
+  if (!USE_MOCKS) {
+    return backendAuth('signup', email, password);
+  }
+
   const supabase = getSupabase();
   if (supabase) {
     const { data, error } = await supabase.auth.signUp({ email, password });
@@ -103,17 +114,16 @@ export async function signUp(email: string, password: string): Promise<AuthResul
     return { user, error: null };
   }
 
-  if (!USE_MOCKS) {
-    return backendAuth('signup', email, password);
-  }
-
-  // Mock: qualquer email/senha cria sessão local
   const user = buildMockUser(email);
   storeUser(user);
   return { user, error: null };
 }
 
 export async function signIn(email: string, password: string): Promise<AuthResult> {
+  if (!USE_MOCKS) {
+    return backendAuth('login', email, password);
+  }
+
   const supabase = getSupabase();
   if (supabase) {
     const { data, error } = await supabase.auth.signInWithPassword({ email, password });
@@ -123,10 +133,6 @@ export async function signIn(email: string, password: string): Promise<AuthResul
     user.id = data.user?.id ?? user.id;
     storeUser(user);
     return { user, error: null };
-  }
-
-  if (!USE_MOCKS) {
-    return backendAuth('login', email, password);
   }
 
   const stored = getStoredUser();
@@ -154,15 +160,33 @@ export function updateStoredProfile(patch: Partial<Pick<UserProfile, 'sportLevel
 }
 
 /**
- * Restaura a sessão ao abrir o app.
- * Com API real: exige JWT válido e sincroniza perfil do SQLite.
- * Sessões mock antigas (sem token) são descartadas.
+ * Restaura sessão: Supabase token → API /auth/me → perfil alunos (Matrix).
  */
 export async function hydrateSession(): Promise<UserProfile | null> {
   if (typeof window === 'undefined') return null;
 
   if (USE_MOCKS) {
     return getStoredUser();
+  }
+
+  const supabase = getSupabase();
+  if (supabase) {
+    const { data } = await supabase.auth.getSession();
+    const token = data.session?.access_token ?? window.localStorage.getItem(TOKEN_KEY);
+    if (!token) {
+      window.localStorage.removeItem(MOCK_USER_KEY);
+      setSessionCookie(false);
+      return null;
+    }
+    storeToken(token);
+    try {
+      return await syncProfileFromApi();
+    } catch {
+      window.localStorage.removeItem(MOCK_USER_KEY);
+      window.localStorage.removeItem(TOKEN_KEY);
+      setSessionCookie(false);
+      return null;
+    }
   }
 
   const token = window.localStorage.getItem(TOKEN_KEY);
@@ -173,9 +197,7 @@ export async function hydrateSession(): Promise<UserProfile | null> {
   }
 
   try {
-    const user = await getAuthMe();
-    storeUser(user);
-    return user;
+    return await syncProfileFromApi();
   } catch {
     window.localStorage.removeItem(MOCK_USER_KEY);
     window.localStorage.removeItem(TOKEN_KEY);

@@ -5,11 +5,11 @@ services:
     container_name: bjj-replay-back
     restart: unless-stopped
     ports:
-      - '127.0.0.1:7871:8000'
+      - '127.0.0.1:8000:8000'
     environment:
       PORT: 8000
       JWT_SECRET: ${JWT_SECRET}
-      CORS_ORIGIN: https://bjj-replay.asteron.digital
+      CORS_ORIGIN: https://bjjreplay.com.br,https://www.bjjreplay.com.br
     volumes:
       - bjj-replay-data:/app/data
 
@@ -22,7 +22,7 @@ services:
     container_name: bjj-replay-front
     restart: unless-stopped
     ports:
-      - '127.0.0.1:7870:3000'
+      - '127.0.0.1:3000:3000'
     depends_on:
       - back
 

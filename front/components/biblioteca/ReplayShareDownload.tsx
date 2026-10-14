@@ -61,7 +61,7 @@ export function ReplayShareDownload({
         loading={downloading === 'horizontal'}
         onClick={() => handleDownload(urlHorizontal, 'horizontal')}
       >
-        <Download className="h-4 w-4" /> Replay 16:9
+        <Download className="h-4 w-4" /> Baixar FULL HD
       </Button>
       {urlReelsVertical && (
         <Button
@@ -70,7 +70,7 @@ export function ReplayShareDownload({
           loading={downloading === 'vertical'}
           onClick={() => handleDownload(urlReelsVertical, 'vertical')}
         >
-          <Download className="h-4 w-4" /> Reels 9:16
+          <Download className="h-4 w-4" /> Baixar Reels
         </Button>
       )}
       <Button variant="outline" size="sm" onClick={handleShare}>

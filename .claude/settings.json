@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ssh *)",
+      "Bash(ssh:*)",
+      "Bash(scp *)",
+      "Bash(scp:*)",
+      "Bash(rsync *)",
+      "Bash(rsync:*)"
+    ]
+  },
+  "autoMode": {
+    "environment": [
+      "$defaults",
+      "Project: BJJ Replay site principal (bjjreplay.com.br). Deploy via SSH alias bjjserver (167.88.44.199). Path: /opt/bjj-replay/bjjreplay.com.br/. PM2: bjj-replay-front, bjj-replay-back.",
+      "Sensitive remote targets: none for bjjserver — developer's own VPS."
+    ],
+    "allow": [
+      "$defaults",
+      "SSH/SCP/rsync to bjjserver for deploy and diagnostics of bjjreplay.com.br is allowed."
+    ]
+  }
+}
