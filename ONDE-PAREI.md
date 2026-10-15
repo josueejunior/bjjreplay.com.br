@@ -22,3 +22,6 @@ Histórico completo e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI
   Confirmar a IDEIA exata antes de gastar o 1º crédito (lição de hoje). Passar vídeo/print no `lider revisar` antes de mandar.
 - Se ele pedir preço nosso por vídeo: não responder valor (sem cobrança) e avisar o Josué.
 - Toque da carteira (resultado medido do site bjjreplay) ficou para outra rodada. Um assunto por vez.
+
+## 15/10/2026 (~19:10)
+- Mensagens de 18:29–19:07 são do fio JURÍDICO/PESSOAL (processo da imobiliária e pergunta pessoal do Josué), conduzido pelo próprio Josué no zap. Sessão não respondeu nem abriu pedido (REGRAS §1: processo não é suporte). Nada novo do fio técnico.
