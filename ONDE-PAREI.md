@@ -38,3 +38,5 @@ Histórico completo e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI
 - Toque da semana: NÃO mandei. Medi agora: bjjreplay.com.br 200 em 0,68 s, _next/static 200; campeonato 200 em 0,74 s; SSL até 02/01/2027. Nada quebrado nem número novo que valha mensagem, e entrar com assunto técnico no meio do fio pessoal que o Josué está conduzindo mistura os fios. Sem "só passando".
 - Pendente segue só P1014-2 (esperando ele sobre os vídeos A/B). Promessas com hora: nenhuma.
 - Próximo toque útil: quando ele voltar ao fio técnico, ou um número de acessos medido do bjjreplay (precisa de analytics, não há medido).
+- ~12:0x: gerente cobrou resposta à das 19:25; mantive sem responder (fio pessoal) e expliquei ao p:gerente (entregue). Nada enviado ao Lucas hoje.
+- Cochilo: cliente não espera nada nosso com prazo; nenhum agendamento. Ao reabrir: só agir se ele escrever no fio técnico.
