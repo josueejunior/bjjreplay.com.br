@@ -32,3 +32,9 @@ Histórico completo e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI
 - Pendente: só P1014-2 (prévia), esperando o Lucas dizer se quer ajuste nos vídeos A/B. Nova tentativa exige recarga Runway (66 cr < 120) → `julgar` antes.
 - Promessas com hora: nenhuma. Agendamentos: nenhum. O cliente não espera nada nosso com prazo.
 - Próximo passo: só agir se ele escrever no fio técnico; fio jurídico/pessoal é do Josué.
+
+## 16/10/2026 (~10:0x, rodada da carteira + fiscal)
+- Última do Lucas (15/10 19:25 "Eu ia mandar por correio / Acho que chega em 7 dias") é do fio PESSOAL do Josué (remédio por correio). Não respondi (REGRAS §1 e "Nunca fazer").
+- Toque da semana: NÃO mandei. Medi agora: bjjreplay.com.br 200 em 0,68 s, _next/static 200; campeonato 200 em 0,74 s; SSL até 02/01/2027. Nada quebrado nem número novo que valha mensagem, e entrar com assunto técnico no meio do fio pessoal que o Josué está conduzindo mistura os fios. Sem "só passando".
+- Pendente segue só P1014-2 (esperando ele sobre os vídeos A/B). Promessas com hora: nenhuma.
+- Próximo toque útil: quando ele voltar ao fio técnico, ou um número de acessos medido do bjjreplay (precisa de analytics, não há medido).
