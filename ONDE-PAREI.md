@@ -25,3 +25,10 @@ Histórico completo e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI
 
 ## 15/10/2026 (~19:10)
 - Mensagens de 18:29–19:07 são do fio JURÍDICO/PESSOAL (processo da imobiliária e pergunta pessoal do Josué), conduzido pelo próprio Josué no zap. Sessão não respondeu nem abriu pedido (REGRAS §1: processo não é suporte). Nada novo do fio técnico.
+
+## 16/10/2026 (manhã, antes do cochilo)
+- Lote do inbox 07:52 (Lucas 15/10 18:29 "vamos / mandaram uma nova notificação?") = fio JURÍDICO (processo da imobiliária), já conduzido pelo Josué no zap. Não respondi, não abri pedido; fechei o inbox (`inbox tratar`, 24 eventos).
+- Estado completo e atual: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI.md (16/10 madrugada) — confere com isto.
+- Pendente: só P1014-2 (prévia), esperando o Lucas dizer se quer ajuste nos vídeos A/B. Nova tentativa exige recarga Runway (66 cr < 120) → `julgar` antes.
+- Promessas com hora: nenhuma. Agendamentos: nenhum. O cliente não espera nada nosso com prazo.
+- Próximo passo: só agir se ele escrever no fio técnico; fio jurídico/pessoal é do Josué.
