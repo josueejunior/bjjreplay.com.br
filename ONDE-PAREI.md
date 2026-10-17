@@ -40,3 +40,7 @@ Histórico completo e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI
 - Próximo toque útil: quando ele voltar ao fio técnico, ou um número de acessos medido do bjjreplay (precisa de analytics, não há medido).
 - ~12:0x: gerente cobrou resposta à das 19:25; mantive sem responder (fio pessoal) e expliquei ao p:gerente (entregue). Nada enviado ao Lucas hoje.
 - Cochilo: cliente não espera nada nosso com prazo; nenhum agendamento. Ao reabrir: só agir se ele escrever no fio técnico.
+
+## 17/10/2026 (~12:4x, reaberta pós-cochilo)
+- Inbox vazio: nada novo do Lucas desde 15/10 19:25 (fio pessoal do Josué). Não mandei nada.
+- Pendente segue só P1014-2 (prévia, esperando ele sobre os vídeos A/B). Promessas com hora: nenhuma. Agendamentos: nenhum.
