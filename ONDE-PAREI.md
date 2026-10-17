@@ -44,3 +44,5 @@ Histórico completo e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI
 ## 17/10/2026 (~12:4x, reaberta pós-cochilo)
 - Inbox vazio: nada novo do Lucas desde 15/10 19:25 (fio pessoal do Josué). Não mandei nada.
 - Pendente segue só P1014-2 (prévia, esperando ele sobre os vídeos A/B). Promessas com hora: nenhuma. Agendamentos: nenhum.
+- ~12:5x, toque da carteira (17/10): NÃO mandei. Por quê: a "sem resposta" de 15/10 19:25 é do fio PESSOAL (remédio por correio) que o Josué conduz (REGRAS §1); P1014-2 já tem pergunta aberta desde 14/10 (repetir é cobrar resposta, não mensagem real); medi o bjjserver e não há novidade técnica: pm2 4/4 online, 0 restarts, log de erro do bjj-replay-back vazio, disco 14%. Número de uso não dá para medir: `back/data/volt.db` tem 0 linhas em todas as tabelas (WAL sem escrita desde 21/09), e o access.log do nginx é compartilhado e não registra o host. Não afirmar nada de acesso sem analytics.
+- Próximo toque útil: quando ele voltar ao fio técnico, ou quando houver métrica medida (descobrir onde ficam os dados reais do bjjreplay, já que o volt.db está vazio).
