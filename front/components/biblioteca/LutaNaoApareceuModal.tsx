@@ -131,7 +131,7 @@ export function LutaNaoApareceuModal({ isOpen, onClose, inicial }: LutaNaoAparec
                 </div>
                 <div>
                   <label htmlFor="nl-adv" className={rotulo}>Com quem lutou (opcional)</label>
-                  <input id="nl-adv" type="text" maxLength={80} value={adversario} onChange={(e) => setAdversario(e.target.value)} placeholder="Nome de quem treina na academia" className={campo} />
+                  <input id="nl-adv" type="text" maxLength={80} value={adversario} onChange={(e) => setAdversario(e.target.value)} placeholder="Ex.: João Silva" className={campo} />
                 </div>
                 <div>
                   <label htmlFor="nl-obs" className={rotulo}>Observação (opcional)</label>

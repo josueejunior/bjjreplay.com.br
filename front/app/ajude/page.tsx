@@ -127,7 +127,7 @@ function CartaoDia({ d, onSalvar, onPedirBusca }: {
         {resultado && (
           <div className="flex flex-col gap-2">
             <label htmlFor={`a-${d.dia}`} className="text-base font-medium text-zinc-200">Com quem lutou <span className="text-zinc-400">(opcional)</span></label>
-            <input id={`a-${d.dia}`} type="text" maxLength={200} value={adv} onChange={(e) => setAdv(e.target.value)} className={campo} placeholder="Nomes de quem treina na academia, separados por vírgula" />
+            <input id={`a-${d.dia}`} type="text" maxLength={200} value={adv} onChange={(e) => setAdv(e.target.value)} className={campo} placeholder="Ex.: João, Pedro" />
           </div>
         )}
         {erro && <p role="alert" className="rounded-lg border border-red-500/40 bg-red-500/10 px-4 py-3 text-base text-red-200">{erro}</p>}

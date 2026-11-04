@@ -22,7 +22,8 @@ export async function ajudaRoutes(app: FastifyInstance) {
     const lutas = await getBibliotecaByAluno(u.sub);
     const porDia = new Map<string, number>();
     for (const l of lutas) {
-      const dia = l.data.slice(0, 10);
+      // Data com fuso (ISO UTC do Mac) vira o dia de SP; luta das 21h não pode cair no dia seguinte.
+      const dia = /T.*([zZ]|[+-]\d\d:?\d\d)$/.test(l.data) ? diaSP(new Date(l.data)) : l.data.slice(0, 10);
       porDia.set(dia, (porDia.get(dia) ?? 0) + 1);
     }
     const dadas = new Map(contagensDo(u.sub).map((r) => [r.dia, r]));
