@@ -49,6 +49,6 @@ Histórico completo e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI
 - ~14:4x, antes do cochilo (17/10): feito hoje = só leitura e medição; nada enviado ao Lucas. Pendente: P1014-2 (prévia, esperando ele sobre os vídeos A/B; nova tentativa exige recarga Runway → `julgar`). Cliente não espera nada nosso com prazo. Promessas com hora: nenhuma. Agendamentos: nenhum. Próximo passo: agir só se ele escrever no fio técnico; fio jurídico/pessoal é do Josué.
 
 ## 04/11/2026 (~14:50, toque da carteira)
-- Lucas mandou áudio 14:31: confirma a call às 16h de hoje (combinada 03/11 11:17). Julgador: FAZER. Confirmei "fechado, 16h então" (zap, lease p:lucas-portela). Josué avisado; lembrete agendado 15:40.
+- Lucas mandou áudio 14:31: confirma a call às 16h de hoje (combinada 03/11 11:17). Julgador: FAZER. Confirmei "fechado, 16h então" (zap, lease tmux:p:bjj, enviado HTTP 201; a 1ª tentativa falhou por lease com nome errado). Josué avisado; lembrete agendado 15:40.
 - Não mandei valores (Lucas não é cobrado; julgador sugeriu números, descartei). Pendente prometido: proposta sem valor e custo do agente (assunto Juju Kids), ver com o Josué na call.
 - Se a call não puder acontecer: avisar o Lucas antes das 16h, na primeira pessoa.
