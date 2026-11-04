@@ -13,7 +13,8 @@ interface LutaNaoApareceuModalProps {
 
 const TATAMES = ['Tatame 1'];
 const LIMITE_DIAS = 7;
-const iso = (diasAtras: number) => new Date(Date.now() - diasAtras * 86_400_000).toISOString().slice(0, 10);
+// Dia no fuso do aluno (toISOString é UTC: depois das 21h em SP já daria amanhã).
+const iso = (diasAtras: number) => new Date(Date.now() - diasAtras * 86_400_000).toLocaleDateString('en-CA');
 
 const campo =
   'w-full rounded-xl border border-zinc-700 bg-zinc-900 px-4 py-3 text-base text-white placeholder-zinc-500 focus:border-neon focus:outline-none';
@@ -104,7 +105,7 @@ export function LutaNaoApareceuModal({ isOpen, onClose }: LutaNaoApareceuModalPr
                 <div className="grid grid-cols-2 gap-3">
                   <div>
                     <label htmlFor="nl-data" className={rotulo}>Dia da luta *</label>
-                    <input id="nl-data" type="date" required min={maisAntiga} max={hoje} value={data} onChange={(e) => setData(e.target.value)} className={campo} />
+                    <input id="nl-data" type="date" required min={maisAntiga} max={hoje} value={data} onChange={(e) => setData(e.target.value)} className={campo.replace('px-4', 'px-2')} />
                   </div>
                   <div>
                     <label htmlFor="nl-hora" className={rotulo}>Horário aprox. *</label>

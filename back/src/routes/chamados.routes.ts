@@ -40,7 +40,7 @@ export async function chamadosRoutes(app: FastifyInstance) {
       })
       .parse(request.body);
 
-    const hoje = new Date().toISOString().slice(0, 10);
+    const hoje = new Date().toLocaleDateString('en-CA', { timeZone: 'America/Sao_Paulo' });
     if (body.data > hoje) return reply.code(400).send({ detail: 'A data da luta não pode ser no futuro' });
     const dias = Math.floor((Date.parse(hoje) - Date.parse(body.data)) / 86_400_000);
     if (dias > 7) {
