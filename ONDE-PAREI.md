@@ -59,3 +59,4 @@ Histórico completo e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI
 - ACHADO: blocos B–E (abas, /api/service/*, entregas, player) vivem no app CAMPEONATO (~/dev/clientes/lucas-portela/campeonato, igual ao servidor em back/src, medido com rsync -anci: só mtime difere), NÃO neste repo (que é bjjreplay.com.br, "volt-sports-backend", sem /api/service). Falta confirmar com o Lucas em qual site o aluno do beta entra.
 - Deploy: regra nova (REGRA-DEPLOY-RAPIDO.md): ajuste pedido sobe direto após esteira; funcionalidade nova/visual grande mostra antes. Home e abas = mostrar antes.
 - Próximo: bloco B no repo campeonato (tabela + rotas aluno e /api/service/lutas-nao-encontradas + aba).
+- 04/11 ~17:40: Josué corrigiu: 'reportar bugs' = aba própria 'Reportar erro' (P1104-14), logo após a home, separada de 'Minha luta não foi encontrada' (P1104-10, agora depois). Prints da home reenviados à p:jujukids com caminhos.
