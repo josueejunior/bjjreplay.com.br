@@ -18,3 +18,8 @@ export function formatRelativeDate(iso: string): string {
 export function formatNumber(n: number): string {
   return new Intl.NumberFormat('pt-BR', { notation: 'compact' }).format(n);
 }
+
+/** Data da luta: 'AAAA-MM-DD' sem hora vira meio-dia local (senão o JS lê como UTC e em SP mostra o dia anterior). */
+export function dataDaLuta(s: string): Date {
+  return new Date(/^\d{4}-\d{2}-\d{2}$/.test(s) ? `${s}T12:00:00` : s);
+}

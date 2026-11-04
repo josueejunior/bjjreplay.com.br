@@ -16,6 +16,7 @@ import { useAuth } from '@/lib/hooks/useAuth';
 import { useBibliotecaPolling } from '@/lib/hooks/useBibliotecaPolling';
 import { useApi } from '@/lib/hooks/useApi';
 import { getProfessorBiblioteca } from '@/lib/api/endpoints';
+import { dataDaLuta } from '@/lib/utils/format';
 
 export default function BibliotecaReplayPage() {
   return (
@@ -142,7 +143,7 @@ function BibliotecaReplayContent() {
                 <Badge variant={delivered ? 'neon' : 'zinc'}>{lutaStatusLabel(luta.status)}</Badge>
                 <span className="flex items-center gap-1.5 rounded-full border border-zinc-800 bg-surface/70 px-3 py-1 text-xs text-zinc-400">
                   <Calendar className="h-3.5 w-3.5" />
-                  {new Date(luta.data).toLocaleDateString('pt-BR', {
+                  {dataDaLuta(luta.data).toLocaleDateString('pt-BR', {
                     day: '2-digit',
                     month: 'long',
                     year: 'numeric',

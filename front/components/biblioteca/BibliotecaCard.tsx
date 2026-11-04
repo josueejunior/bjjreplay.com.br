@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/Badge';
 import { BELT_THEMES } from '@/lib/bjj/belt-theme';
 import { isLutaProcessing, lutaStatusLabel } from '@/lib/biblioteca/status';
 import { cn } from '@/lib/utils/cn';
+import { dataDaLuta } from '@/lib/utils/format';
 import type { LutaBiblioteca } from '@/types';
 
 interface BibliotecaCardProps {
@@ -91,7 +92,7 @@ export function BibliotecaCard({ luta, index, onClick, showAthleteName = false }
         </div>
         <p className="mt-2 flex items-center gap-1.5 text-xs text-zinc-500">
           <Calendar className="h-3.5 w-3.5" />
-          {new Date(luta.data).toLocaleDateString('pt-BR', {
+          {dataDaLuta(luta.data).toLocaleDateString('pt-BR', {
             day: '2-digit',
             month: 'long',
             year: 'numeric',
