@@ -173,7 +173,7 @@ export async function responderContagem(body: {
   encontradas: number;
   resultado: ResultadoContagem;
   quantas: number;
-  adversarios?: string | null;
+  horarios?: string | null;
 }) {
   const { data } = await api.post('/api/ajuda/contagem', body);
   return data;
