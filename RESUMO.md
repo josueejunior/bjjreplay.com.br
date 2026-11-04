@@ -4,4 +4,4 @@
 3. Pendente nosso: beta no site principal (P1104-9..13), Reportar/Relatar problema (P1104-15), animação da faixa melhorada e em 3D (P1104-16), proposta Juju Kids sem valor (P1104-4).
 4. Pendente dele: ok dos blocos A, F e B (prints enviados); grade/Tatame 1; rotas do Mac.
 5. Regras novas dele: cadastro com "academia vinculada" (só Aliança Parnaíba, pré-definida; no futuro quer usar a localização p/ achar academias credenciadas); "minha luta não foi encontrada" para todos, com dia e horário, máx. 7 dias (18:18; antes 10), botão "Não encontrei minha luta" dentro da Biblioteca; "Relatar um problema": não sou eu / começa comigo e termina com outra pessoa / corte errado + observações.
-6. Nada no ar ainda. Fio jurídico é pessoal do Josué (REGRAS.md). Próximo: C (Ajude a melhorar), D, E; deploy só com ok dele.
+6. Beta A–F prontos e mostrados (prints/animação enviados 19h), nada no ar. Amanhã 9h: perguntar onde o Mac entrega. Nada no ar ainda. Fio jurídico é pessoal do Josué (REGRAS.md). Próximo: C (Ajude a melhorar), D, E; deploy só com ok dele.
