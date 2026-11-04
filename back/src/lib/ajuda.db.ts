@@ -6,7 +6,8 @@
 import { randomUUID } from 'node:crypto';
 import { db } from './db.js';
 
-db.exec(`
+/** SQL fixo, sem interpolação de entrada de usuário. */
+const SCHEMA_AJUDA = `
   CREATE TABLE IF NOT EXISTS respostas_contagem (
     seq          INTEGER PRIMARY KEY AUTOINCREMENT,
     id           TEXT NOT NULL UNIQUE,
@@ -43,7 +44,9 @@ db.exec(`
     created_at   TEXT NOT NULL,
     UNIQUE (pergunta_id, user_id)
   );
-`);
+`;
+
+db.exec(SCHEMA_AJUDA);
 
 export type ResultadoContagem = 'certo' | 'mais' | 'menos';
 
