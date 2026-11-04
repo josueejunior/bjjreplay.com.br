@@ -47,3 +47,8 @@ Histórico completo e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI
 - ~12:5x, toque da carteira (17/10): NÃO mandei. Por quê: a "sem resposta" de 15/10 19:25 é do fio PESSOAL (remédio por correio) que o Josué conduz (REGRAS §1); P1014-2 já tem pergunta aberta desde 14/10 (repetir é cobrar resposta, não mensagem real); medi o bjjserver e não há novidade técnica: pm2 4/4 online, 0 restarts, log de erro do bjj-replay-back vazio, disco 14%. Número de uso não dá para medir: `back/data/volt.db` tem 0 linhas em todas as tabelas (WAL sem escrita desde 21/09), e o access.log do nginx é compartilhado e não registra o host. Não afirmar nada de acesso sem analytics.
 - Próximo toque útil: quando ele voltar ao fio técnico, ou quando houver métrica medida (descobrir onde ficam os dados reais do bjjreplay, já que o volt.db está vazio).
 - ~14:4x, antes do cochilo (17/10): feito hoje = só leitura e medição; nada enviado ao Lucas. Pendente: P1014-2 (prévia, esperando ele sobre os vídeos A/B; nova tentativa exige recarga Runway → `julgar`). Cliente não espera nada nosso com prazo. Promessas com hora: nenhuma. Agendamentos: nenhum. Próximo passo: agir só se ele escrever no fio técnico; fio jurídico/pessoal é do Josué.
+
+## 04/11/2026 (~14:50, toque da carteira)
+- Lucas mandou áudio 14:31: confirma a call às 16h de hoje (combinada 03/11 11:17). Julgador: FAZER. Confirmei "fechado, 16h então" (zap, lease p:lucas-portela). Josué avisado; lembrete agendado 15:40.
+- Não mandei valores (Lucas não é cobrado; julgador sugeriu números, descartei). Pendente prometido: proposta sem valor e custo do agente (assunto Juju Kids), ver com o Josué na call.
+- Se a call não puder acontecer: avisar o Lucas antes das 16h, na primeira pessoa.
