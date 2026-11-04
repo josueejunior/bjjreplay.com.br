@@ -18,6 +18,7 @@ import { BibliotecaTabs, type BibliotecaTab } from '@/components/biblioteca/Bibl
 
 import { FotoCard } from '@/components/biblioteca/FotoCard';
 
+import { AvisoCameraPretaBanner, AvisoCameraPretaBoasVindas } from '@/components/beta/AvisoCameraPreta';
 import { LutaNaoApareceuModal } from '@/components/biblioteca/LutaNaoApareceuModal';
 
 import { StatsSidebar } from '@/components/dashboard/StatsSidebar';
@@ -98,6 +99,8 @@ export default function BibliotecaPage() {
   return (
 
     <AppShell sidebar={<StatsSidebar />}>
+      <AvisoCameraPretaBoasVindas />
+      <AvisoCameraPretaBanner />
 
       <motion.div
 

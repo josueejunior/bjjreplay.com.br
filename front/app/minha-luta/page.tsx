@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Loader2, Search } from 'lucide-react';
+import { AvisoCameraPretaBanner } from '@/components/beta/AvisoCameraPreta';
 import { AppShell } from '@/components/layout/AppShell';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
@@ -70,6 +71,7 @@ export default function MinhaLutaPage() {
   return (
     <AppShell>
       <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
+        <AvisoCameraPretaBanner />
         <h1 className="flex items-center gap-3 text-3xl font-extrabold text-white">
           <Search className="h-7 w-7 text-neon" /> Minha luta não foi encontrada
         </h1>

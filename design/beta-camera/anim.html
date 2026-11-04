@@ -1,0 +1,64 @@
+<!doctype html><meta charset="utf-8"><title>aviso câmera preta</title>
+<style>html,body{margin:0;background:#0A0A0C}svg{display:block;width:100vw;height:100vh}</style>
+<svg id="s" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720">
+<defs>
+  <linearGradient id="fundoa" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#14264B"/><stop offset="1" stop-color="#0A0A0C"/></linearGradient>
+  <radialGradient id="lentea" cx=".4" cy=".35" r=".8"><stop offset="0" stop-color="#3C5C9E"/><stop offset=".45" stop-color="#0C1630"/><stop offset="1" stop-color="#05070D"/></radialGradient>
+  <radialGradient id="brilhoa" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#7FB0FF" stop-opacity=".55"/><stop offset="1" stop-color="#7FB0FF" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1280" height="720" fill="url(#fundoa)"/>
+
+<g id="cam" transform="translate(800 0)">
+  <g transform="translate(0 190) scale(1.9)"><g transform="translate(0 0) scale(1.0)">
+  <circle cx="0" cy="0" r="62" fill="url(#brilhoa)" class="glow"/>
+  <rect x="-9" y="-58" width="18" height="22" rx="3" fill="#1B2440"/>
+  <rect x="-58" y="-40" width="116" height="62" rx="14" fill="#0A0A0C" stroke="#2C3A66" stroke-width="3"/>
+  <path d="M-62 -40 Q0 -62 62 -40 L58 -30 Q0 -48 -58 -30Z" fill="#05060A" stroke="#2C3A66" stroke-width="2"/>
+  <circle cx="0" cy="-8" r="27" fill="#0E1426" stroke="#3B4B7A" stroke-width="4"/>
+  <circle cx="0" cy="-8" r="18" fill="url(#lentea)"/>
+  <circle cx="-6" cy="-14" r="5" fill="#FEFEFD" opacity=".85"/>
+  <circle cx="42" cy="-26" r="4.5" fill="#B71E25"/>
+</g></g>
+  <g id="rings"><circle class="ring" cx="0" cy="175" r="40" fill="none" stroke="#7FB0FF" stroke-width="4" opacity="0"/><circle class="ring" cx="0" cy="175" r="40" fill="none" stroke="#7FB0FF" stroke-width="4" opacity="0"/></g>
+  <circle id="prog" cx="0" cy="175" r="68" fill="none" stroke="#2BB673" stroke-width="9" stroke-linecap="round" stroke-dasharray="0 400" transform="rotate(-90 0 175)" opacity="0"/>
+</g>
+<g id="check" transform="translate(950 130)" opacity="0"><circle r="46" fill="#2BB673" stroke="#FEFEFD" stroke-width="5"/><path d="M-20 3 L-6 18 L22 -16" stroke="#FEFEFD" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g id="atl" transform="translate(0 0)"><g transform="translate(240 150) scale(1.5)">
+  <g id="corpo"><g>
+  <path d="M52 440 L62 340 Q96 302 160 292 L240 292 Q304 302 338 340 L348 440Z" fill="#0B3A7E"/>
+  <path d="M160 288 L202 398 L244 288 L226 288 L202 350 L178 288Z" fill="#FEFEFD"/>
+  <path d="M160 288 L202 398" stroke="#C8D2E8" stroke-width="2" fill="none"/>
+  <rect x="52" y="414" width="296" height="22" fill="#0A0A0C"/>
+  <rect x="290" y="414" width="44" height="22" fill="#B71E25"/>
+  <rect x="178" y="256" width="44" height="42" fill="#A8704A"/>
+</g></g>
+  <g id="cab" style="transform-origin:200px 262px"><ellipse cx="138" cy="196" rx="11" ry="19" fill="#A8704A"/><ellipse cx="262" cy="196" rx="11" ry="19" fill="#A8704A"/>
+<ellipse cx="200" cy="190" rx="62" ry="75" fill="#C48A5F"/>
+<path d="M137 176 Q136 108 200 106 Q264 108 263 176 Q248 140 200 136 Q152 140 137 176Z" fill="#15151A"/><path d="M162 168 L190 165 M210 165 L238 168" stroke="#15151A" stroke-width="5.5" stroke-linecap="round"/>
+<ellipse cx="176" cy="184" rx="13" ry="8.5" fill="#FEFEFD"/><ellipse cx="224" cy="184" rx="13" ry="8.5" fill="#FEFEFD"/>
+<g class="pu" transform="translate(0 0)"><circle cx="176" cy="184" r="5.5" fill="#15151A"/><circle cx="224" cy="184" r="5.5" fill="#15151A"/>
+<circle cx="178" cy="182" r="1.6" fill="#FEFEFD"/><circle cx="226" cy="182" r="1.6" fill="#FEFEFD"/></g><path d="M200 190 L193 216 Q200 221 207 216" stroke="#A8704A" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M181 238 H219" stroke="#7A3B2E" stroke-width="5.5" stroke-linecap="round"/></g>
+</g></g>
+<script>
+const ease=x=>1-Math.pow(1-x,3), cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)), seg=(t,a,b)=>cl((t-a)/(b-a));
+function setT(t){
+  t=((t%4)+4)%4;
+  const w=ease(seg(t,0,1.5)), x=-900*(1-w);
+  const bob=(t<1.5?Math.abs(Math.sin(t*9))*14*(1-w):0);
+  document.getElementById('atl').setAttribute('transform',`translate(${x} ${-bob})`);
+  const turn=ease(seg(t,1.9,2.5));
+  const cab=document.getElementById('cab');
+  cab.style.transform=`rotate(${9*(1-turn)}deg)`;
+  document.querySelectorAll('.pu').forEach(e=>e.setAttribute('transform',`translate(${-5*(1-turn)+4*turn} ${3*(1-turn)-6*turn})`));
+  const run=seg(t,2.0,3.0), ring=document.getElementById('prog');
+  ring.setAttribute('opacity',run>0&&t<3.7?1:0);
+  ring.setAttribute('stroke-dasharray',`${run*390} 400`);
+  document.querySelectorAll('.ring').forEach((r,i)=>{const k=seg(t,2.0+i*.45,2.9+i*.45);r.setAttribute('r',40+k*70);r.setAttribute('opacity',k>0&&k<1?(1-k)*.7:0);});
+  const pop=seg(t,3.0,3.3), sc=pop<1?(ease(pop)*1.15):1+0.0, fade=t>3.75?1-seg(t,3.75,4):1;
+  const ck=document.getElementById('check');
+  ck.setAttribute('transform',`translate(950 130) scale(${pop<1?ease(pop)*1.2:1.2-0.2*seg(t,3.3,3.5)})`);
+  ck.setAttribute('opacity',pop>0?fade:0);
+}
+const q=new URLSearchParams(location.search).get('t');
+if(q!==null) setT(parseFloat(q)); else { const t0=performance.now(); (function f(n){setT((n-t0)/1000);requestAnimationFrame(f)})(t0); }
+</script>
