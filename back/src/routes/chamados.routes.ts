@@ -7,6 +7,9 @@ import {
 } from '../lib/chamados.db.js';
 import type { JwtPayload } from '../plugins/auth.js';
 
+/** Janela do "Não encontrei minha luta"; Lucas disse 10 e depois 7 (04/11) — por isso configurável. */
+const LIMITE_DIAS = Number(process.env.CHAMADOS_LIMITE_DIAS ?? 7) || 7;
+
 export async function chamadosRoutes(app: FastifyInstance) {
   /* -------------------------------- aluno -------------------------------- */
   app.post('/api/chamados', { preHandler: [app.authenticate] }, async (request, reply) => {
@@ -43,8 +46,8 @@ export async function chamadosRoutes(app: FastifyInstance) {
     const hoje = new Date().toLocaleDateString('en-CA', { timeZone: 'America/Sao_Paulo' });
     if (body.data > hoje) return reply.code(400).send({ detail: 'A data da luta não pode ser no futuro' });
     const dias = Math.floor((Date.parse(hoje) - Date.parse(body.data)) / 86_400_000);
-    if (dias > 7) {
-      return reply.code(400).send({ detail: 'Só dá para pedir a busca de lutas dos últimos 7 dias' });
+    if (dias > LIMITE_DIAS) {
+      return reply.code(400).send({ detail: `Só dá para pedir a busca de lutas dos últimos ${LIMITE_DIAS} dias` });
     }
     const l = criarChamado({
       userId: payload.sub,

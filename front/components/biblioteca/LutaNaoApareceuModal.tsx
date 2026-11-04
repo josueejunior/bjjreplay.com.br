@@ -5,14 +5,17 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, AlertCircle, Send, Loader2 } from 'lucide-react';
 import { pedirLutaNaoEncontrada } from '@/lib/api/endpoints';
+import { LIMITE_DIAS_LUTA } from '@/lib/config/beta';
 
 interface LutaNaoApareceuModalProps {
   isOpen: boolean;
   onClose: () => void;
+  /** Pré-preenchimento vindo de "Ajude a melhorar" (fiz mais lutas do que o sistema achou). */
+  inicial?: { data?: string; faltaram?: number };
 }
 
 const TATAMES = ['Tatame 1'];
-const LIMITE_DIAS = 7;
+const LIMITE_DIAS = LIMITE_DIAS_LUTA;
 // Dia no fuso do aluno (toISOString é UTC: depois das 21h em SP já daria amanhã).
 const iso = (diasAtras: number) => new Date(Date.now() - diasAtras * 86_400_000).toLocaleDateString('en-CA');
 
@@ -21,13 +24,13 @@ const campo =
 const rotulo = 'mb-1.5 block text-base font-medium text-zinc-200';
 
 /** "Não encontrei minha luta": pede dia e horário, aceita até 7 dias para trás (Lucas, 04/11/2026, 18:18; antes disse 10). */
-export function LutaNaoApareceuModal({ isOpen, onClose }: LutaNaoApareceuModalProps) {
+export function LutaNaoApareceuModal({ isOpen, onClose, inicial }: LutaNaoApareceuModalProps) {
   const hoje = useMemo(() => iso(0), []);
   const maisAntiga = useMemo(() => iso(LIMITE_DIAS), []);
-  const [data, setData] = useState(hoje);
+  const [data, setData] = useState(inicial?.data ?? hoje);
   const [horario, setHorario] = useState('');
   const [tatame, setTatame] = useState(TATAMES.length === 1 ? TATAMES[0] : '');
-  const [faltaram, setFaltaram] = useState('1');
+  const [faltaram, setFaltaram] = useState(String(inicial?.faltaram ?? 1));
   const [adversario, setAdversario] = useState('');
   const [observacao, setObservacao] = useState('');
   const [loading, setLoading] = useState(false);
@@ -37,7 +40,7 @@ export function LutaNaoApareceuModal({ isOpen, onClose }: LutaNaoApareceuModalPr
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!horario) return setError('Informe o horário aproximado da luta');
-    if (data < maisAntiga || data > hoje) return setError('Escolha um dia dos últimos 7 dias');
+    if (data < maisAntiga || data > hoje) return setError(`Escolha um dia dos últimos ${LIMITE_DIAS} dias`);
     setLoading(true);
     setError('');
     try {
@@ -112,7 +115,7 @@ export function LutaNaoApareceuModal({ isOpen, onClose }: LutaNaoApareceuModalPr
                     <input id="nl-hora" type="time" required value={horario} onChange={(e) => setHorario(e.target.value)} className={campo} />
                   </div>
                 </div>
-                <p className="-mt-2 text-sm text-zinc-400">Dá para pedir a busca de lutas dos últimos 7 dias.</p>
+                <p className="-mt-2 text-sm text-zinc-400">Dá para pedir a busca de lutas dos últimos {LIMITE_DIAS} dias.</p>
                 <div className="grid grid-cols-2 gap-3">
                   <div>
                     <label htmlFor="nl-tatame" className={rotulo}>Tatame *</label>

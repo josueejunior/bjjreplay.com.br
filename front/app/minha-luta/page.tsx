@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { useToast } from '@/components/ui/Toast';
 import { getMeusChamados, pedirLutaNaoEncontrada } from '@/lib/api/endpoints';
+import { LIMITE_DIAS_LUTA } from '@/lib/config/beta';
 import { STATUS_CHAMADO, STATUS_DO_TIPO, dataHora } from '@/lib/chamados-rotulos';
 import { cn } from '@/lib/utils/cn';
 import type { Chamado } from '@/types';
@@ -16,7 +17,7 @@ const campo =
 const rotulo = 'text-base font-medium text-zinc-200';
 
 const TATAMES = ['Tatame 1'];
-const LIMITE_DIAS = 7;
+const LIMITE_DIAS = LIMITE_DIAS_LUTA;
 
 const iso = (d: Date) => d.toISOString().slice(0, 10);
 const diasAtras = (n: number) => iso(new Date(Date.now() - n * 86_400_000));
@@ -74,7 +75,7 @@ export default function MinhaLutaPage() {
         </h1>
         <p className="mt-2 text-base text-zinc-300">
           Lutou e o replay não apareceu? Avise aqui e procuramos de novo nas gravações da academia.
-          Informe o dia e o horário aproximado da luta. Dá para pedir a busca de lutas dos últimos 7 dias.
+          Informe o dia e o horário aproximado da luta. Dá para pedir a busca de lutas dos últimos {LIMITE_DIAS} dias.
         </p>
 
         <Card className="mt-6">
