@@ -134,7 +134,7 @@ export interface FotoBiblioteca {
   id_luta?: number;
 }
 
-export type ChamadoStatus = 'recebido' | 'vendo' | 'resolvido';
+export type ChamadoStatus = 'recebido' | 'vendo' | 'resolvido' | 'procurando' | 'encontrada' | 'nao_encontrada';
 export type ChamadoTipo = 'erro' | 'luta_nao_encontrada';
 
 export interface Chamado {

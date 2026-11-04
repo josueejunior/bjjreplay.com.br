@@ -9,10 +9,20 @@ import { join } from 'node:path';
 import { db } from './db.js';
 
 export type ChamadoTipo = 'erro' | 'luta_nao_encontrada';
-export type ChamadoStatus = 'recebido' | 'vendo' | 'resolvido';
+export type ChamadoStatus =
+  | 'recebido' | 'vendo' | 'resolvido' // erro no site
+  | 'procurando' | 'encontrada' | 'nao_encontrada'; // luta não encontrada
 
 export const CHAMADO_TIPOS: ChamadoTipo[] = ['erro', 'luta_nao_encontrada'];
-export const CHAMADO_STATUS: ChamadoStatus[] = ['recebido', 'vendo', 'resolvido'];
+export const CHAMADO_STATUS: ChamadoStatus[] = [
+  'recebido', 'vendo', 'resolvido', 'procurando', 'encontrada', 'nao_encontrada',
+];
+
+/** Estados válidos por tipo: o aluno nunca vê "vendo" numa luta, nem "procurando" num erro. */
+export const STATUS_DO_TIPO: Record<ChamadoTipo, ChamadoStatus[]> = {
+  erro: ['recebido', 'vendo', 'resolvido'],
+  luta_nao_encontrada: ['recebido', 'procurando', 'encontrada', 'nao_encontrada'],
+};
 
 const PRINTS_DIR = join(process.cwd(), 'data', 'chamados');
 mkdirSync(PRINTS_DIR, { recursive: true });

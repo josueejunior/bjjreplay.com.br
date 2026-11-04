@@ -2,7 +2,7 @@
 import type { FastifyInstance } from 'fastify';
 import { z } from 'zod';
 import {
-  CHAMADO_STATUS, CHAMADO_TIPOS, atualizarChamado, chamadoPorId, chamadosDo,
+  CHAMADO_STATUS, CHAMADO_TIPOS, STATUS_DO_TIPO, atualizarChamado, chamadoPorId, chamadosDo,
   criarChamado, lerPrint, todosChamados, toChamado,
 } from '../lib/chamados.db.js';
 import type { JwtPayload } from '../plugins/auth.js';
@@ -20,6 +20,37 @@ export async function chamadosRoutes(app: FastifyInstance) {
       })
       .parse(request.body);
     const l = criarChamado({ userId: payload.sub, tipo: body.tipo, texto: body.texto, tela: body.tela, printDataUrl: body.print });
+    return reply.code(201).send(toChamado(l));
+  });
+
+  /** "Minha luta não foi encontrada": o gravador guarda ~4 dias, o pedido vale até 3 dias atrás (fora disso aceita, mas marca). */
+  app.post('/api/chamados/luta', { preHandler: [app.authenticate] }, async (request, reply) => {
+    const payload = request.user as JwtPayload;
+    const body = z
+      .object({
+        data: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Data da aula inválida'),
+        aula: z.string().trim().min(1, 'Escolha a aula').max(60),
+        tatame: z.string().trim().min(1, 'Escolha o tatame').max(40),
+        horario: z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/, 'Horário inválido').optional().nullable().or(z.literal('')),
+        adversario: z.string().trim().max(80).optional().nullable(),
+        faltaram: z.coerce.number().int().min(1, 'Quantas lutas faltaram?').max(20),
+        observacao: z.string().trim().max(280).optional().nullable(),
+      })
+      .parse(request.body);
+
+    const hoje = new Date().toISOString().slice(0, 10);
+    if (body.data > hoje) return reply.code(400).send({ detail: 'A data da aula não pode ser no futuro' });
+    const dias = Math.floor((Date.parse(hoje) - Date.parse(body.data)) / 86_400_000);
+    const l = criarChamado({
+      userId: payload.sub,
+      tipo: 'luta_nao_encontrada',
+      tela: body.aula,
+      texto: body.observacao?.trim() || `Faltaram ${body.faltaram} luta(s) na aula de ${body.data}.`,
+      extra: {
+        data: body.data, aula: body.aula, tatame: body.tatame, horario: body.horario || null,
+        adversario: body.adversario?.trim() || null, faltaram: body.faltaram, foraDoPrazo: dias > 3,
+      },
+    });
     return reply.code(201).send(toChamado(l));
   });
 
@@ -52,6 +83,10 @@ export async function chamadosRoutes(app: FastifyInstance) {
         status: z.enum(CHAMADO_STATUS as [string, ...string[]]).optional(),
         resposta: z.string().trim().max(1000).nullable().optional(),
       }).parse(request.body);
+      const atual = chamadoPorId(request.params.id);
+      if (atual && body.status && !STATUS_DO_TIPO[atual.tipo].includes(body.status as never)) {
+        return reply.code(400).send({ detail: 'Esse status não vale para este tipo de chamado' });
+      }
       const l = atualizarChamado(request.params.id, body as never);
       if (!l) return reply.code(404).send({ detail: 'Chamado não encontrado' });
       return toChamado(l);

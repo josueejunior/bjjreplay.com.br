@@ -20,6 +20,12 @@ export const handlers = [
     chamadosState.unshift(novo);
     return HttpResponse.json(novo, { status: 201 });
   }),
+  http.post('/api/chamados/luta', async ({ request }) => {
+    const b = (await request.json()) as Record<string, unknown>;
+    const novo = { id: `c${Date.now()}`, tipo: 'luta_nao_encontrada' as const, tela: String(b.aula), texto: String(b.observacao ?? `Faltaram ${b.faltaram} luta(s).`), extra: { ...b, foraDoPrazo: false }, temPrint: false, status: 'recebido' as const, resposta: null, criadoEm: new Date().toISOString(), atualizadoEm: new Date().toISOString(), atleta: { id: 'u-diego', nome: 'Diego Fernandes', email: 'diego.fernandes@exemplo.com' } };
+    chamadosState.unshift(novo as never);
+    return HttpResponse.json(novo, { status: 201 });
+  }),
   http.get('/api/admin/chamados', async ({ request }) => {
     const u = new URL(request.url);
     const st = u.searchParams.get('status'); const tp = u.searchParams.get('tipo');

@@ -8,11 +8,12 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { useAuth } from '@/lib/hooks/useAuth';
 import { atualizarChamado, getChamadosAdmin, getPrintDoChamado } from '@/lib/api/endpoints';
-import { STATUS_CHAMADO, TIPO_CHAMADO, dataHora } from '@/lib/chamados-rotulos';
+import { STATUS_CHAMADO, STATUS_DO_TIPO, TIPO_CHAMADO, dataHora } from '@/lib/chamados-rotulos';
 import { cn } from '@/lib/utils/cn';
 import type { ChamadoAdmin, ChamadoStatus } from '@/types';
 
-const ESTADOS: ChamadoStatus[] = ['recebido', 'vendo', 'resolvido'];
+const ESTADOS: ChamadoStatus[] = ['recebido', 'vendo', 'procurando', 'encontrada', 'nao_encontrada', 'resolvido'];
+const ROTULO_EXTRA: Record<string, string> = { data: 'Data da aula', aula: 'Aula', tatame: 'Tatame', horario: 'Horário aproximado', adversario: 'Com quem lutou', faltaram: 'Lutas que faltaram', foraDoPrazo: 'Fora do prazo de 3 dias' };
 const sel = 'h-11 rounded-lg border border-zinc-700 bg-surface-raised px-3 text-base text-zinc-100';
 
 export default function ChamadosAdminPage() {
@@ -83,40 +84,47 @@ export default function ChamadosAdminPage() {
           <span className="text-base text-zinc-300">{emAberto} em aberto</span>
         </div>
 
-        <Card className="mt-4 overflow-x-auto p-0">
+        <Card className="mt-4 p-0 sm:overflow-x-auto">
           {!linhas ? (
             <p className="p-5 text-base text-zinc-400">Carregando…</p>
           ) : linhas.length === 0 ? (
             <p className="p-5 text-base text-zinc-300">Nenhum chamado por aqui. Quando um aluno avisar um problema, ele aparece nesta fila.</p>
           ) : (
-            <table className="w-full min-w-[640px] text-left text-base">
-              <thead className="text-sm text-zinc-400">
+            <table className="block w-full text-left text-base sm:table">
+              <thead className="hidden text-sm text-zinc-400 sm:table-header-group">
                 <tr><th className="p-4">Aluno</th><th className="p-4">Chamado</th><th className="p-4">Status</th><th className="p-4">Ações</th></tr>
               </thead>
-              <tbody>
+              <tbody className="block sm:table-row-group">
                 {linhas.map((c) => (
                   <Fragment key={c.id}>
-                    <tr className="border-t border-zinc-800 align-top">
-                      <td className="p-4"><div className="text-zinc-100">{c.atleta?.nome ?? '—'}</div><div className="text-sm text-zinc-400">{c.atleta?.email}</div></td>
-                      <td className="p-4">
+                    <tr className="block border-t border-zinc-800 align-top sm:table-row">
+                      <td className="block px-4 py-2 sm:table-cell sm:p-4"><div className="text-zinc-100">{c.atleta?.nome ?? '—'}</div><div className="text-sm text-zinc-400">{c.atleta?.email}</div></td>
+                      <td className="block px-4 py-2 sm:table-cell sm:p-4">
                         <div className="font-semibold text-white">{TIPO_CHAMADO[c.tipo]}{c.tela ? ` · ${c.tela}` : ''}</div>
                         <div className="text-zinc-300">{c.texto.length > 90 ? `${c.texto.slice(0, 90)}…` : c.texto}</div>
                         <div className="text-sm text-zinc-400">{dataHora(c.criadoEm)}</div>
                       </td>
-                      <td className="p-4"><span className={cn('rounded-full border px-3 py-1 text-sm font-medium', STATUS_CHAMADO[c.status].cor)}>{STATUS_CHAMADO[c.status].label}</span></td>
-                      <td className="p-4">
+                      <td className="block px-4 py-2 sm:table-cell sm:p-4"><span className={cn('rounded-full border px-3 py-1 text-sm font-medium', STATUS_CHAMADO[c.status].cor)}>{STATUS_CHAMADO[c.status].label}</span></td>
+                      <td className="block px-4 py-2 sm:table-cell sm:p-4">
                         <div className="flex flex-wrap gap-2">
                           <select value={c.status} onChange={(e) => void salvar(c.id, { status: e.target.value as ChamadoStatus })} aria-label="Mudar status" className={sel}>
-                            {ESTADOS.map((s) => <option key={s} value={s}>{STATUS_CHAMADO[s].label}</option>)}
+                            {STATUS_DO_TIPO[c.tipo].map((s) => <option key={s} value={s}>{STATUS_CHAMADO[s].label}</option>)}
                           </select>
                           <Button type="button" variant="secondary" onClick={() => void abrir(c)}>{aberto === c.id ? 'Fechar' : 'Abrir'}</Button>
                         </div>
                       </td>
                     </tr>
                     {aberto === c.id && (
-                      <tr className="bg-surface-raised/50">
-                        <td colSpan={4} className="p-5">
+                      <tr className="block bg-surface-raised/50 sm:table-row">
+                        <td colSpan={4} className="block p-5 sm:table-cell">
                           <p className="whitespace-pre-wrap text-base text-zinc-100">{c.texto}</p>
+                          {c.extra && (
+                            <dl className="mt-3 grid grid-cols-2 gap-x-6 gap-y-1 text-base sm:grid-cols-3">
+                              {Object.entries(c.extra).filter(([, v]) => v !== null && v !== '').map(([k, v]) => (
+                                <div key={k}><dt className="text-sm text-zinc-400">{ROTULO_EXTRA[k] ?? k}</dt><dd className="text-zinc-100">{v === true ? 'Sim' : String(v)}</dd></div>
+                              ))}
+                            </dl>
+                          )}
                           {print && <img src={print} alt="Print enviado pelo aluno" className="my-3 max-w-xs rounded-lg border border-zinc-700" />}
                           <label htmlFor={`r-${c.id}`} className="mt-4 block text-base font-medium text-zinc-200">Resposta ao aluno</label>
                           <textarea id={`r-${c.id}`} rows={3} maxLength={1000} value={resposta} onChange={(e) => setResposta(e.target.value)}

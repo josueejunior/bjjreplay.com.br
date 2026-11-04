@@ -142,3 +142,18 @@ export async function getPrintDoChamado(id: string): Promise<string> {
   const { data } = await api.get<Blob>(`/api/chamados/${id}/print`, { responseType: 'blob' });
   return URL.createObjectURL(data);
 }
+
+export interface PedidoLuta {
+  data: string;
+  aula: string;
+  tatame: string;
+  horario?: string | null;
+  adversario?: string | null;
+  faltaram: number;
+  observacao?: string | null;
+}
+
+export async function pedirLutaNaoEncontrada(body: PedidoLuta): Promise<Chamado> {
+  const { data } = await api.post<Chamado>('/api/chamados/luta', body);
+  return data;
+}

@@ -11,9 +11,9 @@ export const chamadosIniciais: ChamadoAdmin[] = [
     status: 'recebido', resposta: null, criadoEm: '2026-11-04T19:42:00Z', atualizadoEm: '2026-11-04T19:42:00Z',
   },
   {
-    id: 'c2', tipo: 'luta_nao_encontrada', tela: null, atleta: paula, extra: { aula: 'Adulto 19h', tatame: 'Tatame 1', faltaram: 2 }, temPrint: false,
+    id: 'c2', tipo: 'luta_nao_encontrada', tela: null, atleta: diego, extra: { data: '2026-11-03', aula: 'Adulto 19h', tatame: 'Tatame 1', faltaram: 2, horario: '19:40', adversario: null, foraDoPrazo: false }, temPrint: false,
     texto: 'Lutei duas vezes na aula das 19h e nenhuma apareceu na minha biblioteca.',
-    status: 'vendo', resposta: 'Estamos procurando nas gravações de ontem. Te aviso aqui.', criadoEm: '2026-11-04T01:10:00Z', atualizadoEm: '2026-11-04T13:20:00Z',
+    status: 'procurando', resposta: 'Estamos procurando nas gravações de ontem. Te aviso aqui.', criadoEm: '2026-11-04T01:10:00Z', atualizadoEm: '2026-11-04T13:20:00Z',
   },
   {
     id: 'c3', tipo: 'erro', tela: 'Perfil / cadastro', atleta: marcos, extra: null, temPrint: false,

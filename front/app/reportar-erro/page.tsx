@@ -74,7 +74,7 @@ export default function ReportarErroPage() {
           <Flag className="h-7 w-7 text-neon" /> Reportar erro
         </h1>
         <p className="mt-2 text-base text-zinc-300">
-          Algo no site deu problema? Conte aqui. A resposta aparece em “Meus avisos”, no contato do seu cadastro.
+          Algo no site deu problema? Conte aqui. A resposta aparece aqui embaixo, em “Meus avisos”.
         </p>
 
         <Card className="mt-6">

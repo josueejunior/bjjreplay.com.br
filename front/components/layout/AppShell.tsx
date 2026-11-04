@@ -3,7 +3,7 @@
 import { useState, type ReactNode } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { Clapperboard, Flag, GraduationCap, Inbox, LayoutDashboard, LogOut, Menu, ShieldCheck, X } from 'lucide-react';
+import { Clapperboard, Flag, GraduationCap, Inbox, LayoutDashboard, LogOut, Menu, Search, ShieldCheck, X } from 'lucide-react';
 import { Logo } from '@/components/brand/Logo';
 import { BeltAvatar } from '@/components/ui/BeltAvatar';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -16,6 +16,7 @@ const navItems = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard, adminOnly: false, professorOnly: false, athleteOnly: true },
   { href: '/biblioteca', label: 'Biblioteca', icon: Clapperboard, adminOnly: false, professorOnly: false, athleteOnly: true },
   { href: '/professor', label: 'Professor', icon: GraduationCap, adminOnly: false, professorOnly: true, athleteOnly: false },
+  { href: '/minha-luta', label: 'Minha luta', icon: Search, adminOnly: false, professorOnly: false, athleteOnly: true },
   { href: '/reportar-erro', label: 'Reportar erro', icon: Flag, adminOnly: false, professorOnly: false, athleteOnly: true },
   { href: '/admin', label: 'Admin', icon: ShieldCheck, adminOnly: true, professorOnly: false, athleteOnly: false },
   { href: '/admin/chamados', label: 'Chamados', icon: Inbox, adminOnly: true, professorOnly: false, athleteOnly: false },
@@ -33,6 +34,9 @@ export function AppShell({ children, sidebar }: { children: ReactNode; sidebar?:
     if (item.athleteOnly && user && !isAthleteUser(user)) return false;
     return true;
   });
+  const activeHref = visibleNavItems
+    .filter((item) => pathname === item.href || pathname.startsWith(`${item.href}/`))
+    .sort((a, b) => b.href.length - a.href.length)[0]?.href;
 
   const homeHref = getHomePathForUser(user);
 
@@ -73,15 +77,16 @@ export function AppShell({ children, sidebar }: { children: ReactNode; sidebar?:
             </Link>
 
             {/* Nav com indicador animado */}
-            <nav className="ml-2 flex items-center gap-1 rounded-full border border-zinc-800/80 bg-surface/60 p-1">
+            <nav className="ml-1 flex items-center gap-0.5 rounded-full sm:ml-2 sm:gap-1 border border-zinc-800/80 bg-surface/60 p-1">
               {visibleNavItems.map((item) => {
-                const active = pathname.startsWith(item.href);
+                // /admin/chamados acende só Chamados, não Admin junto
+                const active = item.href === activeHref;
                 return (
                   <Link
                     key={item.href}
                     href={item.href}
                     className={cn(
-                      'relative flex items-center gap-2 rounded-full px-3.5 py-1.5 text-sm transition-colors duration-300',
+                      'relative flex items-center gap-2 rounded-full px-2.5 py-1.5 text-sm sm:px-3.5 transition-colors duration-300',
                       active ? 'text-neon' : 'text-zinc-400 hover:text-zinc-100'
                     )}
                   >
