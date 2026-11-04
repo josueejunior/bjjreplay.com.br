@@ -31,7 +31,6 @@ export function LutaNaoApareceuModal({ isOpen, onClose, inicial }: LutaNaoAparec
   const [horario, setHorario] = useState('');
   const [tatame, setTatame] = useState(TATAMES.length === 1 ? TATAMES[0] : '');
   const [faltaram, setFaltaram] = useState(String(inicial?.faltaram ?? 1));
-  const [adversario, setAdversario] = useState('');
   const [observacao, setObservacao] = useState('');
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -46,7 +45,7 @@ export function LutaNaoApareceuModal({ isOpen, onClose, inicial }: LutaNaoAparec
     try {
       await pedirLutaNaoEncontrada({
         data, horario, tatame, faltaram: Number(faltaram),
-        adversario: adversario.trim() || null, observacao: observacao.trim() || null,
+        observacao: observacao.trim() || null,
       });
       setSuccess(true);
     } catch (err) {
@@ -60,7 +59,7 @@ export function LutaNaoApareceuModal({ isOpen, onClose, inicial }: LutaNaoAparec
   const fechar = () => {
     onClose();
     setSuccess(false);
-    setHorario(''); setAdversario(''); setObservacao(''); setFaltaram('1'); setData(hoje);
+    setHorario(''); setObservacao(''); setFaltaram('1'); setData(hoje);
   };
 
   return (
@@ -128,10 +127,6 @@ export function LutaNaoApareceuModal({ isOpen, onClose, inicial }: LutaNaoAparec
                     <label htmlFor="nl-falt" className={rotulo}>Quantas faltaram *</label>
                     <input id="nl-falt" type="number" inputMode="numeric" min={1} max={20} required value={faltaram} onChange={(e) => setFaltaram(e.target.value)} className={campo} />
                   </div>
-                </div>
-                <div>
-                  <label htmlFor="nl-adv" className={rotulo}>Com quem lutou (opcional)</label>
-                  <input id="nl-adv" type="text" maxLength={80} value={adversario} onChange={(e) => setAdversario(e.target.value)} placeholder="Ex.: João Silva" className={campo} />
                 </div>
                 <div>
                   <label htmlFor="nl-obs" className={rotulo}>Observação (opcional)</label>
