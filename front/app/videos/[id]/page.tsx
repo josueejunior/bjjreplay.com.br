@@ -11,6 +11,7 @@ import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { useApi } from '@/lib/hooks/useApi';
 import { getVideo } from '@/lib/api/endpoints';
+import { BETA_GRATUITO } from '@/lib/config/beta';
 import { formatDuration, formatNumber, formatRelativeDate } from '@/lib/utils/format';
 
 export default function VideoPage() {
@@ -47,9 +48,11 @@ export default function VideoPage() {
             <h2 className="text-xl font-bold text-white">Conteúdo bloqueado</h2>
             <p className="mt-1.5 text-sm text-zinc-400">{error}</p>
           </div>
-          <Link href="/#pricing">
-            <Button size="lg">Fazer upgrade</Button>
-          </Link>
+          {!BETA_GRATUITO && (
+            <Link href="/#pricing">
+              <Button size="lg">Fazer upgrade</Button>
+            </Link>
+          )}
         </motion.div>
       )}
 
