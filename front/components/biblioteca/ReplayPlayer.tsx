@@ -13,15 +13,19 @@ import {
 } from 'lucide-react';
 import { formatDuration } from '@/lib/utils/format';
 import { cn } from '@/lib/utils/cn';
+import { FaixaDaLuta, LegendaDaLuta, lerJanela, useAbrirNaLuta } from '@/components/player/JanelaLuta';
 
 interface ReplayPlayerProps {
   urlHorizontal: string;
   urlReelsVertical?: string | null;
+  /** Onde a luta começa/termina dentro do vídeo horizontal (segundos). */
+  inicioLutaS?: number | null;
+  fimLutaS?: number | null;
 }
 
 type Orientation = 'horizontal' | 'vertical';
 
-export function ReplayPlayer({ urlHorizontal, urlReelsVertical }: ReplayPlayerProps) {
+export function ReplayPlayer({ urlHorizontal, urlReelsVertical, inicioLutaS, fimLutaS }: ReplayPlayerProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const hideTimer = useRef<ReturnType<typeof setTimeout>>();
@@ -37,6 +41,10 @@ export function ReplayPlayer({ urlHorizontal, urlReelsVertical }: ReplayPlayerPr
   const activeSrc =
     orientation === 'vertical' && urlReelsVertical ? urlReelsVertical : urlHorizontal;
 
+  // A janela vale só para o vídeo horizontal (o reels vertical já é outro corte).
+  const janela = activeSrc === urlHorizontal ? lerJanela({ inicioLutaS, fimLutaS }, duration || undefined) : null;
+  const { aoCarregar, reiniciar } = useAbrirNaLuta(videoRef, janela, setProgress);
+
   const showControls = useCallback(() => {
     setControlsVisible(true);
     clearTimeout(hideTimer.current);
@@ -51,6 +59,7 @@ export function ReplayPlayer({ urlHorizontal, urlReelsVertical }: ReplayPlayerPr
     if (!el) return;
     setProgress(0);
     setPlaying(false);
+    reiniciar();
     el.load();
   }, [activeSrc]);
 
@@ -123,7 +132,10 @@ export function ReplayPlayer({ urlHorizontal, urlReelsVertical }: ReplayPlayerPr
           onPlay={() => setPlaying(true)}
           onPause={() => setPlaying(false)}
           onTimeUpdate={(e) => setProgress(e.currentTarget.currentTime)}
-          onLoadedMetadata={(e) => setDuration(e.currentTarget.duration)}
+          onLoadedMetadata={(e) => {
+            setDuration(e.currentTarget.duration);
+            aoCarregar(e.currentTarget);
+          }}
           onClick={togglePlay}
           className="h-full w-full object-contain"
         />
@@ -152,6 +164,7 @@ export function ReplayPlayer({ urlHorizontal, urlReelsVertical }: ReplayPlayerPr
               transition={{ duration: 0.2 }}
               className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 to-transparent p-4 pt-10"
             >
+              <div className="relative">
               <input
                 type="range"
                 min={0}
@@ -162,6 +175,8 @@ export function ReplayPlayer({ urlHorizontal, urlReelsVertical }: ReplayPlayerPr
                 aria-label="Progresso do vídeo"
                 className="player-range w-full"
               />
+              {janela && <FaixaDaLuta janela={janela} duracao={duration} />}
+              </div>
               <div className="mt-2 flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <button
@@ -194,6 +209,8 @@ export function ReplayPlayer({ urlHorizontal, urlReelsVertical }: ReplayPlayerPr
           )}
         </AnimatePresence>
       </div>
+
+      {janela && <LegendaDaLuta janela={janela} onIrParaInicio={() => onSeek(janela.inicio)} />}
 
       <p className="text-center text-xs text-zinc-600">
         Streaming direto da CDN Cloudflare — sem passar pela API.

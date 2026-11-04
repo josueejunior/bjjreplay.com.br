@@ -14,6 +14,7 @@ import {
 import { formatDuration } from '@/lib/utils/format';
 import { cn } from '@/lib/utils/cn';
 import type { Video } from '@/types';
+import { FaixaDaLuta, LegendaDaLuta, lerJanela, useAbrirNaLuta } from '@/components/player/JanelaLuta';
 
 interface VideoPlayerProps {
   video: Video;
@@ -30,6 +31,9 @@ export function VideoPlayer({ video }: VideoPlayerProps) {
   const [duration, setDuration] = useState(video.durationSeconds);
   const [orientation, setOrientation] = useState<'vertical' | 'horizontal'>(video.orientation);
   const [controlsVisible, setControlsVisible] = useState(true);
+
+  const janela = lerJanela({ inicioLutaS: video.inicioLutaS, fimLutaS: video.fimLutaS }, duration);
+  const { aoCarregar } = useAbrirNaLuta(videoRef, janela, setProgress);
 
   const showControls = useCallback(() => {
     setControlsVisible(true);
@@ -113,7 +117,10 @@ export function VideoPlayer({ video }: VideoPlayerProps) {
           onPlay={() => setPlaying(true)}
           onPause={() => setPlaying(false)}
           onTimeUpdate={(e) => setProgress(e.currentTarget.currentTime)}
-          onLoadedMetadata={(e) => setDuration(e.currentTarget.duration)}
+          onLoadedMetadata={(e) => {
+            setDuration(e.currentTarget.duration);
+            aoCarregar(e.currentTarget);
+          }}
           onClick={togglePlay}
           className="h-full w-full object-contain"
         />
@@ -144,6 +151,7 @@ export function VideoPlayer({ video }: VideoPlayerProps) {
               transition={{ duration: 0.2 }}
               className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 to-transparent p-4 pt-10"
             >
+              <div className="relative">
               <input
                 type="range"
                 min={0}
@@ -154,6 +162,8 @@ export function VideoPlayer({ video }: VideoPlayerProps) {
                 aria-label="Progresso do vídeo"
                 className="player-range w-full"
               />
+              {janela && <FaixaDaLuta janela={janela} duracao={duration} />}
+              </div>
               <div className="mt-2 flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <button
@@ -186,6 +196,8 @@ export function VideoPlayer({ video }: VideoPlayerProps) {
           )}
         </AnimatePresence>
       </div>
+
+      {janela && <LegendaDaLuta janela={janela} onIrParaInicio={() => onSeek(janela.inicio)} />}
     </div>
   );
 }

@@ -105,6 +105,8 @@ function BibliotecaReplayContent() {
                 <ReplayPlayer
                   urlHorizontal={luta.url_horizontal!}
                   urlReelsVertical={luta.url_reels_vertical}
+                  inicioLutaS={luta.inicio_luta_s}
+                  fimLutaS={luta.fim_luta_s}
                 />
               </>
             ) : (

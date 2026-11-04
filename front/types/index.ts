@@ -60,6 +60,9 @@ export interface Video {
   requiredPlan: PlanTier;
   createdAt: string;
   views: number;
+  /** Janela da luta dentro do vídeo (segundos), quando o vídeo traz 1 min antes e depois. */
+  inicioLutaS?: number;
+  fimLutaS?: number;
   author: {
     name: string;
     avatarUrl: string;
@@ -119,6 +122,9 @@ export interface LutaBiblioteca {
   event_city?: string;
   belt_at_fight?: FaixaBelt;
   category?: string;
+  /** Onde a luta começa/termina dentro do vídeo (segundos); ausente = abre do início como antes. */
+  inicio_luta_s?: number;
+  fim_luta_s?: number;
   /** Preenchido no painel do professor */
   aluno_name?: string;
   aluno_id?: string;

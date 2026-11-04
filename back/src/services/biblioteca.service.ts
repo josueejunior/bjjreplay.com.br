@@ -38,6 +38,8 @@ function resolveCdnUrl(stored: string | null, fallback: string): string | undefi
   return stored;
 }
 
+import { janelaValida } from '../lib/janela-luta.js';
+
 function rowToApi(
   row: LutaBibliotecaRow,
   isBlackPlan: boolean,
@@ -56,6 +58,7 @@ function rowToApi(
     category: row.category ?? undefined,
     aluno_name: alunoName,
     aluno_id: alunoId,
+    ...(janelaValida(row.inicio_luta_s, row.fim_luta_s) ?? {}),
   };
 
   if (row.status === 'ENTREGUE' && row.url_horizontal) {

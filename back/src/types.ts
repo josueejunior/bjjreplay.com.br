@@ -101,6 +101,9 @@ export interface LutaBiblioteca {
   event_city?: string;
   belt_at_fight?: FaixaBelt;
   category?: string;
+  /** Onde a luta começa/termina dentro do vídeo (segundos); ausente = abre do início como antes. */
+  inicio_luta_s?: number;
+  fim_luta_s?: number;
   aluno_name?: string;
   aluno_id?: string;
 }
@@ -121,6 +124,8 @@ export interface LutaBibliotecaRow {
   event_city: string | null;
   belt_at_fight: string | null;
   category: string | null;
+  inicio_luta_s: number | null;
+  fim_luta_s: number | null;
 }
 
 export interface FotoBiblioteca {

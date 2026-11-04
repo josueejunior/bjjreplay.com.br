@@ -117,6 +117,9 @@ ensureColumn('biblioteca_lutas', 'event_name', 'event_name TEXT');
 ensureColumn('biblioteca_lutas', 'event_city', 'event_city TEXT');
 ensureColumn('biblioteca_lutas', 'belt_at_fight', 'belt_at_fight TEXT');
 ensureColumn('biblioteca_lutas', 'category', 'category TEXT');
+// Beta: onde a luta começa e termina dentro do vídeo (que traz 1 min antes e 1 min depois).
+ensureColumn('biblioteca_lutas', 'inicio_luta_s', 'inicio_luta_s INTEGER');
+ensureColumn('biblioteca_lutas', 'fim_luta_s', 'fim_luta_s INTEGER');
 
 // ---- Mapeamento row → modelo ----
 
