@@ -3,7 +3,7 @@
 import { useState, type ReactNode } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { Clapperboard, Flag, GraduationCap, Inbox, LayoutDashboard, LogOut, Menu, Search, ShieldCheck, X } from 'lucide-react';
+import { Clapperboard, Flag, GraduationCap, HeartHandshake, Inbox, LayoutDashboard, LogOut, Menu, Search, ShieldCheck, X } from 'lucide-react';
 import { Logo } from '@/components/brand/Logo';
 import { BeltAvatar } from '@/components/ui/BeltAvatar';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -16,6 +16,7 @@ const navItems = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard, adminOnly: false, professorOnly: false, athleteOnly: true },
   { href: '/biblioteca', label: 'Biblioteca', icon: Clapperboard, adminOnly: false, professorOnly: false, athleteOnly: true },
   { href: '/professor', label: 'Professor', icon: GraduationCap, adminOnly: false, professorOnly: true, athleteOnly: false },
+  { href: '/ajude', label: 'Ajude a melhorar', icon: HeartHandshake, adminOnly: false, professorOnly: false, athleteOnly: true },
   { href: '/minha-luta', label: 'Minha luta', icon: Search, adminOnly: false, professorOnly: false, athleteOnly: true },
   { href: '/relatar-problema', label: 'Relatar problema', icon: Flag, adminOnly: false, professorOnly: false, athleteOnly: true },
   { href: '/admin', label: 'Admin', icon: ShieldCheck, adminOnly: true, professorOnly: false, athleteOnly: false },

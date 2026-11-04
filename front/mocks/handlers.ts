@@ -10,9 +10,37 @@ import type { CategorizeResponse, UserProfile } from '@/types';
 // Estado mutável em memória (persiste durante a sessão do browser)
 const imagesState = adminImages.map((img) => ({ ...img }));
 
+const diaSP = (atras: number) => new Date(Date.now() - atras * 86_400_000).toISOString().slice(0, 10);
+const contagemState: Record<string, { resultado: string; quantas: number; adversarios: string | null }> = {};
+const perguntasState = [
+  { id: 'q1', lutaId: 'L-2026-1103-19h40', contextoS: 15, focoInicioS: 15, focoFimS: 19, pergunta: 'O que aconteceu no trecho verde?', opcoes: ['Finalização', 'Passagem de guarda', 'Raspagem', 'Queda'], criadaEm: '2026-11-04T01:10:00Z', respondida: null as string | null },
+  { id: 'q2', lutaId: 'L-2026-1102-19h10', contextoS: 15, focoInicioS: 15, focoFimS: 20, pergunta: 'O que aconteceu no trecho verde?', opcoes: ['Finalização', 'Passagem de guarda', 'Raspagem', 'Queda'], criadaEm: '2026-11-03T01:30:00Z', respondida: 'Raspagem' as string | null },
+];
+let lutasAjudadas = 11;
+
 const chamadosState = chamadosIniciais.map((c) => ({ ...c }));
 
 export const handlers = [
+  http.get('/api/ajuda/contagem', async () => {
+    const achadas = [2, 0, 3, 1, 0, 0, 2];
+    return HttpResponse.json(achadas.map((n, i) => {
+      const dia = diaSP(i);
+      return { dia, encontradas: n, resposta: contagemState[dia] ?? (i === 2 ? { resultado: 'certo', quantas: 3, adversarios: null } : null) };
+    }));
+  }),
+  http.post('/api/ajuda/contagem', async ({ request }) => {
+    const b = (await request.json()) as { dia: string; resultado: string; quantas: number; adversarios?: string | null };
+    contagemState[b.dia] = { resultado: b.resultado, quantas: b.quantas, adversarios: b.adversarios ?? null };
+    return HttpResponse.json({ ok: true }, { status: 201 });
+  }),
+  http.get('/api/ajuda/perguntas', async () => HttpResponse.json(perguntasState)),
+  http.post('/api/ajuda/perguntas/:id/resposta', async ({ params, request }) => {
+    const b = (await request.json()) as { opcao: string };
+    const p = perguntasState.find((x) => x.id === params.id);
+    if (p) { if (!p.respondida && b.opcao !== 'nao_sei') lutasAjudadas += 1; p.respondida = b.opcao; }
+    return HttpResponse.json({ ok: true, lutasAjudadas, diasConferidos: Object.keys(contagemState).length + 1 }, { status: 201 });
+  }),
+  http.get('/api/ajuda/resumo', async () => HttpResponse.json({ lutasAjudadas, diasConferidos: Object.keys(contagemState).length + 1 })),
   http.get('/api/chamados/meus', async () => HttpResponse.json(chamadosState.filter((c) => c.atleta?.id === 'u-diego'))),
   http.post('/api/chamados/problema', async ({ request }) => {
     const b = (await request.json()) as { opcao: string; observacao: string; luta?: string | null };

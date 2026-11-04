@@ -3,6 +3,10 @@ import type {
   AdminImage,
   AthleteCategory,
   Chamado,
+  DiaContagem,
+  PerguntaCortex,
+  ResultadoContagem,
+  ResumoAjuda,
   ChamadoAdmin,
   ChamadoStatus,
   CategorizeResponse,
@@ -154,5 +158,38 @@ export interface PedidoLuta {
 
 export async function pedirLutaNaoEncontrada(body: PedidoLuta): Promise<Chamado> {
   const { data } = await api.post<Chamado>('/api/chamados/luta', body);
+  return data;
+}
+
+/* ----------------------------- ajude a melhorar ----------------------------- */
+
+export async function getContagem(): Promise<DiaContagem[]> {
+  const { data } = await api.get<DiaContagem[]>('/api/ajuda/contagem');
+  return data;
+}
+
+export async function responderContagem(body: {
+  dia: string;
+  encontradas: number;
+  resultado: ResultadoContagem;
+  quantas: number;
+  adversarios?: string | null;
+}) {
+  const { data } = await api.post('/api/ajuda/contagem', body);
+  return data;
+}
+
+export async function getPerguntasCortex(): Promise<PerguntaCortex[]> {
+  const { data } = await api.get<PerguntaCortex[]>('/api/ajuda/perguntas');
+  return data;
+}
+
+export async function responderPerguntaCortex(id: string, opcao: string): Promise<ResumoAjuda> {
+  const { data } = await api.post<ResumoAjuda>(`/api/ajuda/perguntas/${id}/resposta`, { opcao });
+  return data;
+}
+
+export async function getResumoAjuda(): Promise<ResumoAjuda> {
+  const { data } = await api.get<ResumoAjuda>('/api/ajuda/resumo');
   return data;
 }

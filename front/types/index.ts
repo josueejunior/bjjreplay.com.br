@@ -153,3 +153,28 @@ export interface Chamado {
 export interface ChamadoAdmin extends Chamado {
   atleta: { id: string; nome: string; email: string } | null;
 }
+
+export type ResultadoContagem = 'certo' | 'mais' | 'menos';
+
+export interface DiaContagem {
+  dia: string;
+  encontradas: number;
+  resposta: { resultado: ResultadoContagem; quantas: number; adversarios: string | null } | null;
+}
+
+export interface PerguntaCortex {
+  id: string;
+  lutaId: string;
+  contextoS: number;
+  focoInicioS: number;
+  focoFimS: number;
+  pergunta: string;
+  opcoes: string[];
+  criadaEm: string;
+  respondida: string | null;
+}
+
+export interface ResumoAjuda {
+  lutasAjudadas: number;
+  diasConferidos: number;
+}
