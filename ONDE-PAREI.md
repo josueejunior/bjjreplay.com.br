@@ -52,3 +52,10 @@ Histórico completo e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI
 - Lucas mandou áudio 14:31: confirma a call às 16h de hoje (combinada 03/11 11:17). Julgador: FAZER. Confirmei "fechado, 16h então" (zap, lease tmux:p:bjj, enviado HTTP 201; a 1ª tentativa falhou por lease com nome errado). Josué avisado; lembrete agendado 15:40.
 - Não mandei valores (Lucas não é cobrado; julgador sugeriu números, descartei). Pendente prometido: proposta sem valor e custo do agente (assunto Juju Kids), ver com o Josué na call.
 - Se a call não puder acontecer: avisar o Lucas antes das 16h, na primeira pessoa.
+
+## 04/11/2026 (~17:30) — Beta (BRIEFING_FRONT_BETA.md), prioridade do Josué
+- Pedidos: A=P1104-9 (previa, prints em design/beta-a, commit fc56f16, NÃO no ar, espera ok do Lucas via p:jujukids), B=P1104-10 (fazendo), C=-11, D=-12, E=-13. Prazos no livro.
+- Home nova + selo: flag NEXT_PUBLIC_BETA_GRATUITO (front/.env.local, ignorado pelo git; no deploy ligar a variável e rebuildar). Depoimentos e planos somem no beta.
+- ACHADO: blocos B–E (abas, /api/service/*, entregas, player) vivem no app CAMPEONATO (~/dev/clientes/lucas-portela/campeonato, igual ao servidor em back/src, medido com rsync -anci: só mtime difere), NÃO neste repo (que é bjjreplay.com.br, "volt-sports-backend", sem /api/service). Falta confirmar com o Lucas em qual site o aluno do beta entra.
+- Deploy: regra nova (REGRA-DEPLOY-RAPIDO.md): ajuste pedido sobe direto após esteira; funcionalidade nova/visual grande mostra antes. Home e abas = mostrar antes.
+- Próximo: bloco B no repo campeonato (tabela + rotas aluno e /api/service/lutas-nao-encontradas + aba).
