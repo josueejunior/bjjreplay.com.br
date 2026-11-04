@@ -57,7 +57,7 @@ export function AppShell({ children, sidebar }: { children: ReactNode; sidebar?:
         {/* Linha de brilho no rodapé do header */}
         <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-neon/25 to-transparent" />
 
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:h-20 sm:px-6">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-2 px-3 sm:h-20 sm:gap-4 sm:px-6">
           <div className="flex items-center gap-3">
             {sidebar && (
               <button
@@ -86,7 +86,7 @@ export function AppShell({ children, sidebar }: { children: ReactNode; sidebar?:
                     key={item.href}
                     href={item.href}
                     className={cn(
-                      'relative flex items-center gap-2 rounded-full px-2.5 py-1.5 text-sm sm:px-3.5 transition-colors duration-300',
+                      'relative flex items-center gap-2 rounded-full px-2 py-1.5 text-sm sm:px-3.5 transition-colors duration-300',
                       active ? 'text-neon' : 'text-zinc-400 hover:text-zinc-100'
                     )}
                   >
@@ -105,7 +105,7 @@ export function AppShell({ children, sidebar }: { children: ReactNode; sidebar?:
             </nav>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             {/* Chip do usuário → perfil */}
             <Link
               href="/perfil"
