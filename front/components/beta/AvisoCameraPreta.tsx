@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { X } from 'lucide-react';
+import { BETA_GRATUITO } from '@/lib/config/beta';
 
 const TITULO = 'Antes de lutar, olhe para a câmera preta.';
 const LINHA_2 = '2 segundos, rosto sério.';
@@ -94,7 +95,7 @@ export function AvisoCameraPretaBoasVindas() {
     }
   };
 
-  if (!aberto) return null;
+  if (!BETA_GRATUITO || !aberto) return null;
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/75 p-4" onClick={fechar}>
       <div
