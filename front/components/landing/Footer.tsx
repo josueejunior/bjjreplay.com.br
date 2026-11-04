@@ -35,6 +35,7 @@ import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils/cn';
 
 /** Dados de contato oficiais — fonte única para rodapé e links de suporte. */
+import { BETA_GRATUITO } from '@/lib/config/beta';
 const CONTATO = {
   telefone: '(86) 98112-9272',
   whatsapp: 'https://wa.me/5586981129272',
@@ -56,7 +57,7 @@ const columns: { title: string; icon: ElementType; links: FooterLink[] }[] = [
       { label: 'FAQ', href: '#faq', icon: HelpCircle },
     ],
   },
-  {
+  ...(BETA_GRATUITO ? [] : [{
     title: 'Assinatura',
     icon: CreditCard,
     links: [
@@ -65,7 +66,7 @@ const columns: { title: string; icon: ElementType; links: FooterLink[] }[] = [
       { label: 'Plano Black', href: '/signup?plan=black', icon: Crown },
       { label: 'Começar grátis', href: '/signup', icon: UserPlus },
     ],
-  },
+  }]),
   {
     title: 'Conta',
     icon: UserPlus,

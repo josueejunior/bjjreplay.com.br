@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Barlow_Condensed } from 'next/font/google';
 import './globals.css';
 import { BeltThemeProvider } from '@/components/providers/BeltThemeProvider';
 import { MswProvider } from '@/components/providers/MswProvider';
@@ -7,6 +7,7 @@ import { AuthProvider } from '@/lib/hooks/useAuth';
 import { ToastProvider } from '@/components/ui/Toast';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
+const barlow = Barlow_Condensed({ subsets: ['latin'], weight: ['700', '800'], variable: '--font-display' });
 
 export const metadata: Metadata = {
   title: 'BJJ Replay — Seus replays de luta, automáticos',
@@ -27,7 +28,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="pt-BR" className="dark">
-      <body className={`${inter.variable} font-sans bg-background text-zinc-100 antialiased`}>
+      <body className={`${inter.variable} ${barlow.variable} font-sans bg-background text-zinc-100 antialiased`}>
         <MswProvider>
           <AuthProvider>
             <BeltThemeProvider>

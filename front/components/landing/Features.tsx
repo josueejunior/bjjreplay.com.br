@@ -41,6 +41,7 @@ const miniBadges = [
   { icon: Star, earned: false },
 ];
 
+import { BETA_GRATUITO } from '@/lib/config/beta';
 export function Features() {
   return (
     <section id="features" className="relative overflow-hidden py-28 sm:py-36">
@@ -313,7 +314,7 @@ export function Features() {
             </div>
           </div>
 
-          {/* Pills de qualidade por plano */}
+          {!BETA_GRATUITO && (
           <div className="flex flex-wrap items-center gap-3">
             <span className="flex items-center gap-2 rounded-full border border-zinc-700 bg-surface-raised px-4 py-2 text-xs font-semibold text-zinc-300">
               <Check className="h-3.5 w-3.5 text-emerald-400" /> HD · Premium
@@ -322,6 +323,7 @@ export function Features() {
               <Crown className="h-3.5 w-3.5" /> 4K + IA · Black
             </span>
           </div>
+          )}
         </motion.div>
       </div>
       </div>

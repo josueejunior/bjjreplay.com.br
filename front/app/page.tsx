@@ -10,6 +10,7 @@ import { Testimonials } from '@/components/landing/Testimonials';
 import { Pricing } from '@/components/landing/Pricing';
 import { Faq } from '@/components/landing/Faq';
 import { CtaFinal } from '@/components/landing/CtaFinal';
+import { BETA_GRATUITO } from '@/lib/config/beta';
 import { Footer } from '@/components/landing/Footer';
 
 export default function LandingPage() {
@@ -23,8 +24,8 @@ export default function LandingPage() {
       <HowItWorks />
       <VideoReel />
       <CommunityGallery />
-      <Testimonials />
-      <Pricing />
+      {!BETA_GRATUITO && <Testimonials />}
+      {!BETA_GRATUITO && <Pricing />}
       <Faq />
       <CtaFinal />
       <Footer />

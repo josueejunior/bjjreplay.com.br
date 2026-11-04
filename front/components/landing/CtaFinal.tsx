@@ -6,6 +6,7 @@ import { ArrowRight } from 'lucide-react';
 import { Logo } from '@/components/brand/Logo';
 import { Button } from '@/components/ui/Button';
 import { LandingMedia } from '@/components/landing/LandingMedia';
+import { BETA_GRATUITO } from '@/lib/config/beta';
 import { LANDING_MEDIA } from '@/lib/landing/media';
 
 export function CtaFinal() {
@@ -48,15 +49,15 @@ export function CtaFinal() {
               Criar conta grátis <ArrowRight className="h-4 w-4" />
             </Button>
           </Link>
-          <a href="#pricing">
+          {!BETA_GRATUITO && <a href="#pricing">
             <Button variant="outline" size="lg" className="w-full sm:w-auto">
               Comparar planos
             </Button>
-          </a>
+          </a>}
         </div>
 
-        <p className="mt-6 text-xs text-zinc-500">
-          Free para sempre · Upgrade quando quiser · Cancele em 2 cliques
+        <p className="mt-6 text-sm text-zinc-400">
+          {BETA_GRATUITO ? 'Beta gratuito na academia · sem cartão, sem cobrança' : 'Free para sempre · Upgrade quando quiser · Cancele em 2 cliques'}
         </p>
         </div>
       </motion.div>

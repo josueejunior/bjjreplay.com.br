@@ -8,6 +8,7 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: { display: ['var(--font-display)', 'Impact', 'sans-serif'] },
       colors: {
         background: '#050a14',
         surface: {

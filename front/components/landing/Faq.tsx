@@ -5,7 +5,9 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils/cn';
 
-const faqs = [
+import { BETA_GRATUITO } from '@/lib/config/beta';
+
+const allFaqs = [
   {
     question: 'O plano Free é grátis para sempre?',
     answer:
@@ -37,6 +39,17 @@ const faqs = [
       'Sim, sem multa. Cancelamento em 2 cliques e você mantém o acesso até o fim do período pago.',
   },
 ];
+
+const faqs = BETA_GRATUITO
+  ? [
+      {
+        question: 'O beta é gratuito mesmo?',
+        answer:
+          'Sim. Durante o beta na academia você recebe as suas lutas sem pagar nada. As lutas entregues no beta continuam suas depois que ele acabar.',
+      },
+      ...allFaqs.filter((f) => /XP e ranking|celular|campeonato/.test(f.question)),
+    ]
+  : allFaqs;
 
 export function Faq() {
   const [open, setOpen] = useState<number | null>(null);

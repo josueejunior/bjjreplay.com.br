@@ -6,15 +6,21 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { Logo } from '@/components/brand/Logo';
 import { Button } from '@/components/ui/Button';
+import { BETA_GRATUITO } from '@/lib/config/beta';
+import { BetaBar } from '@/components/landing/BetaBar';
 import { cn } from '@/lib/utils/cn';
 
-const links = [
+const allLinks = [
   { href: '#features', label: 'Funcionalidades' },
   { href: '#how-it-works', label: 'Como funciona' },
   { href: '#testimonials', label: 'Depoimentos' },
   { href: '#pricing', label: 'Planos' },
   { href: '#faq', label: 'FAQ' },
 ];
+
+const links = BETA_GRATUITO
+  ? allLinks.filter((l) => l.href !== '#pricing' && l.href !== '#testimonials')
+  : allLinks;
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -36,6 +42,7 @@ export function Navbar() {
           : 'border-b border-transparent bg-background/20 backdrop-blur-sm'
       )}
     >
+      <BetaBar />
       {scrolled && (
         <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-red-600/30 to-transparent" />
       )}
