@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from 'next/server';
 
-const AUTH_REQUIRED = ['/dashboard', '/videos', '/biblioteca', '/professor', '/admin', '/perfil'];
+const AUTH_REQUIRED = ['/dashboard', '/videos', '/biblioteca', '/professor', '/admin', '/perfil', '/reportar-erro'];
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;

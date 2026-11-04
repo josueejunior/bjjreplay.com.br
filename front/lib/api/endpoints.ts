@@ -2,6 +2,9 @@ import { api } from './client';
 import type {
   AdminImage,
   AthleteCategory,
+  Chamado,
+  ChamadoAdmin,
+  ChamadoStatus,
   CategorizeResponse,
   FotoBiblioteca,
   GamificationStats,
@@ -108,4 +111,34 @@ export async function relatarLutaSumida(payload: {
 }): Promise<{ success: boolean }> {
   const { data } = await api.post<{ success: boolean }>('/api/biblioteca/relatar-luta-sumida', payload);
   return data;
+}
+
+/* ------------------------------- chamados ------------------------------- */
+
+export async function reportarErro(body: { texto: string; tela?: string | null; print?: string | null }): Promise<Chamado> {
+  const { data } = await api.post<Chamado>('/api/chamados', { tipo: 'erro', ...body });
+  return data;
+}
+
+export async function getMeusChamados(): Promise<Chamado[]> {
+  const { data } = await api.get<Chamado[]>('/api/chamados/meus');
+  return data;
+}
+
+export async function getChamadosAdmin(filtro: { status?: string; tipo?: string } = {}): Promise<ChamadoAdmin[]> {
+  const { data } = await api.get<ChamadoAdmin[]>('/api/admin/chamados', { params: filtro });
+  return data;
+}
+
+export async function atualizarChamado(
+  id: string,
+  body: { status?: ChamadoStatus; resposta?: string | null },
+): Promise<Chamado> {
+  const { data } = await api.patch<Chamado>(`/api/admin/chamados/${id}`, body);
+  return data;
+}
+
+export async function getPrintDoChamado(id: string): Promise<string> {
+  const { data } = await api.get<Blob>(`/api/chamados/${id}/print`, { responseType: 'blob' });
+  return URL.createObjectURL(data);
 }

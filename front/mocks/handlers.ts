@@ -4,12 +4,35 @@ import { videos } from './fixtures/videos';
 import { stats } from './fixtures/stats';
 import { adminImages } from './fixtures/admin-images';
 import { advanceMockBiblioteca, getMockBibliotecaFotos, getMockProfessorBiblioteca } from './fixtures/biblioteca';
+import { chamadosIniciais } from './fixtures/chamados';
 import type { CategorizeResponse, UserProfile } from '@/types';
 
 // Estado mutável em memória (persiste durante a sessão do browser)
 const imagesState = adminImages.map((img) => ({ ...img }));
 
+const chamadosState = chamadosIniciais.map((c) => ({ ...c }));
+
 export const handlers = [
+  http.get('/api/chamados/meus', async () => HttpResponse.json(chamadosState.filter((c) => c.atleta?.id === 'u-diego'))),
+  http.post('/api/chamados', async ({ request }) => {
+    const b = (await request.json()) as { texto: string; tela?: string | null };
+    const novo = { id: `c${Date.now()}`, tipo: 'erro' as const, tela: b.tela ?? null, texto: b.texto, extra: null, temPrint: false, status: 'recebido' as const, resposta: null, criadoEm: new Date().toISOString(), atualizadoEm: new Date().toISOString(), atleta: { id: 'u-diego', nome: 'Diego Fernandes', email: 'diego.fernandes@exemplo.com' } };
+    chamadosState.unshift(novo);
+    return HttpResponse.json(novo, { status: 201 });
+  }),
+  http.get('/api/admin/chamados', async ({ request }) => {
+    const u = new URL(request.url);
+    const st = u.searchParams.get('status'); const tp = u.searchParams.get('tipo');
+    return HttpResponse.json(chamadosState.filter((c) => (!st || c.status === st) && (!tp || c.tipo === tp)));
+  }),
+  http.patch('/api/admin/chamados/:id', async ({ params, request }) => {
+    const b = (await request.json()) as { status?: never; resposta?: string | null };
+    const c = chamadosState.find((x) => x.id === params.id);
+    if (!c) return HttpResponse.json({ detail: 'Chamado não encontrado' }, { status: 404 });
+    if (b.status) c.status = b.status;
+    if (b.resposta !== undefined) c.resposta = b.resposta;
+    return HttpResponse.json(c);
+  }),
   http.get('/api/plans', async () => {
     await delay(300);
     return HttpResponse.json(plans);

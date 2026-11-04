@@ -133,3 +133,23 @@ export interface FotoBiblioteca {
   event_name?: string;
   id_luta?: number;
 }
+
+export type ChamadoStatus = 'recebido' | 'vendo' | 'resolvido';
+export type ChamadoTipo = 'erro' | 'luta_nao_encontrada';
+
+export interface Chamado {
+  id: string;
+  tipo: ChamadoTipo;
+  tela: string | null;
+  texto: string;
+  extra: Record<string, unknown> | null;
+  temPrint: boolean;
+  status: ChamadoStatus;
+  resposta: string | null;
+  criadoEm: string;
+  atualizadoEm: string;
+}
+
+export interface ChamadoAdmin extends Chamado {
+  atleta: { id: string; nome: string; email: string } | null;
+}
