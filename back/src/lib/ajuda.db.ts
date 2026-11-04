@@ -16,7 +16,7 @@ const SCHEMA_AJUDA = `
     encontradas  INTEGER NOT NULL,
     resultado    TEXT NOT NULL,
     quantas      INTEGER NOT NULL,
-    adversarios  TEXT,
+    horarios  TEXT,
     created_at   TEXT NOT NULL,
     UNIQUE (user_id, dia)
   );
@@ -52,33 +52,33 @@ export type ResultadoContagem = 'certo' | 'mais' | 'menos';
 
 export interface RespostaContagem {
   seq: number; id: string; userId: string; dia: string; encontradas: number;
-  resultado: ResultadoContagem; quantas: number; adversarios: string | null; criadaEm: string;
+  resultado: ResultadoContagem; quantas: number; horarios: string | null; criadaEm: string;
 }
 
 interface LinhaContagem {
   seq: number; id: string; user_id: string; dia: string; encontradas: number;
-  resultado: ResultadoContagem; quantas: number; adversarios: string | null; created_at: string;
+  resultado: ResultadoContagem; quantas: number; horarios: string | null; created_at: string;
 }
 
 const toContagem = (l: LinhaContagem): RespostaContagem => ({
   seq: l.seq, id: l.id, userId: l.user_id, dia: l.dia, encontradas: l.encontradas,
-  resultado: l.resultado, quantas: l.quantas, adversarios: l.adversarios, criadaEm: l.created_at,
+  resultado: l.resultado, quantas: l.quantas, horarios: l.horarios, criadaEm: l.created_at,
 });
 
 /** Uma resposta por aluno e dia; responder de novo corrige a anterior (mantém id e seq). */
 export function salvarContagem(i: {
   userId: string; dia: string; encontradas: number; resultado: ResultadoContagem;
-  quantas: number; adversarios?: string | null;
+  quantas: number; horarios?: string | null;
 }): RespostaContagem {
   const existente = db.prepare('SELECT * FROM respostas_contagem WHERE user_id = ? AND dia = ?').get(i.userId, i.dia) as LinhaContagem | undefined;
   const agora = new Date().toISOString();
   if (existente) {
-    db.prepare('UPDATE respostas_contagem SET encontradas=?, resultado=?, quantas=?, adversarios=? WHERE seq=?')
-      .run(i.encontradas, i.resultado, i.quantas, i.adversarios ?? null, existente.seq);
+    db.prepare('UPDATE respostas_contagem SET encontradas=?, resultado=?, quantas=?, horarios=? WHERE seq=?')
+      .run(i.encontradas, i.resultado, i.quantas, i.horarios ?? null, existente.seq);
   } else {
-    db.prepare(`INSERT INTO respostas_contagem (id,user_id,dia,encontradas,resultado,quantas,adversarios,created_at)
+    db.prepare(`INSERT INTO respostas_contagem (id,user_id,dia,encontradas,resultado,quantas,horarios,created_at)
                 VALUES (?,?,?,?,?,?,?,?)`)
-      .run(randomUUID(), i.userId, i.dia, i.encontradas, i.resultado, i.quantas, i.adversarios ?? null, agora);
+      .run(randomUUID(), i.userId, i.dia, i.encontradas, i.resultado, i.quantas, i.horarios ?? null, agora);
   }
   return toContagem(db.prepare('SELECT * FROM respostas_contagem WHERE user_id = ? AND dia = ?').get(i.userId, i.dia) as LinhaContagem);
 }

@@ -165,7 +165,7 @@ export type ResultadoContagem = 'certo' | 'mais' | 'menos';
 export interface DiaContagem {
   dia: string;
   encontradas: number;
-  resposta: { resultado: ResultadoContagem; quantas: number; adversarios: string | null } | null;
+  resposta: { resultado: ResultadoContagem; quantas: number; horarios: string | null } | null;
 }
 
 export interface PerguntaCortex {

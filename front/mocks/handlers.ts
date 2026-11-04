@@ -11,7 +11,7 @@ import type { CategorizeResponse, UserProfile } from '@/types';
 const imagesState = adminImages.map((img) => ({ ...img }));
 
 const diaSP = (atras: number) => new Date(Date.now() - atras * 86_400_000).toISOString().slice(0, 10);
-const contagemState: Record<string, { resultado: string; quantas: number; adversarios: string | null }> = {};
+const contagemState: Record<string, { resultado: string; quantas: number; horarios: string | null }> = {};
 const perguntasState = [
   { id: 'q1', lutaId: 'L-2026-1103-19h40', contextoS: 15, focoInicioS: 15, focoFimS: 19, pergunta: 'O que aconteceu no trecho verde?', opcoes: ['Finalização', 'Passagem de guarda', 'Raspagem', 'Queda'], criadaEm: '2026-11-04T01:10:00Z', respondida: null as string | null },
   { id: 'q2', lutaId: 'L-2026-1102-19h10', contextoS: 15, focoInicioS: 15, focoFimS: 20, pergunta: 'O que aconteceu no trecho verde?', opcoes: ['Finalização', 'Passagem de guarda', 'Raspagem', 'Queda'], criadaEm: '2026-11-03T01:30:00Z', respondida: 'Raspagem' as string | null },
@@ -25,12 +25,12 @@ export const handlers = [
     const achadas = [2, 0, 3, 1, 0, 0, 2];
     return HttpResponse.json(achadas.map((n, i) => {
       const dia = diaSP(i);
-      return { dia, encontradas: n, resposta: contagemState[dia] ?? (i === 2 ? { resultado: 'certo', quantas: 3, adversarios: null } : null) };
+      return { dia, encontradas: n, resposta: contagemState[dia] ?? (i === 2 ? { resultado: 'certo', quantas: 3, horarios: null } : null) };
     }));
   }),
   http.post('/api/ajuda/contagem', async ({ request }) => {
-    const b = (await request.json()) as { dia: string; resultado: string; quantas: number; adversarios?: string | null };
-    contagemState[b.dia] = { resultado: b.resultado, quantas: b.quantas, adversarios: b.adversarios ?? null };
+    const b = (await request.json()) as { dia: string; resultado: string; quantas: number; horarios?: string | null };
+    contagemState[b.dia] = { resultado: b.resultado, quantas: b.quantas, horarios: b.horarios ?? null };
     return HttpResponse.json({ ok: true }, { status: 201 });
   }),
   http.get('/api/ajuda/perguntas', async () => HttpResponse.json(perguntasState)),

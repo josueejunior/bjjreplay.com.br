@@ -34,7 +34,7 @@ export async function ajudaRoutes(app: FastifyInstance) {
       return {
         dia,
         encontradas: porDia.get(dia) ?? 0,
-        resposta: r ? { resultado: r.resultado, quantas: r.quantas, adversarios: r.adversarios } : null,
+        resposta: r ? { resultado: r.resultado, quantas: r.quantas, horarios: r.horarios } : null,
       };
     });
   });
@@ -47,7 +47,7 @@ export async function ajudaRoutes(app: FastifyInstance) {
         encontradas: z.coerce.number().int().min(0).max(30),
         resultado: z.enum(['certo', 'mais', 'menos']),
         quantas: z.coerce.number().int().min(0, 'Informe quantas lutas você fez').max(30),
-        adversarios: z.string().trim().max(200).optional().nullable(),
+        horarios: z.string().trim().max(200).optional().nullable(),
       })
       .refine((b) => b.resultado !== 'certo' || b.quantas === b.encontradas, { message: 'Se está certo, a quantidade é a mesma que o sistema achou' })
       .refine((b) => b.resultado !== 'mais' || b.quantas > b.encontradas, { message: 'Fiz mais: a quantidade precisa ser maior que a do sistema' })

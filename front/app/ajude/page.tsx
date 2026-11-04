@@ -58,12 +58,12 @@ function TrechoCortex({ p }: { p: PerguntaCortex }) {
 
 function CartaoDia({ d, onSalvar, onPedirBusca }: {
   d: DiaContagem;
-  onSalvar: (b: { dia: string; encontradas: number; resultado: ResultadoContagem; quantas: number; adversarios: string | null }) => Promise<void>;
+  onSalvar: (b: { dia: string; encontradas: number; resultado: ResultadoContagem; quantas: number; horarios: string | null }) => Promise<void>;
   onPedirBusca: (d: DiaContagem, faltaram: number) => void;
 }) {
   const [resultado, setResultado] = useState<ResultadoContagem | ''>(d.resposta?.resultado ?? '');
   const [quantas, setQuantas] = useState(String(d.resposta?.quantas ?? d.encontradas));
-  const [adv, setAdv] = useState(d.resposta?.adversarios ?? '');
+  const [adv, setAdv] = useState(d.resposta?.horarios ?? '');
   const [salvando, setSalvando] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
   const feito = Boolean(d.resposta);
@@ -83,7 +83,7 @@ function CartaoDia({ d, onSalvar, onPedirBusca }: {
     setSalvando(true);
     setErro(null);
     try {
-      await onSalvar({ dia: d.dia, encontradas: d.encontradas, resultado, quantas: n, adversarios: adv.trim() || null });
+      await onSalvar({ dia: d.dia, encontradas: d.encontradas, resultado, quantas: n, horarios: adv.trim() || null });
     } catch (err) {
       setErro((err as { response?: { data?: { detail?: string } } }).response?.data?.detail?.replace(/^: /, '') ?? 'Não consegui salvar. Tente de novo.');
     } finally {
@@ -126,8 +126,8 @@ function CartaoDia({ d, onSalvar, onPedirBusca }: {
         )}
         {resultado && (
           <div className="flex flex-col gap-2">
-            <label htmlFor={`a-${d.dia}`} className="text-base font-medium text-zinc-200">Com quem lutou <span className="text-zinc-400">(opcional)</span></label>
-            <input id={`a-${d.dia}`} type="text" maxLength={200} value={adv} onChange={(e) => setAdv(e.target.value)} className={campo} placeholder="Ex.: João, Pedro" />
+            <label htmlFor={`a-${d.dia}`} className="text-base font-medium text-zinc-200">Horário da luta <span className="text-zinc-400">(opcional)</span></label>
+            <input id={`a-${d.dia}`} type="text" maxLength={200} value={adv} onChange={(e) => setAdv(e.target.value)} className={campo} placeholder="Ex.: 19:40 e 20:10" />
           </div>
         )}
         {erro && <p role="alert" className="rounded-lg border border-red-500/40 bg-red-500/10 px-4 py-3 text-base text-red-200">{erro}</p>}
