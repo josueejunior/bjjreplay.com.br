@@ -14,6 +14,12 @@ const chamadosState = chamadosIniciais.map((c) => ({ ...c }));
 
 export const handlers = [
   http.get('/api/chamados/meus', async () => HttpResponse.json(chamadosState.filter((c) => c.atleta?.id === 'u-diego'))),
+  http.post('/api/chamados/problema', async ({ request }) => {
+    const b = (await request.json()) as { opcao: string; observacao: string; luta?: string | null };
+    const novo = { id: `c${Date.now()}`, tipo: 'problema_luta' as const, tela: null, texto: b.observacao, extra: { opcao: b.opcao, luta: b.luta ?? null }, temPrint: false, status: 'recebido' as const, resposta: null, criadoEm: new Date().toISOString(), atualizadoEm: new Date().toISOString(), atleta: { id: 'u-diego', nome: 'Diego Fernandes', email: 'diego.fernandes@exemplo.com' } };
+    chamadosState.unshift(novo as never);
+    return HttpResponse.json(novo, { status: 201 });
+  }),
   http.post('/api/chamados', async ({ request }) => {
     const b = (await request.json()) as { texto: string; tela?: string | null };
     const novo = { id: `c${Date.now()}`, tipo: 'erro' as const, tela: b.tela ?? null, texto: b.texto, extra: null, temPrint: false, status: 'recebido' as const, resposta: null, criadoEm: new Date().toISOString(), atualizadoEm: new Date().toISOString(), atleta: { id: 'u-diego', nome: 'Diego Fernandes', email: 'diego.fernandes@exemplo.com' } };
@@ -22,7 +28,7 @@ export const handlers = [
   }),
   http.post('/api/chamados/luta', async ({ request }) => {
     const b = (await request.json()) as Record<string, unknown>;
-    const novo = { id: `c${Date.now()}`, tipo: 'luta_nao_encontrada' as const, tela: String(b.aula), texto: String(b.observacao ?? `Faltaram ${b.faltaram} luta(s).`), extra: { ...b, foraDoPrazo: false }, temPrint: false, status: 'recebido' as const, resposta: null, criadoEm: new Date().toISOString(), atualizadoEm: new Date().toISOString(), atleta: { id: 'u-diego', nome: 'Diego Fernandes', email: 'diego.fernandes@exemplo.com' } };
+    const novo = { id: `c${Date.now()}`, tipo: 'luta_nao_encontrada' as const, tela: `${b.data} ${b.horario}`, texto: String(b.observacao ?? `Faltaram ${b.faltaram} luta(s).`), extra: { ...b }, temPrint: false, status: 'recebido' as const, resposta: null, criadoEm: new Date().toISOString(), atualizadoEm: new Date().toISOString(), atleta: { id: 'u-diego', nome: 'Diego Fernandes', email: 'diego.fernandes@exemplo.com' } };
     chamadosState.unshift(novo as never);
     return HttpResponse.json(novo, { status: 201 });
   }),

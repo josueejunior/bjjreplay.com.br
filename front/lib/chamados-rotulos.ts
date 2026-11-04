@@ -12,9 +12,16 @@ export const STATUS_CHAMADO: Record<ChamadoStatus, { label: string; cor: string 
 export const TIPO_CHAMADO: Record<ChamadoTipo, string> = {
   erro: 'Erro no site',
   luta_nao_encontrada: 'Luta não encontrada',
+  problema_luta: 'Problema na luta',
 };
 
-export const TELAS = ['Dashboard', 'Biblioteca', 'Replay (player)', 'Perfil / cadastro', 'Login', 'Outra'];
+export const OPCOES_PROBLEMA = [
+  { valor: 'nao_sou_eu', label: 'Não sou eu' },
+  { valor: 'comeca_comigo_termina_com_outro', label: 'Minha luta começa comigo e termina com outra pessoa' },
+  { valor: 'corte_errado', label: 'Corte errado' },
+] as const;
+
+export const ROTULO_OPCAO: Record<string, string> = Object.fromEntries(OPCOES_PROBLEMA.map((o) => [o.valor, o.label]));
 
 export function dataHora(iso: string): string {
   return new Date(iso).toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' });
@@ -23,4 +30,5 @@ export function dataHora(iso: string): string {
 export const STATUS_DO_TIPO: Record<ChamadoTipo, ChamadoStatus[]> = {
   erro: ['recebido', 'vendo', 'resolvido'],
   luta_nao_encontrada: ['recebido', 'procurando', 'encontrada', 'nao_encontrada'],
+  problema_luta: ['recebido', 'vendo', 'resolvido'],
 };

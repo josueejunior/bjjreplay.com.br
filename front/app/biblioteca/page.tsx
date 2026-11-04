@@ -279,10 +279,10 @@ export default function BibliotecaPage() {
 
           <button
             onClick={() => setShowLutaSumidaModal(true)}
-            className="mt-2 inline-flex items-center gap-2 rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-2 text-sm font-medium text-amber-400 transition-colors hover:bg-amber-500/20"
+            className="mt-2 inline-flex items-center gap-2 rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-base font-medium text-amber-300 transition-colors hover:bg-amber-500/20"
           >
             <AlertCircle className="h-4 w-4" />
-            Sua luta não apareceu?
+            Não encontrei minha luta
           </button>
 
         </div>
@@ -293,10 +293,10 @@ export default function BibliotecaPage() {
         <div className="mt-4 flex justify-center">
           <button
             onClick={() => setShowLutaSumidaModal(true)}
-            className="inline-flex items-center gap-2 rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-2 text-sm font-medium text-amber-400 transition-colors hover:bg-amber-500/20"
+            className="inline-flex items-center gap-2 rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-base font-medium text-amber-300 transition-colors hover:bg-amber-500/20"
           >
             <AlertCircle className="h-4 w-4" />
-            Sua luta não apareceu?
+            Não encontrei minha luta
           </button>
         </div>
       )}

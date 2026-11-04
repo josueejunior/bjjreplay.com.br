@@ -9,6 +9,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { ArrowLeft, ArrowRight, Cake, ScanFace } from 'lucide-react';
 import { Badge } from '@/components/ui/Badge';
+import { AcademiaSelect } from '@/components/auth/AcademiaSelect';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Input } from '@/components/ui/Input';
@@ -48,7 +49,7 @@ const profileSchema = z
   .object({
     degree: z.coerce.number().min(0).max(4),
     weightKg: z.coerce.number().min(15, 'Peso mínimo 15 kg').max(200, 'Peso máximo 200 kg'),
-    academyName: z.string().min(2, 'Informe sua academia'),
+    academyName: z.string().min(2, 'Escolha a academia vinculada'),
     guardianCpf: z.string().optional(),
     guardianName: z.string().optional(),
   })
@@ -385,14 +386,12 @@ function SignupFlow() {
               />
             </div>
 
-            <Input
-              label="Academia / filiação"
-              placeholder="Gracie Barra Fortaleza"
+            <AcademiaSelect
               error={profileForm.formState.errors.academyName?.message}
               {...profileForm.register('academyName')}
             />
             <p className="-mt-2 text-xs text-zinc-500">
-              Use o mesmo nome da academia do professor para aparecer no painel dele.
+              É a academia onde você treina. O professor dela vê suas lutas no painel dele.
             </p>
 
             <div className="flex gap-3">

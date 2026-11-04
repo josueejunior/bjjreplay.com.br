@@ -8,12 +8,12 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { useAuth } from '@/lib/hooks/useAuth';
 import { atualizarChamado, getChamadosAdmin, getPrintDoChamado } from '@/lib/api/endpoints';
-import { STATUS_CHAMADO, STATUS_DO_TIPO, TIPO_CHAMADO, dataHora } from '@/lib/chamados-rotulos';
+import { ROTULO_OPCAO, STATUS_CHAMADO, STATUS_DO_TIPO, TIPO_CHAMADO, dataHora } from '@/lib/chamados-rotulos';
 import { cn } from '@/lib/utils/cn';
 import type { ChamadoAdmin, ChamadoStatus } from '@/types';
 
 const ESTADOS: ChamadoStatus[] = ['recebido', 'vendo', 'procurando', 'encontrada', 'nao_encontrada', 'resolvido'];
-const ROTULO_EXTRA: Record<string, string> = { data: 'Data da aula', aula: 'Aula', tatame: 'Tatame', horario: 'Horário aproximado', adversario: 'Com quem lutou', faltaram: 'Lutas que faltaram', foraDoPrazo: 'Fora do prazo de 3 dias' };
+const ROTULO_EXTRA: Record<string, string> = { opcao: 'O que aconteceu', luta: 'Luta', data: 'Data da aula', aula: 'Aula', tatame: 'Tatame', horario: 'Horário aproximado', adversario: 'Com quem lutou', faltaram: 'Lutas que faltaram', foraDoPrazo: 'Fora do prazo de 3 dias' };
 const sel = 'h-11 rounded-lg border border-zinc-700 bg-surface-raised px-3 text-base text-zinc-100';
 
 export default function ChamadosAdminPage() {
@@ -80,6 +80,7 @@ export default function ChamadosAdminPage() {
             <option value="">Todos os tipos</option>
             <option value="erro">{TIPO_CHAMADO.erro}</option>
             <option value="luta_nao_encontrada">{TIPO_CHAMADO.luta_nao_encontrada}</option>
+            <option value="problema_luta">{TIPO_CHAMADO.problema_luta}</option>
           </select>
           <span className="text-base text-zinc-300">{emAberto} em aberto</span>
         </div>
@@ -121,7 +122,7 @@ export default function ChamadosAdminPage() {
                           {c.extra && (
                             <dl className="mt-3 grid grid-cols-2 gap-x-6 gap-y-1 text-base sm:grid-cols-3">
                               {Object.entries(c.extra).filter(([, v]) => v !== null && v !== '').map(([k, v]) => (
-                                <div key={k}><dt className="text-sm text-zinc-400">{ROTULO_EXTRA[k] ?? k}</dt><dd className="text-zinc-100">{v === true ? 'Sim' : String(v)}</dd></div>
+                                <div key={k}><dt className="text-sm text-zinc-400">{ROTULO_EXTRA[k] ?? k}</dt><dd className="text-zinc-100">{k === 'opcao' ? ROTULO_OPCAO[String(v)] ?? String(v) : String(v)}</dd></div>
                               ))}
                             </dl>
                           )}

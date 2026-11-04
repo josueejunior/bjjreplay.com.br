@@ -115,8 +115,8 @@ export async function relatarLutaSumida(payload: {
 
 /* ------------------------------- chamados ------------------------------- */
 
-export async function reportarErro(body: { texto: string; tela?: string | null; print?: string | null }): Promise<Chamado> {
-  const { data } = await api.post<Chamado>('/api/chamados', { tipo: 'erro', ...body });
+export async function relatarProblema(body: { opcao: string; observacao: string; luta?: string | null }): Promise<Chamado> {
+  const { data } = await api.post<Chamado>('/api/chamados/problema', body);
   return data;
 }
 
@@ -145,9 +145,8 @@ export async function getPrintDoChamado(id: string): Promise<string> {
 
 export interface PedidoLuta {
   data: string;
-  aula: string;
+  horario: string;
   tatame: string;
-  horario?: string | null;
   adversario?: string | null;
   faltaram: number;
   observacao?: string | null;

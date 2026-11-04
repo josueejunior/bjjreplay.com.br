@@ -8,12 +8,15 @@ import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { db } from './db.js';
 
-export type ChamadoTipo = 'erro' | 'luta_nao_encontrada';
+export type ChamadoTipo = 'erro' | 'luta_nao_encontrada' | 'problema_luta';
+
+/** Opções de "Relatar um problema" (Lucas, 04/11/2026). */
+export const OPCOES_PROBLEMA = ['nao_sou_eu', 'comeca_comigo_termina_com_outro', 'corte_errado'] as const;
 export type ChamadoStatus =
   | 'recebido' | 'vendo' | 'resolvido' // erro no site
   | 'procurando' | 'encontrada' | 'nao_encontrada'; // luta não encontrada
 
-export const CHAMADO_TIPOS: ChamadoTipo[] = ['erro', 'luta_nao_encontrada'];
+export const CHAMADO_TIPOS: ChamadoTipo[] = ['erro', 'luta_nao_encontrada', 'problema_luta'];
 export const CHAMADO_STATUS: ChamadoStatus[] = [
   'recebido', 'vendo', 'resolvido', 'procurando', 'encontrada', 'nao_encontrada',
 ];
@@ -22,6 +25,7 @@ export const CHAMADO_STATUS: ChamadoStatus[] = [
 export const STATUS_DO_TIPO: Record<ChamadoTipo, ChamadoStatus[]> = {
   erro: ['recebido', 'vendo', 'resolvido'],
   luta_nao_encontrada: ['recebido', 'procurando', 'encontrada', 'nao_encontrada'],
+  problema_luta: ['recebido', 'vendo', 'resolvido'],
 };
 
 const PRINTS_DIR = join(process.cwd(), 'data', 'chamados');

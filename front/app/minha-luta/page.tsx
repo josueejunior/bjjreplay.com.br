@@ -7,7 +7,6 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { useToast } from '@/components/ui/Toast';
 import { getMeusChamados, pedirLutaNaoEncontrada } from '@/lib/api/endpoints';
-import { GRADE_ADULTO, TATAMES } from '@/lib/config/grade';
 import { STATUS_CHAMADO, STATUS_DO_TIPO, dataHora } from '@/lib/chamados-rotulos';
 import { cn } from '@/lib/utils/cn';
 import type { Chamado } from '@/types';
@@ -15,6 +14,9 @@ import type { Chamado } from '@/types';
 const campo =
   'w-full rounded-lg border border-zinc-700 bg-surface-raised px-4 py-3 text-base text-zinc-100 placeholder:text-zinc-500 focus:border-red-500 focus:outline-none';
 const rotulo = 'text-base font-medium text-zinc-200';
+
+const TATAMES = ['Tatame 1'];
+const LIMITE_DIAS = 7;
 
 const iso = (d: Date) => d.toISOString().slice(0, 10);
 const diasAtras = (n: number) => iso(new Date(Date.now() - n * 86_400_000));
@@ -24,7 +26,6 @@ export default function MinhaLutaPage() {
   const hoje = useMemo(() => diasAtras(0), []);
   const [lista, setLista] = useState<Chamado[] | null>(null);
   const [data, setData] = useState(hoje);
-  const [aula, setAula] = useState('');
   const [tatame, setTatame] = useState(TATAMES.length === 1 ? TATAMES[0] : '');
   const [horario, setHorario] = useState('');
   const [adversario, setAdversario] = useState('');
@@ -33,7 +34,7 @@ export default function MinhaLutaPage() {
   const [enviando, setEnviando] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
 
-  const foraDoPrazo = data < diasAtras(3);
+  const maisAntiga = diasAtras(LIMITE_DIAS);
 
   const carregar = useCallback(async () => {
     try {
@@ -51,10 +52,10 @@ export default function MinhaLutaPage() {
     setErro(null);
     try {
       await pedirLutaNaoEncontrada({
-        data, aula, tatame, horario: horario || null, adversario: adversario || null,
+        data, tatame, horario, adversario: adversario || null,
         faltaram: Number(faltaram), observacao: observacao || null,
       });
-      setAula(''); setHorario(''); setAdversario(''); setFaltaram('1'); setObservacao('');
+      setHorario(''); setAdversario(''); setFaltaram('1'); setObservacao('');
       toast('Pedido recebido. Vamos procurar nas gravações.');
       await carregar();
     } catch (err) {
@@ -73,7 +74,7 @@ export default function MinhaLutaPage() {
         </h1>
         <p className="mt-2 text-base text-zinc-300">
           Lutou e o replay não apareceu? Avise aqui e procuramos de novo nas gravações da academia.
-          O prazo é de 3 dias, porque o gravador guarda o vídeo completo por cerca de 4 dias.
+          Informe o dia e o horário aproximado da luta. Dá para pedir a busca de lutas dos últimos 7 dias.
         </p>
 
         <Card className="mt-6">
@@ -81,15 +82,12 @@ export default function MinhaLutaPage() {
             {erro && <p role="alert" className="rounded-lg border border-red-500/40 bg-red-500/10 px-4 py-3 text-base text-red-200">{erro}</p>}
             <div className="grid gap-5 sm:grid-cols-2">
               <div className="flex flex-col gap-2">
-                <label htmlFor="data" className={rotulo}>Data da aula</label>
-                <input id="data" type="date" required max={hoje} value={data} onChange={(e) => setData(e.target.value)} className={campo} />
+                <label htmlFor="data" className={rotulo}>Dia da luta</label>
+                <input id="data" type="date" required min={maisAntiga} max={hoje} value={data} onChange={(e) => setData(e.target.value)} className={campo} />
               </div>
               <div className="flex flex-col gap-2">
-                <label htmlFor="aula" className={rotulo}>Aula</label>
-                <select id="aula" required value={aula} onChange={(e) => setAula(e.target.value)} className={campo}>
-                  <option value="">Escolha a aula</option>
-                  {GRADE_ADULTO.map((a) => <option key={a}>{a}</option>)}
-                </select>
+                <label htmlFor="horario" className={rotulo}>Horário aproximado da luta</label>
+                <input id="horario" type="time" required value={horario} onChange={(e) => setHorario(e.target.value)} className={campo} />
               </div>
               <div className="flex flex-col gap-2">
                 <label htmlFor="tatame" className={rotulo}>Tatame</label>
@@ -103,10 +101,6 @@ export default function MinhaLutaPage() {
                 <input id="faltaram" type="number" inputMode="numeric" min={1} max={20} required value={faltaram} onChange={(e) => setFaltaram(e.target.value)} className={campo} />
               </div>
               <div className="flex flex-col gap-2">
-                <label htmlFor="horario" className={rotulo}>Horário aproximado da luta <span className="text-zinc-400">(opcional)</span></label>
-                <input id="horario" type="time" value={horario} onChange={(e) => setHorario(e.target.value)} className={campo} />
-              </div>
-              <div className="flex flex-col gap-2">
                 <label htmlFor="adv" className={rotulo}>Com quem lutou <span className="text-zinc-400">(opcional)</span></label>
                 <input id="adv" type="text" maxLength={80} value={adversario} onChange={(e) => setAdversario(e.target.value)} className={campo} placeholder="Nome de quem treina na academia" />
               </div>
@@ -116,12 +110,7 @@ export default function MinhaLutaPage() {
               <textarea id="obs" rows={3} maxLength={280} value={observacao} onChange={(e) => setObservacao(e.target.value)} className={campo} />
               <span className="text-sm text-zinc-400">{observacao.length}/280 · não envie documento, telefone ou foto</span>
             </div>
-            {foraDoPrazo && (
-              <p role="status" className="rounded-lg border border-amber-400/40 bg-amber-400/10 px-4 py-3 text-base text-amber-100">
-                Essa aula foi há mais de 3 dias. O vídeo pode já ter sido apagado, mas você pode enviar o pedido mesmo assim.
-              </p>
-            )}
-            <Button type="submit" size="lg" disabled={enviando || !aula || !tatame}>
+            <Button type="submit" size="lg" disabled={enviando || !tatame || !horario || data < maisAntiga}>
               {enviando ? <><Loader2 className="h-4 w-4 animate-spin" /> Enviando…</> : 'Pedir que procurem minha luta'}
             </Button>
           </form>
@@ -140,7 +129,7 @@ export default function MinhaLutaPage() {
               return (
                 <Card key={c.id}>
                   <div className="flex flex-wrap items-center justify-between gap-2">
-                    <strong className="text-base text-white">{String(x.aula ?? c.tela ?? 'Aula')} · {String(x.data ?? '').split('-').reverse().join('/')}</strong>
+                    <strong className="text-base text-white">{String(x.data ?? '').split('-').reverse().join('/')} às {String(x.horario ?? '')}</strong>
                     <span className={cn('rounded-full border px-3 py-1 text-sm font-medium', STATUS_CHAMADO[c.status].cor)}>{STATUS_CHAMADO[c.status].label}</span>
                   </div>
                   <p className="mt-1 text-base text-zinc-200">{String(x.tatame ?? '')} · faltaram {String(x.faltaram ?? '?')} luta(s)</p>

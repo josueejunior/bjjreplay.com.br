@@ -2,7 +2,7 @@
 import type { FastifyInstance } from 'fastify';
 import { z } from 'zod';
 import {
-  CHAMADO_STATUS, CHAMADO_TIPOS, STATUS_DO_TIPO, atualizarChamado, chamadoPorId, chamadosDo,
+  CHAMADO_STATUS, CHAMADO_TIPOS, OPCOES_PROBLEMA, STATUS_DO_TIPO, atualizarChamado, chamadoPorId, chamadosDo,
   criarChamado, lerPrint, todosChamados, toChamado,
 } from '../lib/chamados.db.js';
 import type { JwtPayload } from '../plugins/auth.js';
@@ -23,15 +23,17 @@ export async function chamadosRoutes(app: FastifyInstance) {
     return reply.code(201).send(toChamado(l));
   });
 
-  /** "Minha luta não foi encontrada": o gravador guarda ~4 dias, o pedido vale até 3 dias atrás (fora disso aceita, mas marca). */
+  /**
+   * "Minha luta não foi encontrada": vale para todo aluno logado, com dia e horário.
+   * Lucas (04/11/2026): não aceita mais de 7 dias para trás.
+   */
   app.post('/api/chamados/luta', { preHandler: [app.authenticate] }, async (request, reply) => {
     const payload = request.user as JwtPayload;
     const body = z
       .object({
-        data: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Data da aula inválida'),
-        aula: z.string().trim().min(1, 'Escolha a aula').max(60),
+        data: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Data da luta inválida'),
+        horario: z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/, 'Informe o horário aproximado da luta'),
         tatame: z.string().trim().min(1, 'Escolha o tatame').max(40),
-        horario: z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/, 'Horário inválido').optional().nullable().or(z.literal('')),
         adversario: z.string().trim().max(80).optional().nullable(),
         faltaram: z.coerce.number().int().min(1, 'Quantas lutas faltaram?').max(20),
         observacao: z.string().trim().max(280).optional().nullable(),
@@ -39,17 +41,40 @@ export async function chamadosRoutes(app: FastifyInstance) {
       .parse(request.body);
 
     const hoje = new Date().toISOString().slice(0, 10);
-    if (body.data > hoje) return reply.code(400).send({ detail: 'A data da aula não pode ser no futuro' });
+    if (body.data > hoje) return reply.code(400).send({ detail: 'A data da luta não pode ser no futuro' });
     const dias = Math.floor((Date.parse(hoje) - Date.parse(body.data)) / 86_400_000);
+    if (dias > 7) {
+      return reply.code(400).send({ detail: 'Só dá para pedir a busca de lutas dos últimos 7 dias' });
+    }
     const l = criarChamado({
       userId: payload.sub,
       tipo: 'luta_nao_encontrada',
-      tela: body.aula,
-      texto: body.observacao?.trim() || `Faltaram ${body.faltaram} luta(s) na aula de ${body.data}.`,
+      tela: `${body.data} ${body.horario}`,
+      texto: body.observacao?.trim() || `Faltaram ${body.faltaram} luta(s) em ${body.data} por volta de ${body.horario}.`,
       extra: {
-        data: body.data, aula: body.aula, tatame: body.tatame, horario: body.horario || null,
-        adversario: body.adversario?.trim() || null, faltaram: body.faltaram, foraDoPrazo: dias > 3,
+        data: body.data, horario: body.horario, tatame: body.tatame,
+        adversario: body.adversario?.trim() || null, faltaram: body.faltaram,
       },
+    });
+    return reply.code(201).send(toChamado(l));
+  });
+
+  /** "Relatar um problema" numa luta: Não sou eu / começa comigo e termina com outra pessoa / corte errado. */
+  app.post('/api/chamados/problema', { preHandler: [app.authenticate] }, async (request, reply) => {
+    const payload = request.user as JwtPayload;
+    const body = z
+      .object({
+        opcao: z.enum(OPCOES_PROBLEMA, { errorMap: () => ({ message: 'Escolha o que aconteceu' }) }),
+        luta: z.string().trim().max(120).optional().nullable(),
+        observacao: z.string().trim().min(5, 'Descreva em poucas palavras').max(500),
+      })
+      .parse(request.body);
+    const l = criarChamado({
+      userId: payload.sub,
+      tipo: 'problema_luta',
+      tela: body.luta || null,
+      texto: body.observacao,
+      extra: { opcao: body.opcao, luta: body.luta || null },
     });
     return reply.code(201).send(toChamado(l));
   });

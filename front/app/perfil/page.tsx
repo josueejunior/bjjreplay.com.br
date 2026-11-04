@@ -10,6 +10,7 @@ import { AppShell } from '@/components/layout/AppShell';
 import { AvatarUpload } from '@/components/auth/AvatarUpload';
 import { AthleteCategoryPicker } from '@/components/auth/AthleteCategoryPicker';
 import { BeltPicker } from '@/components/auth/BeltPicker';
+import { AcademiaSelect } from '@/components/auth/AcademiaSelect';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
@@ -24,7 +25,7 @@ const schema = z.object({
   name: z.string().min(2, 'Nome completo obrigatório'),
   degree: z.coerce.number().min(0).max(4),
   weightKg: z.coerce.number().min(30, 'Peso mínimo 30 kg').max(200, 'Peso máximo 200 kg'),
-  academyName: z.string().min(2, 'Informe sua academia'),
+  academyName: z.string().min(2, 'Escolha a academia vinculada'),
 });
 
 type ProfileForm = z.infer<typeof schema>;
@@ -239,9 +240,8 @@ export default function PerfilPage() {
               />
             </div>
 
-            <Input
-              label="Academia / filiação"
-              placeholder="Ex.: Gracie Barra Fortaleza"
+            <AcademiaSelect
+              valorAtual={user?.academyName}
               error={errors.academyName?.message}
               {...register('academyName')}
             />

@@ -135,7 +135,7 @@ export interface FotoBiblioteca {
 }
 
 export type ChamadoStatus = 'recebido' | 'vendo' | 'resolvido' | 'procurando' | 'encontrada' | 'nao_encontrada';
-export type ChamadoTipo = 'erro' | 'luta_nao_encontrada';
+export type ChamadoTipo = 'erro' | 'luta_nao_encontrada' | 'problema_luta';
 
 export interface Chamado {
   id: string;

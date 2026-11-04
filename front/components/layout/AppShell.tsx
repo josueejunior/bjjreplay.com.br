@@ -17,7 +17,7 @@ const navItems = [
   { href: '/biblioteca', label: 'Biblioteca', icon: Clapperboard, adminOnly: false, professorOnly: false, athleteOnly: true },
   { href: '/professor', label: 'Professor', icon: GraduationCap, adminOnly: false, professorOnly: true, athleteOnly: false },
   { href: '/minha-luta', label: 'Minha luta', icon: Search, adminOnly: false, professorOnly: false, athleteOnly: true },
-  { href: '/reportar-erro', label: 'Reportar erro', icon: Flag, adminOnly: false, professorOnly: false, athleteOnly: true },
+  { href: '/relatar-problema', label: 'Relatar problema', icon: Flag, adminOnly: false, professorOnly: false, athleteOnly: true },
   { href: '/admin', label: 'Admin', icon: ShieldCheck, adminOnly: true, professorOnly: false, athleteOnly: false },
   { href: '/admin/chamados', label: 'Chamados', icon: Inbox, adminOnly: true, professorOnly: false, athleteOnly: false },
 ];
