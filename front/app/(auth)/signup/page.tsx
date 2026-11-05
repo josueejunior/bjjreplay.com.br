@@ -15,6 +15,7 @@ import { Card } from '@/components/ui/Card';
 import { Input } from '@/components/ui/Input';
 import { Stepper } from '@/components/auth/Stepper';
 import { BeltPicker } from '@/components/auth/BeltPicker';
+import { AvisoCameraPretaBanner } from '@/components/beta/AvisoCameraPreta';
 import { AvatarUpload } from '@/components/auth/AvatarUpload';
 import { isBeltValidForCategory } from '@/lib/bjj/belt-theme';
 import { useAuth } from '@/lib/hooks/useAuth';
@@ -428,6 +429,8 @@ function SignupFlow() {
                 Rosto visível, boa luz, sem óculos escuros. Enviada ao banco antes do campeonato.
               </p>
             </div>
+
+            <AvisoCameraPretaBanner />
 
             <AvatarUpload
               value={avatar}
