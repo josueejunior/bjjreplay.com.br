@@ -430,7 +430,7 @@ function SignupFlow() {
               </p>
             </div>
 
-            <AvisoCameraPretaBanner />
+            <AvisoCameraPretaBanner empilhado />
 
             <AvatarUpload
               value={avatar}

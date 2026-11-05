@@ -67,7 +67,7 @@ function Paineis() {
               </span>
             </div>
             <p className="mt-1.5 text-center text-sm font-semibold text-zinc-200 sm:text-base">
-              {'curta' in p ? (<><span className="sm:hidden">{p.curta}</span><span className="hidden sm:inline">{p.legenda}</span></>) : p.legenda}
+              {'curta' in p ? (<>{p.curta}</>) : p.legenda}
             </p>
           </li>
         ))}
@@ -87,10 +87,10 @@ function Texto({ grande = false }: { grande?: boolean }) {
 }
 
 /** Faixa fixa no topo de "Biblioteca" e "Minha luta": mostra o certo e o errado. */
-export function AvisoCameraPretaBanner() {
+export function AvisoCameraPretaBanner({ empilhado = false }: { empilhado?: boolean }) {
   return (
     <section aria-label="Aviso: olhe para a câmera preta" className="mb-6 overflow-hidden rounded-2xl border border-zinc-800 bg-[#0A0A0C]">
-      <div className="grid items-center gap-5 p-5 md:grid-cols-[minmax(0,5fr)_minmax(0,6fr)]">
+      <div className={`grid items-center gap-5 p-5 ${empilhado ? '' : 'md:grid-cols-[minmax(0,5fr)_minmax(0,6fr)]'}`}>
         <Texto />
         <Paineis />
       </div>
