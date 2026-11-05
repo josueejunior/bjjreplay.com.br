@@ -190,7 +190,7 @@ export default function AjudePage() {
           <HeartHandshake className="h-7 w-7 text-neon" /> Ajude a melhorar
         </h1>
         <p className="mt-2 text-base text-zinc-300">
-          Duas tarefas curtas, depois da aula. Suas respostas ajudam a medir e corrigir o sistema. Nada é obrigatório.
+          Uma tarefa curta, depois da aula. Suas respostas ajudam a medir e corrigir o sistema. Nada é obrigatório.
         </p>
         {resumo && (
           <p className="mt-4 inline-block rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 text-base font-semibold text-emerald-200">
