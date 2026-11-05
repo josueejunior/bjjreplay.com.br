@@ -22,7 +22,7 @@ const chamadosState = chamadosIniciais.map((c) => ({ ...c }));
 
 export const handlers = [
   http.get('/api/ajuda/contagem', async () => {
-    const achadas = [2, 0, 3, 1, 0, 0, 2];
+    const achadas = [2, 0, 3]; // janela de 3 dias (Lucas 05/11 14:48)
     return HttpResponse.json(achadas.map((n, i) => {
       const dia = diaSP(i);
       return { dia, encontradas: n, resposta: contagemState[dia] ?? (i === 2 ? { resultado: 'certo', quantas: 3, horarios: null } : null) };
