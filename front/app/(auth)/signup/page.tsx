@@ -421,6 +421,9 @@ function SignupFlow() {
                 Foto de rosto <strong className="text-neon">obrigatória</strong> — a IA usa para
                 mapear {isKids ? 'o atleta' : 'você'} nas lutas
               </p>
+              <p className="mt-2 text-sm font-semibold text-white">
+                Olhe de frente e <span className="text-neon">não sorria</span>: rosto sério, boca fechada.
+              </p>
               <p className="mt-1 text-xs text-zinc-500">
                 Rosto visível, boa luz, sem óculos escuros. Enviada ao banco antes do campeonato.
               </p>
