@@ -11,6 +11,7 @@ import {
   getContagem, getPerguntasCortex, getResumoAjuda, responderContagem, responderPerguntaCortex,
 } from '@/lib/api/endpoints';
 import { cn } from '@/lib/utils/cn';
+import { PERGUNTAS_CORTEX } from '@/lib/config/beta';
 import type { DiaContagem, PerguntaCortex, ResultadoContagem, ResumoAjuda } from '@/types';
 
 const campo =
@@ -198,7 +199,7 @@ export default function AjudePage() {
         )}
 
         <h2 className="mt-10 text-2xl font-bold text-white">Quantas lutas você fez?</h2>
-        <p className="mt-1 text-base text-zinc-300">Confira os últimos 7 dias e diga se o sistema acertou a contagem.</p>
+        <p className="mt-1 text-base text-zinc-300">Confira os últimos 3 dias e diga se o sistema acertou a contagem.</p>
         <div className="mt-4 flex flex-col gap-4">
           {!dias ? <p className="text-base text-zinc-400">Carregando…</p> : (
             <>
@@ -215,6 +216,8 @@ export default function AjudePage() {
           )}
         </div>
 
+        {PERGUNTAS_CORTEX && (
+          <>
         <h2 className="mt-12 text-2xl font-bold text-white">Perguntas sobre as suas lutas</h2>
         <p className="mt-1 text-base text-zinc-300">
           O sistema marcou um lance e quer saber o que aconteceu. Olhe só o trecho verde. Só você e seu adversário veem a pergunta.
@@ -239,6 +242,8 @@ export default function AjudePage() {
             <p className="text-base text-zinc-400">Você já respondeu {plural(respondidas.length, 'pergunta', 'perguntas')}. Obrigado!</p>
           )}
         </div>
+          </>
+        )}
       </div>
       <LutaNaoApareceuModal
         key={modal.chave}

@@ -8,4 +8,7 @@ export const BETA_GRATUITO = process.env.NEXT_PUBLIC_BETA_GRATUITO === 'true';
  * "10 dias" e "quinta da semana passada" (~7); às 18:18 escreveu "7 dias". Configurável sem mexer no código
  * (NEXT_PUBLIC_LIMITE_DIAS_LUTA no front; CHAMADOS_LIMITE_DIAS no back — mantenha os dois iguais).
  */
-export const LIMITE_DIAS_LUTA = Number(process.env.NEXT_PUBLIC_LIMITE_DIAS_LUTA ?? 7) || 7;
+export const LIMITE_DIAS_LUTA = Number(process.env.NEXT_PUBLIC_LIMITE_DIAS_LUTA ?? 3) || 3;
+
+/** Perguntas do Córtex ('o que aconteceu na luta') no Ajude a melhorar. Lucas 05/11 14:48: 'sobre a pergunta não vamos usar agora'. */
+export const PERGUNTAS_CORTEX = process.env.NEXT_PUBLIC_PERGUNTAS_CORTEX === 'true';

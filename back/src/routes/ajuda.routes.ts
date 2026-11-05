@@ -8,7 +8,7 @@ import {
 } from '../lib/ajuda.db.js';
 import type { JwtPayload } from '../plugins/auth.js';
 
-const DIAS_JANELA = 7;
+const DIAS_JANELA = 3; // Lucas 05/11 14:48: "máximo 3 dias"
 
 /** Dia civil em São Paulo (YYYY-MM-DD), como no resto do beta. */
 function diaSP(d: Date): string {
@@ -16,7 +16,7 @@ function diaSP(d: Date): string {
 }
 
 export async function ajudaRoutes(app: FastifyInstance) {
-  /** Por dia dos últimos 7: "O sistema encontrou N lutas suas" + a resposta que o aluno já deu. */
+  /** Por dia dos últimos 3: "O sistema encontrou N lutas suas" + a resposta que o aluno já deu. */
   app.get('/api/ajuda/contagem', { preHandler: [app.authenticate] }, async (request) => {
     const u = request.user as JwtPayload;
     const lutas = await getBibliotecaByAluno(u.sub);

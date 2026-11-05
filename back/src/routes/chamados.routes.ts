@@ -8,7 +8,7 @@ import {
 import type { JwtPayload } from '../plugins/auth.js';
 
 /** Janela do "Não encontrei minha luta"; Lucas disse 10 e depois 7 (04/11) — por isso configurável. */
-const LIMITE_DIAS = Number(process.env.CHAMADOS_LIMITE_DIAS ?? 7) || 7;
+const LIMITE_DIAS = Number(process.env.CHAMADOS_LIMITE_DIAS ?? 3) || 3;
 
 export async function chamadosRoutes(app: FastifyInstance) {
   /* -------------------------------- aluno -------------------------------- */
@@ -28,7 +28,7 @@ export async function chamadosRoutes(app: FastifyInstance) {
 
   /**
    * "Minha luta não foi encontrada": vale para todo aluno logado, com dia e horário.
-   * Lucas (04/11/2026): não aceita mais de 7 dias para trás.
+   * Lucas (04/11/2026): não aceita mais de 3 dias (05/11 14:48: "máximo 3 dias") para trás.
    */
   app.post('/api/chamados/luta', { preHandler: [app.authenticate] }, async (request, reply) => {
     const payload = request.user as JwtPayload;
