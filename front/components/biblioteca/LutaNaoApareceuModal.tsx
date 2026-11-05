@@ -23,7 +23,7 @@ const campo =
   'w-full rounded-xl border border-zinc-700 bg-zinc-900 px-4 py-3 text-base text-white placeholder-zinc-500 focus:border-neon focus:outline-none';
 const rotulo = 'mb-1.5 block text-base font-medium text-zinc-200';
 
-/** "Não encontrei minha luta": pede dia e horário, aceita até 3 dias para trás (Lucas 05/11 14:48 "máximo 3 dias"; antes 7, 10). */
+/** "Não encontrei minha luta": pede dia e horário, aceita até 7 dias para trás (Lucas 18:18 de 04/11; 05/11 14:47 "Boa"). */
 export function LutaNaoApareceuModal({ isOpen, onClose, inicial }: LutaNaoApareceuModalProps) {
   const hoje = useMemo(() => iso(0), []);
   const maisAntiga = useMemo(() => iso(LIMITE_DIAS), []);

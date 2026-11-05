@@ -14,6 +14,7 @@ import {
 import { formatDuration } from '@/lib/utils/format';
 import { cn } from '@/lib/utils/cn';
 import { FaixaDaLuta, LegendaDaLuta, lerJanela, useAbrirNaLuta } from '@/components/player/JanelaLuta';
+import { MARCAR_LUTA_NA_BARRA } from '@/lib/config/beta';
 
 interface ReplayPlayerProps {
   urlHorizontal: string;
@@ -175,7 +176,7 @@ export function ReplayPlayer({ urlHorizontal, urlReelsVertical, inicioLutaS, fim
                 aria-label="Progresso do vídeo"
                 className="player-range w-full"
               />
-              {janela && <FaixaDaLuta janela={janela} duracao={duration} />}
+              {janela && MARCAR_LUTA_NA_BARRA && <FaixaDaLuta janela={janela} duracao={duration} />}
               </div>
               <div className="mt-2 flex items-center justify-between">
                 <div className="flex items-center gap-3">
@@ -210,7 +211,7 @@ export function ReplayPlayer({ urlHorizontal, urlReelsVertical, inicioLutaS, fim
         </AnimatePresence>
       </div>
 
-      {janela && <LegendaDaLuta janela={janela} onIrParaInicio={() => onSeek(janela.inicio)} />}
+      {janela && MARCAR_LUTA_NA_BARRA && <LegendaDaLuta janela={janela} onIrParaInicio={() => onSeek(janela.inicio)} />}
 
       <p className="text-center text-xs text-zinc-600">
         Streaming direto da CDN Cloudflare — sem passar pela API.

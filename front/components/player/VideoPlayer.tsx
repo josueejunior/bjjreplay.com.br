@@ -15,6 +15,7 @@ import { formatDuration } from '@/lib/utils/format';
 import { cn } from '@/lib/utils/cn';
 import type { Video } from '@/types';
 import { FaixaDaLuta, LegendaDaLuta, lerJanela, useAbrirNaLuta } from '@/components/player/JanelaLuta';
+import { MARCAR_LUTA_NA_BARRA } from '@/lib/config/beta';
 
 interface VideoPlayerProps {
   video: Video;
@@ -162,7 +163,7 @@ export function VideoPlayer({ video }: VideoPlayerProps) {
                 aria-label="Progresso do vídeo"
                 className="player-range w-full"
               />
-              {janela && <FaixaDaLuta janela={janela} duracao={duration} />}
+              {janela && MARCAR_LUTA_NA_BARRA && <FaixaDaLuta janela={janela} duracao={duration} />}
               </div>
               <div className="mt-2 flex items-center justify-between">
                 <div className="flex items-center gap-3">
@@ -197,7 +198,7 @@ export function VideoPlayer({ video }: VideoPlayerProps) {
         </AnimatePresence>
       </div>
 
-      {janela && <LegendaDaLuta janela={janela} onIrParaInicio={() => onSeek(janela.inicio)} />}
+      {janela && MARCAR_LUTA_NA_BARRA && <LegendaDaLuta janela={janela} onIrParaInicio={() => onSeek(janela.inicio)} />}
     </div>
   );
 }
