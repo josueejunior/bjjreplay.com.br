@@ -28,3 +28,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 __pycache__/
+
+# recortes derivados das fotos do aviso (refeitos por design/beta-camera/src/gerar_pecas.py)
+design/beta-camera/src/_fotos/

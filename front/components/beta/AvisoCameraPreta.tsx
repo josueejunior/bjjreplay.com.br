@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { X } from 'lucide-react';
+import { Check, X } from 'lucide-react';
 import { BETA_GRATUITO } from '@/lib/config/beta';
 
 const TITULO = 'Antes de lutar, olhe para a câmera preta.';
@@ -28,7 +28,7 @@ function Animacao({ className }: { className?: string }) {
   if (reduzido) {
     return (
       // eslint-disable-next-line @next/next/no-img-element
-      <img src="/beta/aviso-camera-preta-poster.png" alt="Atleta olhando para a câmera preta, com o sinal de certo" className={className} />
+      <img src="/beta/aviso-camera-preta-poster.jpg" alt="O rosto do atleta, de frente e sério, reconhecido pela câmera preta" className={className} />
     );
   }
   return (
@@ -36,8 +36,8 @@ function Animacao({ className }: { className?: string }) {
       ref={ref}
       className={className}
       autoPlay muted loop playsInline preload="auto"
-      poster="/beta/aviso-camera-preta-poster.png"
-      aria-label="Animação: o atleta chega, olha para a câmera preta e aparece o sinal de certo"
+      poster="/beta/aviso-camera-preta-poster.jpg"
+      aria-label="Animação: o atleta no tatame olha para a câmera preta, ela enquadra o rosto e aparece o sinal de certo"
     >
       <source src="/beta/aviso-camera-preta.webm" type="video/webm" />
       <source src="/beta/aviso-camera-preta.mp4" type="video/mp4" />
@@ -45,10 +45,41 @@ function Animacao({ className }: { className?: string }) {
   );
 }
 
+// Fotos de um atleta gerado (não é aluno: rosto é dado biométrico). Fonte em design/beta-camera/fotos/.
+const PAINEIS = [
+  { foto: 'certo', legenda: 'Certo', ok: true, alt: 'Certo: rosto de frente, sério, olhando a câmera' },
+  { foto: 'sorrindo', legenda: 'Sorrindo', ok: false, alt: 'Errado: sorrindo' },
+  { foto: 'coberto', legenda: 'Rosto coberto', curta: 'Coberto', ok: false, alt: 'Errado: boné, mão e toalha na frente do rosto' },
+] as const;
+
+function Paineis() {
+  return (
+    <div>
+      <p className="mb-2 text-sm font-medium text-zinc-400">Assim a câmera preta vê você:</p>
+      <ul className="grid grid-cols-3 gap-2 sm:gap-3">
+        {PAINEIS.map((p) => (
+          <li key={p.foto}>
+            <div className={`relative overflow-hidden rounded-xl border-2 ${p.ok ? 'border-[#2BB673]' : 'border-[#E03A3A]'}`}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={`/beta/aviso-${p.foto}.jpg`} alt={p.alt} width={480} height={600} loading="lazy" className="block aspect-[4/5] w-full object-cover" />
+              <span aria-hidden className={`absolute right-1.5 top-1.5 flex h-7 w-7 items-center justify-center rounded-full border-2 border-white text-white sm:h-8 sm:w-8 ${p.ok ? 'bg-[#2BB673]' : 'bg-[#E03A3A]'}`}>
+                {p.ok ? <Check className="h-4 w-4" strokeWidth={3.5} /> : <X className="h-4 w-4" strokeWidth={3.5} />}
+              </span>
+            </div>
+            <p className="mt-1.5 text-center text-sm font-semibold text-zinc-200 sm:text-base">
+              {'curta' in p ? (<><span className="sm:hidden">{p.curta}</span><span className="hidden sm:inline">{p.legenda}</span></>) : p.legenda}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 function Texto({ grande = false }: { grande?: boolean }) {
   return (
     <div>
-      <p className={grande ? 'text-2xl font-extrabold leading-tight text-white sm:text-3xl' : 'text-xl font-extrabold leading-tight text-white sm:text-2xl'}>{TITULO}</p>
+      <p className={`text-balance font-extrabold leading-tight text-white ${grande ? 'text-2xl sm:text-3xl' : 'text-xl sm:text-2xl'}`}>{TITULO}</p>
       <p className="mt-2 text-lg font-semibold text-white">{LINHA_2}</p>
       <p className="mt-1 text-base text-zinc-300">{LINHA_3}</p>
     </div>
@@ -61,8 +92,7 @@ export function AvisoCameraPretaBanner() {
     <section aria-label="Aviso: olhe para a câmera preta" className="mb-6 overflow-hidden rounded-2xl border border-zinc-800 bg-[#0A0A0C]">
       <div className="grid items-center gap-5 p-5 md:grid-cols-[minmax(0,5fr)_minmax(0,6fr)]">
         <Texto />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/beta/paineis.svg" alt="Certo: rosto de frente e sério olhando a câmera preta. Errado: sorrindo. Errado: mão, cabelo ou boné na frente do rosto." className="w-full" />
+        <Paineis />
       </div>
     </section>
   );
