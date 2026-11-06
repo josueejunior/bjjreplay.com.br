@@ -208,3 +208,18 @@ Histórico completo e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI
 - Provável: projeto Supabase pausado/apagado. Decisão do Josué: reativar no painel do Supabase (login dele) ou trocar o back para o banco local (USE_SUPABASE=false; volt.db quase vazio, contas teriam que ser recriadas).
 - Git: tudo com push (main = origin/main, Sentry 6f88ec8 incluso). Servidor = local, menos o Sentry (não publicado, de propósito).
 - SSH direto ao bjjserver voltou a cair às ~16:10; usar -J aws-pesado.
+
+## 06/11/2026 (~16:30) — site principal no banco LOCAL + senha admin do principal
+- Lucas 16:11: "nada de campeonato, tem que ser na principal" + "o open Beta está pronto?". Josué: "pode fazer tudo".
+- Supabase do site (sxxzkmlzprsgwqcvxzuv) não resolve: login dava 500 desde ≥21/08. FEITO: pm2 `bjj-replay-back` religado com
+  USE_SUPABASE=false (pm2 save; dump confere false). Backups: /root/backups/bjjreplay-volt-antes-local-20261106-1915.db e
+  pm2-dump-antes-bjj-local-20261106-1915.pm2. Voltar: `USE_SUPABASE=true pm2 restart bjj-replay-back --update-env && pm2 save`.
+  ATENÇÃO: o ecosystem.config.cjs ainda tem default 'true'; se subir pelo ecosystem, passar USE_SUPABASE=false.
+- Seed criou admin@bjjreplay.app / professor@ / atleta@. Senhas públicas do seed (admin123, prof123) trocadas por aleatórias
+  (testado: antigas 401, nova do admin 200/admin pelo domínio). atleta@ (demo123) mantida como conta demo.
+- Conferido: /api/auth/me, admin/images, videos/feed, gamification, ajuda, chamados = 200; cadastro pelo domínio 200 (conta de teste apagada);
+  front no ar foi buildado com NEXT_PUBLIC_USE_MOCKS=false (login vai ao back).
+- Contas antigas de alunos que estavam no Supabase NÃO existem no banco local (cada um recadastra; se o Supabase voltar, religar).
+- 16:2x mandei ao Lucas (privado, --seco antes, HTTP 201): 1 msg com login+senha do admin principal pedindo troca; 1 msg do status do beta
+  (login/cadastro ok, abas no ar; falta ok dele na home com selo e a entrega do Mac/Beta E).
+- A senha do campeonato (16:10) também ficou com ele; não precisa desfazer.
