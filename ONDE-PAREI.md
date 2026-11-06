@@ -96,3 +96,13 @@ Histórico completo e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI
 - Pedido do Lucas (05/11 20:23) de converter áudio em outra voz / se passar por cliente ("Dona Tereza", Bruno Perini): NÃO produzir, não abrir pedido, não responder; se ele cobrar, avisar p:gerente. Josué trata direto.
 
 **Próximo passo**: P1104-2 (mandar proposta Juju Kids), depois P1103-2 e P1104-13.
+
+## 06/11/2026 (~07:30, antes do cochilo)
+
+**Feito**
+- 06:34 Lucas perguntou "aqui via web? / Aqui dentro da web ou no WhatsApp mesmo?" (sobre os 2 esquemas Juju Kids). Respondi pelo zap em 2 msgs (HTTP 201): painel é WEB, link no navegador do celular, sem app; acompanhar o agente no mesmo painel; WhatsApp segue sendo onde o agente atende as clientes. Sem valor nem prazo. Não decidi escopo/preço: P1105-1 segue "aguardando" (painel não existe; escopo/preço = Josué).
+- Lease lucas-portela está com tmux:p:bjj (usar esse nome exato).
+
+**Prometido com hora**: igual ao bloco anterior (P1103-2 contador do reel até 06/11 12h, agendado 10:30; prazo final dos pedidos sáb 07/11 12:00). Nenhum compromisso novo hoje.
+
+**Pendente / próximo passo**: igual ao bloco anterior (P1104-2 proposta Juju Kids pela esteira + zap primeiro; depois P1103-2 e P1104-13). Se o Lucas responder sobre o painel, não prometer data nem valor.
