@@ -132,3 +132,6 @@ Histórico completo e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI
 ## 06/11/2026 (12:05, fiscal de promessas)
 - Promessa "pronto até amanhã 12h" (contador, P1103-2) venceu sem o print. Avisei o Lucas em 2 msgs (zap, HTTP 201): motor pronto, falta o print do perfil; entrego em até 30 min após receber. Pedido em "aguardando" (falta: print).
 - Quando o print chegar: `bjjreplay-anim/contador.py --arroba @x --seguidores N --posts N`, revisar, zap com lease tmux:p:bjj. Nunca com número inventado.
+
+## 06/11/2026 (~12:30)
+- P1103-2: print chegou 12:25 (3 prints: 163/15 mil, 183/20 mil, 214/33 mil). Renderizei com o último (@valdisatorres, 33.000 seg., 214 posts; "33 mil" é arredondado) e mandei o vídeo pelo zap às ~12:30, dentro do prazo. Pedido em "previa". Se ele disser que são outros números: `contador.py --arroba @valdisatorres --seguidores N --posts N`.
