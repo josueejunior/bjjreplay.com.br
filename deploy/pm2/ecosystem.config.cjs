@@ -21,6 +21,8 @@ module.exports = {
         SUPABASE_URL: process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL || '',
         SUPABASE_SERVICE_ROLE_KEY: process.env.SUPABASE_SERVICE_ROLE_KEY || '',
         USE_SUPABASE: process.env.USE_SUPABASE || 'true',
+        SENTRY_DSN: process.env.SENTRY_DSN_BACK || '',
+        SENTRY_RELEASE: process.env.SENTRY_RELEASE || '',
       },
     },
     {
@@ -35,6 +37,8 @@ module.exports = {
         NODE_ENV: 'production',
         PORT: process.env.FRONT_PORT || '7870',
         HOSTNAME: '0.0.0.0',
+        SENTRY_DSN: process.env.SENTRY_DSN_FRONT || '',
+        SENTRY_RELEASE: process.env.SENTRY_RELEASE || '',
       },
     },
   ],

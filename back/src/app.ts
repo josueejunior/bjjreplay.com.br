@@ -1,3 +1,4 @@
+import * as Sentry from '@sentry/node';
 import Fastify from 'fastify';
 import cors from '@fastify/cors';
 import { ZodError } from 'zod';
@@ -46,6 +47,7 @@ export function buildApp() {
     app.log.error(error);
     const err = error as { statusCode?: number; message?: string };
     const status = err.statusCode ?? 500;
+    if (status >= 500) Sentry.captureException(error);
     return reply.code(status).send({
       detail: status >= 500 ? 'Erro interno do servidor' : err.message ?? 'Erro',
     });
