@@ -151,3 +151,19 @@ Histórico completo e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI
 - Print inicial chegou 13:16 (61 posts, 5.169 seg.; Lucas disse "5700", o real é 5.169) e o final 13:25 (355 posts, 87,2 mil; Lucas: "até 87.2k"). Cartão refeito sobre o print de 12:23 (13-25-59.jpg): `cartao.py --print .../13-25-59.jpg --corte 80,500 --cel-posts 200,280,336,320 --cel-seg 342,280,470,320 --x-posts 207 --x-seg 348 --fonte 31 --de-posts 61 --de-seg 5169 --posts 355 --seg 87200`.
 - Enviado pelo zap: prévia mp4 (13:32) e .webm (13:34); .mov em envio. O cartão de 33 mil (13:22) está substituído. Esperando ok/ajuste do Lucas. Próximos renders: no notebook (regra do Josué 05/11; o PC estava em swap 100%).
 - "Ambos" (13:18) e "Top no site da aws ou deles?" (13:17) são do Josué falando pessoalmente com o Lucas sobre outra coisa; não eram resposta ao contador.
+
+## 06/11/2026 (cochilo, ~14:20)
+
+**Feito**
+- P1103-2 (contador do reel): cartão do perfil @valdisatorres (61 posts/5.169 → 355 posts/87,2 mil) enviado: prévia mp4 13:32, .webm 13:34, .mov 13:35. 13:36 Lucas "não to conseguindo baixar"; 13:40 pediu o .mov de novo; reenvio disparado em segundo plano (log em scratchpad val2/e3.log; confira `zap log lucas-portela` antes de reenviar, para não duplicar). Pedido em "previa", espera ok/ajuste dele.
+- Sentry: back VERIFICADO (evento em asteron-digital, projeto bjj-back, link enviado ao gerente). Commit 6f88ec8 local, sem push, SDK fixado na v10.78 (v11 coleta PII por padrão).
+
+**Prometido com hora**: nada novo. Prazo final dos pedidos do Lucas: sáb 07/11 12:00.
+
+**Pendente**
+- P1103-2: se o .mov não chegar/abrir, refazer versão leve (recortar só o cartão) no NOTEBOOK (regra do Josué: nada de render no PC). Comando em "13:35" acima.
+- Sentry front: provar erro de navegador (rebuild com NEXT_PUBLIC_SENTRY_DSN + chromium na AWS, quando houver vaga, sem --forcar), depois `lider revisar`, `entregar`, deploy com SENTRY_DSN_BACK/FRONT, NEXT_PUBLIC_SENTRY_DSN e SENTRY_RELEASE=commit, avisar p:gerente. Aguardo a resposta do gerente se publica só o back antes. Job de fila 12:59 já disparou; não há outro agendado.
+- Demais pedidos (P1104-2, -13, P1105-2, P1028-1, -4/-8, -5/-6, P1105-1/-4) como no bloco de 06/11 07:30: aguardando Lucas/Josué.
+- Josué fala pessoalmente com o Lucas sobre AWS/site (13:17–13:20); não confundir com o fio do contador.
+
+**Próximo passo**: ver resposta do Lucas sobre o cartão/.mov; senão, Sentry front.
