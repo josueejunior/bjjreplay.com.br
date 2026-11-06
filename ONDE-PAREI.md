@@ -197,8 +197,12 @@ Histórico completo e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI
 - Demais pedidos: aguardando Lucas/Josué. Prazo final dos pedidos: 07/11 12:00 (vigia: 07/11 18:00).
 - Lease lucas-portela está com tmux:p:bjj.
 
-## 06/11/2026 (~16:20) — senha do Lucas: BLOQUEADO
-- Josué mandou trocar a senha do Lucas. Não deu: o login do bjjreplay.com.br usa Supabase Auth (USE_SUPABASE=true no pm2), e o projeto
+## 06/11/2026 (~16:15) — senha do Lucas
+- FEITO (P1106-2 no-ar): a "senha geral de admin" é a do admin do CAMPEONATO (igual 25/09). Gerente autorizou. Senha temporária nova
+  (scrypt, só a conta 7493fd64 lucasportela.adv@gmail.com), backup /root/backups/campeonato-db-antes-senha-lucas-20261106-1910.db,
+  login testado 200/admin, mandada 16:10 no PRIVADO do Lucas (zap --seco antes, HTTP 201), 1 msg, pedindo troca na aba Integração.
+  A senha não está escrita em lugar nenhum além do zap/enviadas.log.
+- ACHADO À PARTE (não é a senha dele): o login do bjjreplay.com.br usa Supabase Auth (USE_SUPABASE=true no pm2), e o projeto
   sxxzkmlzprsgwqcvxzuv.supabase.co NÃO RESOLVE (DNS, de casa e do servidor). Log do bjj-replay-back: ENOTFOUND desde pelo menos 21/08/2026.
   POST /api/auth/login em produção = 500 para todos. Ninguém entra no site; o cadastro também cai.
 - Provável: projeto Supabase pausado/apagado. Decisão do Josué: reativar no painel do Supabase (login dele) ou trocar o back para o banco local (USE_SUPABASE=false; volt.db quase vazio, contas teriam que ser recriadas).
