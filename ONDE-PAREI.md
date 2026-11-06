@@ -223,3 +223,12 @@ Histórico completo e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI
 - 16:2x mandei ao Lucas (privado, --seco antes, HTTP 201): 1 msg com login+senha do admin principal pedindo troca; 1 msg do status do beta
   (login/cadastro ok, abas no ar; falta ok dele na home com selo e a entrega do Mac/Beta E).
 - A senha do campeonato (16:10) também ficou com ele; não precisa desfazer.
+
+## 06/11/2026 (~16:35) — home nova do beta NO AR (P1104-9 no-ar)
+- Josué: "pode subir já a home bjj nova beta". Front do servidor = local menos Sentry (rsync -anci --checksum). Backup:
+  /root/backups/standalone-antes-beta-20261106-1918 + bjjreplay-front-next-antes-beta-20261106-1918.tgz.
+- Flag persistida no servidor em front/.env.production.local (NEXT_PUBLIC_USE_MOCKS=false, NEXT_PUBLIC_BETA_GRATUITO=true): todo rebuild
+  futuro já sai com beta e sem mocks. Build log /root/build-beta-home-20261106-1918.log; sync-standalone OK; pm2 restart bjj-replay-front.
+- Conferido pelo domínio: home 200 com "Beta gratuito na academia · sem cartão, sem cobrança", zero preço/assinar; _next/static 200;
+  /login /signup /ajude /relatar-problema /minha-luta 200; /admin 307 (login); API login 401 com senha errada.
+- Lucas avisado 16:3x (1 msg, testar no celular). Voltar: copiar o standalone do backup + apagar a linha BETA do .env.production.local.
