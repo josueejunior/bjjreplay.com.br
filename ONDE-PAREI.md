@@ -167,3 +167,32 @@ Histórico completo e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI
 - Josué fala pessoalmente com o Lucas sobre AWS/site (13:17–13:20); não confundir com o fio do contador.
 
 **Próximo passo**: ver resposta do Lucas sobre o cartão/.mov; senão, Sentry front.
+
+## 06/11/2026 (~15:50, renovação de contexto)
+
+**Feito**
+- P1106-1 NO AR: favicon/miniatura trocado pela faixa preta da arte do Lucas (14:52, midia/2026-11-06/14-52-15.jpg), sobre o degradê azul dela.
+  favicon.ico (16/32/48), favicon-32.png, logo-icon-180.png, cache ?v=8 em front/app/layout.tsx. Commit fa72efb (push ok). lider APROVADO.
+  Deploy: backup /root/backups/bjjreplay-favicon-2026-11-06-1800.tgz + standalone-antes-favicon; npm run build + sync-standalone + pm2 restart
+  bjj-replay-front. Conferido pelo domínio: md5 dos 3 ícones = local, _next/static 200. Lucas avisado 15:02 (testar; cache do iPhone).
+- P1104-13 -> aguardando: decisão do Josué (qual back recebe a entrega do beta + ok das colunas inicio_luta_s/fim_luta_s no Supabase).
+  chamar-josue 20261106-151213-484b2e. Sugestão enviada: site principal.
+- 15:4x respondi o Lucas (3 msgs): miniatura no ar; home nova pronta no servidor, liga com o ok final dele; logo do topo espera a imagem 4K
+  mandada como arquivo no zap (o link https://claude.ai/artifact/8vuPAjFqZsE3hRdhe6fszn é de outra conta e pede "sim" do Josué para ler);
+  senha de admin: "deixa eu olhar e te falo".
+- P1106-2 (novo, aguardando): Lucas pediu a senha geral de admin. Credencial = classe C, NÃO mandar. chamar-josue 20261106-154524-f6751b.
+
+**ACHADO: SSH direto ao bjjserver bloqueado do IP de casa (170.254.114.145)** desde ~14:55 (timeout na 22; HTTPS ok). No servidor:
+  sem fail2ban, ufw ALLOW 22. Caminho que funciona: `ssh -J aws-pesado bjjserver` (e `rsync -e "ssh -J aws-pesado"`). Conferir se volta.
+
+**Estado do servidor (medido 06/11)**: front/app e components do servidor = local, exceto Sentry (global-error.tsx, back/src/instrument.ts,
+  app.ts/server.ts). Home nova está no código do servidor, mas a flag NEXT_PUBLIC_BETA_GRATUITO NÃO está ligada lá (site sem beta).
+  Build do servidor é só "next build": SEMPRE rodar deploy/pm2/sync-standalone.sh depois.
+
+**Pendente**
+- Logo do topo (Logo.tsx usa /logo.png?v=4, 1024x1024 RGBA): trocar quando chegar o arquivo 4K. A imagem de 14:52 tem só 427x240 por quadro
+  (borrada no cabeçalho). Depois: lider revisar, deploy igual ao do favicon, subir ?v=5, avisar o Lucas.
+- Perguntei ao Josué se o "sobe pra produção" valia para a home nova (ligar a flag + rebuild). Sem resposta: não ligar.
+- P1103-2 (cartão do contador): previa, esperando ok do Lucas. Sentry front: como no bloco 14:20.
+- Demais pedidos: aguardando Lucas/Josué. Prazo final dos pedidos: 07/11 12:00 (vigia: 07/11 18:00).
+- Lease lucas-portela está com tmux:p:bjj.
