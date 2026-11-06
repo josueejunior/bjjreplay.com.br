@@ -135,3 +135,9 @@ Histórico completo e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI
 
 ## 06/11/2026 (~12:30)
 - P1103-2: print chegou 12:25 (3 prints: 163/15 mil, 183/20 mil, 214/33 mil). Renderizei com o último (@valdisatorres, 33.000 seg., 214 posts; "33 mil" é arredondado) e mandei o vídeo pelo zap às ~12:30, dentro do prazo. Pedido em "previa". Se ele disser que são outros números: `contador.py --arroba @valdisatorres --seguidores N --posts N`.
+
+## 06/11/2026 (~12:45) — Sentry (ordem do gerente)
+- Código pronto e commitado (6f88ec8, local, sem push): back @sentry/node + front @sentry/nextjs, DSN só por env (SENTRY_DSN_BACK/FRONT no pm2, NEXT_PUBLIC_SENTRY_DSN no build do front), release = SENTRY_RELEASE (commit), traces 0.1, sendDefaultPii false.
+- SDK FIXADO NA v10.78 DE PROPÓSITO: a v11 removeu sendDefaultPii e coleta cookie/header/corpo por padrão (senha/JWT do login). Não atualizar para v11 sem refazer a config com dataCollection. Avisei p:bolla e at:ps-transporte; Ampliar sem janela aberta, ficou como lição no asteron-ops memory.
+- Gerente autorizou levar SÓ o DSN bjj-back/bjj-front à máquina de testes (env no subir, apagado no descer). Fila: tentar `TESTE_ALVO=aws teste subir lucas-portela` a cada 20 min (agendado); não usar --forcar. Máquina cheia (andre-bolla, ps-transporte) às 12:3x.
+- Falta: teste (1 erro de teste no back e no front, conferir em asteron-digital.sentry.io), lider revisar, entregar (horário sem atrapalhar), avisar p:gerente com o link do 1º evento. Deploy: exportar as 4 variáveis antes do build/pm2 start.
