@@ -196,3 +196,11 @@ Histórico completo e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI
 - P1103-2 (cartão do contador): previa, esperando ok do Lucas. Sentry front: como no bloco 14:20.
 - Demais pedidos: aguardando Lucas/Josué. Prazo final dos pedidos: 07/11 12:00 (vigia: 07/11 18:00).
 - Lease lucas-portela está com tmux:p:bjj.
+
+## 06/11/2026 (~16:20) — senha do Lucas: BLOQUEADO
+- Josué mandou trocar a senha do Lucas. Não deu: o login do bjjreplay.com.br usa Supabase Auth (USE_SUPABASE=true no pm2), e o projeto
+  sxxzkmlzprsgwqcvxzuv.supabase.co NÃO RESOLVE (DNS, de casa e do servidor). Log do bjj-replay-back: ENOTFOUND desde pelo menos 21/08/2026.
+  POST /api/auth/login em produção = 500 para todos. Ninguém entra no site; o cadastro também cai.
+- Provável: projeto Supabase pausado/apagado. Decisão do Josué: reativar no painel do Supabase (login dele) ou trocar o back para o banco local (USE_SUPABASE=false; volt.db quase vazio, contas teriam que ser recriadas).
+- Git: tudo com push (main = origin/main, Sentry 6f88ec8 incluso). Servidor = local, menos o Sentry (não publicado, de propósito).
+- SSH direto ao bjjserver voltou a cair às ~16:10; usar -J aws-pesado.
