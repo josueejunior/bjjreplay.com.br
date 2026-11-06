@@ -128,3 +128,7 @@ Histórico completo e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI
 - Trocar/disfarçar voz do Lucas. Lembrete de cobrança do print: o fiscal decidiu NÃO mandar hoje; se não chegar até amanhã, citar uma vez junto com a próxima entrega real (Beta E no ar).
 
 **Próximo passo**: se o Lucas mandar o print → `contador.py --arroba @x --seguidores N --posts N`, revisar, zap com lease tmux:p:bjj. Senão: P1104-2 (proposta Juju Kids), depois fumaça/deploy do P1104-13 quando a decisão do destino vier.
+
+## 06/11/2026 (12:05, fiscal de promessas)
+- Promessa "pronto até amanhã 12h" (contador, P1103-2) venceu sem o print. Avisei o Lucas em 2 msgs (zap, HTTP 201): motor pronto, falta o print do perfil; entrego em até 30 min após receber. Pedido em "aguardando" (falta: print).
+- Quando o print chegar: `bjjreplay-anim/contador.py --arroba @x --seguidores N --posts N`, revisar, zap com lease tmux:p:bjj. Nunca com número inventado.
