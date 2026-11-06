@@ -106,3 +106,25 @@ Histórico completo e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI
 **Prometido com hora**: igual ao bloco anterior (P1103-2 contador do reel até 06/11 12h, agendado 10:30; prazo final dos pedidos sáb 07/11 12:00). Nenhum compromisso novo hoje.
 
 **Pendente / próximo passo**: igual ao bloco anterior (P1104-2 proposta Juju Kids pela esteira + zap primeiro; depois P1103-2 e P1104-13). Se o Lucas responder sobre o painel, não prometer data nem valor.
+
+## 06/11/2026 (~11:30, antes do cochilo)
+
+**Feito**
+- 08:39/08:40 Lucas pediu o "app dos áudios" e "mudar a voz": recusei pelo zap (09:05, revisar APROVADO), sem indicar a ferramenta; chamar-josue 20261106-085805-587a4f. NÃO oferecer ajuda com a casa de aluguel (fio pessoal).
+- 08:58 manutenção do site: respondi em 3 msgs (PACOTES §5). Deixei de fora "acompanhamento do agente desde 05/11" (revisar reprovou: não está no §5); só mandar à parte se o gerente confirmar. Valor: "segue o que já combinamos".
+- P1103-2: motor pronto e commitado em ~/dev/clientes/lucas-portela/bjjreplay-anim/contador.py (5a30042). Pedido em "aguardando" o print do perfil da esposa (@, seguidores, posts); pedi 09:11, Lucas não respondeu. Não mandei vídeo (seria número inventado).
+- P1104-13: receita de teste `bjj` criada (~/dev/ferramentas/teste-dinamico/receitas/bjj*, commit 6d47e14). Fumaça passou na AWS (`TESTE_ALVO=aws`): janela 60–120 devolvida, invertida descartada. Ambiente descido.
+
+**Prometido com hora**
+- P1103-2 contador: prometido até 06/11 12h (job 10:30 cobra). Só sai se o print chegar.
+- PRAZO FINAL dos pedidos do Lucas: sáb 07/11 12:00 (vigia: 18:00).
+
+**Pendente**
+- P1104-13: decisão do destino da entrega do Mac (campeonato /api/service/entregas x este back) + colunas no Supabase (BETA_CONTRATO_ENTREGAS.md, pendentes 1 e 2); teste R2 com .mp4 real e upload-url em produção (no repo do campeonato); depois deploy (backup + rsync -anci + sync-standalone.sh).
+- P1104-2 proposta Juju Kids sem valor (esteira + zap primeiro), P1105-2 termos/LGPD (quando o Lucas mandar), P1028-1, P1104-4/-8, -5/-6, P1105-1/-4: aguardando.
+- Bug do `teste rodar`: com --servico repassa o `--` ao shell; sem TESTE_ALVO=aws roda no notebook mesmo com ambiente na AWS.
+
+**NÃO FAZER**
+- Trocar/disfarçar voz do Lucas. Lembrete de cobrança do print: o fiscal decidiu NÃO mandar hoje; se não chegar até amanhã, citar uma vez junto com a próxima entrega real (Beta E no ar).
+
+**Próximo passo**: se o Lucas mandar o print → `contador.py --arroba @x --seguidores N --posts N`, revisar, zap com lease tmux:p:bjj. Senão: P1104-2 (proposta Juju Kids), depois fumaça/deploy do P1104-13 quando a decisão do destino vier.
