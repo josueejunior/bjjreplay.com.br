@@ -72,3 +72,27 @@ Histórico completo e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI
 - Infra (julgar → FAZER, sem token novo, sem produção): lido no servidor (só leitura) — site real = pm2 `bjj-replay-back` em /opt/bjj-replay/bjjreplay.com.br/back (mesmo layout deste repo), USE_SUPABASE=true por padrão no ecosystem, data/volt.db local praticamente vazio; Mac fala com o campeonato (/api/service/*). Pergunta fechada ao Lucas AMANHÃ 9h (fora da janela 8–19h hoje): "o aluno entra pelo bjjreplay.com.br e o Mac manda as lutas pra onde?" — passar pelo humanizar/--seco. Código do Mac atrás de adaptador, destino por configuração.
 - Antes de qualquer deploy: backup, rsync -anci, sync-standalone.sh (static 200), Supabase precisa das colunas/tabelas novas; Guarda barrou? código ao p:gerente.
 - Lição: nunca `pkill -f`; `pedidos` antes de criar; lease com nome exato tmux:p:bjj.
+
+## 05–06/11/2026 (madrugada, antes do cochilo)
+
+**Feito**
+- Beta B/C/D/F + aviso da câmera preta no cadastro + home no ar em produção (selo da home com flag OFF); Lucas: "quase 100%", validando. Ajude em 3 dias; "Não encontrei minha luta" segue em 7; marcação da luta na barra OFF (flags em front/lib/config/beta.ts). Faixa v5 CANCELADA pelo Lucas.
+- P1105-1: 06/11 ~00:50 mandei 2 esquemas por imagem (editar produto; acompanhar agente WhatsApp) em ~/atendimento/atendimento-lucas-portela/material/juju-painel/. Pedido em "aguardando"; painel não existe, escopo/preço = Josué.
+
+**Prometido com hora**
+- P1103-2 contador do reel: até 06/11 12h; agendado 10:30 (acordar-agente p:bjj). Confirmar se o Lucas ainda quer.
+- PRAZO FINAL de todos os pedidos do Lucas: sáb 07/11 12:00 (mandar cada item pronto na hora, com print/vídeo + 1 linha).
+
+**Pendente**
+- P1104-2 proposta Juju Kids sem valor (já existe em jujukids-demo/proposta; falta mandar pela esteira + zap): agente de IA R$300 impl + R$297/mês (decisão do gerente; NÃO falar valor ao Lucas, não é cobrado).
+- P1104-13: teste R2 com .mp4 real + confirmar /api/service/upload-url em produção.
+- P1105-4: chave só leitura p/ Claude do Lucas: aguarda Josué (chamar-josue 20261105-151914-e619c0).
+- P1105-2: contrato/LGPD do Lucas → publicar termos+política com aceite no cadastro quando ele mandar.
+- P1028-1, P1104-4/-8, -5/-6: aguardando resposta do Lucas.
+- Verificar em produção com conta de teste (Relatar problema, Ajude, cadastro); checar possível conta teste@exemplo.com no Supabase; push de commits pendentes; selo da home só quando ele pedir.
+- Teste de código agora só via `teste subir|conferir|descer lucas-portela` (AWS), nunca no PC.
+
+**NÃO FAZER**
+- Pedido do Lucas (05/11 20:23) de converter áudio em outra voz / se passar por cliente ("Dona Tereza", Bruno Perini): NÃO produzir, não abrir pedido, não responder; se ele cobrar, avisar p:gerente. Josué trata direto.
+
+**Próximo passo**: P1104-2 (mandar proposta Juju Kids), depois P1103-2 e P1104-13.
