@@ -232,3 +232,25 @@ Histórico completo e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI
 - Conferido pelo domínio: home 200 com "Beta gratuito na academia · sem cartão, sem cobrança", zero preço/assinar; _next/static 200;
   /login /signup /ajude /relatar-problema /minha-luta 200; /admin 307 (login); API login 401 com senha errada.
 - Lucas avisado 16:3x (1 msg, testar no celular). Voltar: copiar o standalone do backup + apagar a linha BETA do .env.production.local.
+
+## 06/11/2026 (~18:40, cochilo)
+
+**Feito hoje (tarde)**: senha admin do campeonato (16:10) e do PRINCIPAL admin@bjjreplay.app (16:2x) enviadas ao Lucas no privado;
+site principal passou ao banco LOCAL (Supabase sumiu; USE_SUPABASE=false, pm2 save); home nova do beta NO AR (P1104-9), Lucas avisado 16:3x.
+
+**Prometido com hora**: nada novo. Prazo final dos pedidos do Lucas: sáb 07/11 12:00 (vigia 07/11 18:00).
+Disse ao Lucas que estou "fechando" a entrega das lutas do Mac (Beta E), sem data.
+
+**Pendente**
+- P1104-13 Beta E: decisão do Josué sobre o destino da entrega do Mac (sugestão: site principal, agora em banco LOCAL; colunas
+  inicio_luta_s/fim_luta_s vão no volt.db, não no Supabase). Depois: teste R2 .mp4 real, deploy com backup + rsync -anci.
+- Logo do topo: esperando o arquivo 4K do Lucas pelo zap (Logo.tsx, ?v=5).
+- P1103-2 cartão do contador: previa, esperando ok do Lucas.
+- Sentry: back verificado; front falta prova no navegador (teste subir, não sandbox: DSN é segredo) e deploy.
+- Contas antigas de alunos do Supabase não existem no banco local (Josué sabe; Lucas não foi avisado).
+- ecosystem.config.cjs do servidor ainda tem USE_SUPABASE default 'true': ao reiniciar pelo ecosystem, passar false.
+- Demais (P1104-2, P1105-1/-2/-4, P1028-1, P1104-4/-5/-6/-8): aguardando Lucas/Josué.
+- SSH direto ao bjjserver cai às vezes: usar -J aws-pesado. Lease: tmux:p:bjj.
+
+**Próximo passo**: ver resposta do Lucas sobre a home do beta/senha; se ele pedir ajuste na home, ajuste pequeno sobe direto
+(build no servidor: .env.production.local já tem as flags; sync-standalone; pm2 restart bjj-replay-front). Senão, Beta E quando o Josué decidir.
