@@ -20,7 +20,12 @@ module.exports = {
           process.env.CORS_ORIGIN || 'https://bjjreplay.com.br,https://www.bjjreplay.com.br',
         SUPABASE_URL: process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL || '',
         SUPABASE_SERVICE_ROLE_KEY: process.env.SUPABASE_SERVICE_ROLE_KEY || '',
-        USE_SUPABASE: process.env.USE_SUPABASE || 'true',
+        USE_SUPABASE: process.env.USE_SUPABASE || 'false',
+        // R2 privado (mesmo do campeonato) para a entrega do Mac; valores vêm do ambiente, nunca deste arquivo.
+        R2_ENDPOINT: process.env.R2_ENDPOINT || '',
+        R2_BUCKET: process.env.R2_BUCKET || '',
+        R2_ACCESS_KEY_ID: process.env.R2_ACCESS_KEY_ID || '',
+        R2_SECRET_ACCESS_KEY: process.env.R2_SECRET_ACCESS_KEY || '',
         SENTRY_DSN: process.env.SENTRY_DSN_BACK || '',
         SENTRY_RELEASE: process.env.SENTRY_RELEASE || '',
       },

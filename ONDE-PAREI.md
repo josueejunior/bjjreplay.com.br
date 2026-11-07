@@ -254,3 +254,19 @@ Disse ao Lucas que estou "fechando" a entrega das lutas do Mac (Beta E), sem dat
 
 **Próximo passo**: ver resposta do Lucas sobre a home do beta/senha; se ele pedir ajuste na home, ajuste pequeno sobe direto
 (build no servidor: .env.production.local já tem as flags; sync-standalone; pm2 restart bjj-replay-front). Senão, Beta E quando o Josué decidir.
+
+## 07/11/2026 (~12:00) — Beta E na PRINCIPAL (Lucas 16:11: "Nada de campeonato / Tem que ser na principal")
+- Back principal ganhou /api/service/ping|atletas|upload-url|entregas (mesmo contrato do campeonato; commit local + deploy).
+  Entrega grava em biblioteca_lutas (status ENTREGUE, object_key no R2, janela inicio_luta_s/fim_luta_s; idempotente; janela nova atualiza).
+  Leitura assina a URL do R2 (MEDIA_TTL padrão 6 h). Front já tinha o player com a janela (bundle no ar).
+- Servidor: backup /root/backups/bjjreplay-back-antes-servico-20261107-1150.tgz + volt-antes-servico-20261107-1150.db.
+  Só os arquivos da rota foram copiados; app.ts do servidor recebeu só o import/registro (SEM Sentry: @sentry/node não está
+  instalado lá; instrument.ts/server.ts locais ficaram de fora). tsc no servidor, pm2 restart --update-env com R2_* do
+  campeonato e USE_SUPABASE=false, pm2 save. ecosystem.config.cjs: padrão USE_SUPABASE agora 'false' (backup em /root/backups).
+- Tokens de serviço: copiei os 4 ativos do campeonato.db (só hash) para o volt.db -> o Mac usa o MESMO token, só troca o endereço base.
+- Conferido pelo domínio com token temporário (apagado): ping 200, atletas 200 sem e-mail/CPF, upload-url assinado, entrega de
+  atleta inexistente 404. R2: PUT 200 / GET 200 / DELETE 204 de arquivo de teste. Fumaça completa na sandbox (Daytona) OK.
+- FALTA (Lucas): apontar o Mac para https://bjjreplay.com.br; responder se coloco foto do rosto no cadastro da principal
+  (não há foto/vetor na principal; /api/service/vetores não existe aqui). Pedido também: logo 4K, ok do cartão do contador, termos.
+- Home nova: Lucas aprovou (Josué 07/11). P1104-4/-8 aprovados.
+- Repo é PÚBLICO no GitHub e back/src/data (seed com senhas demo) é ignorado: fumaça roda de cópia local commitada no scratchpad.
