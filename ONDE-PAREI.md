@@ -289,3 +289,11 @@ Disse ao Lucas que estou "fechando" a entrega das lutas do Mac (Beta E), sem dat
   Backup do arquivo anterior em /root/backups/service.routes-antes-foto-20261107.{ts,js}. Fumaça na sandbox OK; produção: 401 sem token, 404 sem foto.
 - Medido: o principal tem 1 atleta (role atleta), SEM foto. Contas antigas do Supabase não existem no banco local (Josué decide se conta ao Lucas).
 - P1105-2 -> aguardando (falta o texto dos termos/política do Lucas).
+
+## 07/11/2026 (~12:55) — cadastro dava "Erro de conexão com o servidor" (print do Lucas 12:41)
+- Causa: o front no ar NUNCA teve NEXT_PUBLIC_API_URL no build (backup de antes do Sentry tem o mesmo): o navegador chamava
+  http://localhost:8000. Corrigido: NEXT_PUBLIC_API_URL=https://bjjreplay.com.br no front/.env.production.local do servidor (persiste),
+  rebuild com Sentry (release 9c91487), sync-standalone, restart, pm2 save. Backups: /root/backups/standalone-antes-apiurl-20261107 e
+  front-env-antes-apiurl-20261107. Rebuild futuro ainda precisa exportar NEXT_PUBLIC_SENTRY_DSN.
+- Prova: chromium na aws-pesado preencheu o passo 1 -> POST /api/auth/signup 201 e foi ao passo 2. Conta de teste apagada (1 atleta no banco).
+- Lucas avisado para testar de novo. Mensagem de recadastro dos alunos (revisar pediu ajuste) NÃO enviada: retomar depois que ele testar.
