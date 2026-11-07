@@ -297,3 +297,12 @@ Disse ao Lucas que estou "fechando" a entrega das lutas do Mac (Beta E), sem dat
   front-env-antes-apiurl-20261107. Rebuild futuro ainda precisa exportar NEXT_PUBLIC_SENTRY_DSN.
 - Prova: chromium na aws-pesado preencheu o passo 1 -> POST /api/auth/signup 201 e foi ao passo 2. Conta de teste apagada (1 atleta no banco).
 - Lucas avisado para testar de novo. Mensagem de recadastro dos alunos (revisar pediu ajuste) NÃO enviada: retomar depois que ele testar.
+
+## 07/11/2026 (~13:20) — mensagens do Lucas NÃO entram (diagnóstico só leitura, VPS 72)
+- aster-linha3 (554497572270, por onde falo com o Lucas): connectionStatus=open e ENVIA (13:04 ok), mas a última mensagem RECEBIDA
+  no banco do Evolution é de 06/11 20:21 (de asteron.digital). Nada do Lucas desde então (ele mandou "Deu erro" 12:45, 2 encaminhadas 13:01, msg nova).
+  As outras instâncias recebem (campanhas 12:40, motor-ia-tatiane 12:44).
+- Log do aster-evolution-1: 120x "Bad MAC" (libsignal) em 06/11 ~18h BRT; "Timeout in AwaitingInitialSync" repetido.
+  aster-linha3, aster-linha4 e aster-99freelas têm o MESMO ownerJid (554497572270); linha4 mexida 06/11 13:24 UTC.
+- Correção exige reconectar/reiniciar instância na VPS 72 = só com o Josué (não fiz). Enquanto isso, mensagens do Lucas só pelo celular do Josué.
+- ATENÇÃO: os "16:11/16:17" do início desta sessão eram de 06/11 (antes da queda).
