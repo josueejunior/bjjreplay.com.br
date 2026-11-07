@@ -281,3 +281,11 @@ Disse ao Lucas que estou "fechando" a entrega das lutas do Mac (Beta E), sem dat
 - ATENÇÃO: rebuild futuro do front precisa exportar NEXT_PUBLIC_SENTRY_DSN antes do `npm run build` (não está no .env.production.local);
   SENTRY_DSN/R2_* vivem só no ambiente salvo do pm2 (pm2 save), não no ecosystem.
 - Logo 4K: Josué 07/11 "não precisa"; avisei o Lucas ("esquece a logo em 4K").
+
+## 07/11/2026 (~12:30) — foto do rosto para o Mac (áudio do Lucas 16:17, refeito com Whisper medium)
+- Fala: "Sim, mas acho que já estava no banco local... preciso que envie também a foto; o vetor não, porque ele já não vai fazer mais
+  o vetor no servidor, a foto direto para o Mac." Ele tinha razão: o signup do principal já exige a foto (users.avatar_url, JPEG data URL).
+- No ar: /api/service/atletas traz fotoUrl; GET /api/service/atletas/:id/foto devolve a imagem (no-store, só com token). SEM /vetores.
+  Backup do arquivo anterior em /root/backups/service.routes-antes-foto-20261107.{ts,js}. Fumaça na sandbox OK; produção: 401 sem token, 404 sem foto.
+- Medido: o principal tem 1 atleta (role atleta), SEM foto. Contas antigas do Supabase não existem no banco local (Josué decide se conta ao Lucas).
+- P1105-2 -> aguardando (falta o texto dos termos/política do Lucas).

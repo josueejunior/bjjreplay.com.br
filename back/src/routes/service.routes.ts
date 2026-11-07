@@ -2,7 +2,7 @@
  * Superfície máquina-a-máquina do site principal — o Mac da academia (Sentinela).
  *
  * Lucas 07/11/2026: "Nada de campeonato. Tem que ser na principal." Mesmo contrato do campeonato
- * (`/api/service/ping|atletas|upload-url|entregas`), para o Mac só trocar o endereço base. A entrega cai
+ * (`/api/service/ping|atletas|atletas/:id/foto|upload-url|entregas`; sem `vetores`: o Mac vetoriza a foto), para o Mac só trocar o endereço base. A entrega cai
  * em `biblioteca_lutas` com a janela da luta (`inicio_luta_s`/`fim_luta_s`, docs/BETA_CONTRATO_ENTREGAS.md).
  *
  * A lista de atletas sai sem e-mail, telefone, CPF e data de nascimento: o Mac não precisa disso.
@@ -22,6 +22,7 @@ interface AtletaRow {
   degree: number;
   athlete_category: string;
   academy_name: string | null;
+  tem_foto: number;
 }
 
 export async function serviceRoutes(app: FastifyInstance) {
@@ -34,7 +35,8 @@ export async function serviceRoutes(app: FastifyInstance) {
   app.get('/api/service/atletas', { preHandler: [app.requireService] }, async () => {
     const rows = db
       .prepare(
-        `SELECT id, name, belt, degree, athlete_category, academy_name
+        `SELECT id, name, belt, degree, athlete_category, academy_name,
+                (avatar_url IS NOT NULL AND avatar_url != '') AS tem_foto
          FROM users WHERE role = 'atleta' AND is_admin = 0 ORDER BY name`,
       )
       .all() as AtletaRow[];
@@ -45,8 +47,28 @@ export async function serviceRoutes(app: FastifyInstance) {
       grau: row.degree,
       categoria: row.athlete_category,
       academia: row.academy_name,
+      /* Lucas 07/11: a foto vai direto para o Mac, que gera o vetor lá; o servidor não vetoriza. */
+      fotoUrl: row.tem_foto ? `/api/service/atletas/${row.id}/foto` : null,
     }));
   });
+
+  /**
+   * Foto de rosto do cadastro (obrigatória no signup, guardada em `users.avatar_url` como data URL).
+   * `no-store`: tem criança na lista, e foto de menor não fica em cache de disco do Mac.
+   */
+  app.get<{ Params: { id: string } }>(
+    '/api/service/atletas/:id/foto',
+    { preHandler: [app.requireService] },
+    async (request, reply) => {
+      const row = db
+        .prepare(`SELECT avatar_url FROM users WHERE id = ? AND role = 'atleta' AND is_admin = 0`)
+        .get(request.params.id) as { avatar_url: string | null } | undefined;
+      if (!row) return reply.code(404).send({ detail: 'Atleta não encontrado' });
+      const m = /^data:(image\/(?:jpeg|png|webp));base64,(.+)$/s.exec(row.avatar_url ?? '');
+      if (!m) return reply.code(404).send({ detail: 'Atleta sem foto cadastrada' });
+      return reply.type(m[1]!).header('Cache-Control', 'no-store').send(Buffer.from(m[2]!, 'base64'));
+    },
+  );
 
   /** URL assinada de PUT no R2: o Mac sobe o vídeo sem ter a chave do bucket. */
   app.post('/api/service/upload-url', { preHandler: [app.requireService] }, async (request, reply) => {

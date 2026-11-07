@@ -15,9 +15,9 @@ await app.ready();
 const { token } = criarServiceToken('fumaca');
 const atletaId = 'fumaca-atleta';
 db.prepare(
-  `INSERT OR IGNORE INTO users (id, email, name, password_hash, password_salt, created_at, role)
-   VALUES (?, 'fumaca@x.com', 'Fumaça', 'x', 'x', ?, 'atleta')`,
-).run(atletaId, new Date().toISOString());
+  `INSERT OR IGNORE INTO users (id, email, name, password_hash, password_salt, created_at, role, avatar_url)
+   VALUES (?, 'fumaca@x.com', 'Fumaça', 'x', 'x', ?, 'atleta', ?)`,
+).run(atletaId, new Date().toISOString(), `data:image/jpeg;base64,${Buffer.from('jpeg-falso').toString('base64')}`);
 
 const h = { 'x-service-token': token };
 const semToken = await app.inject({ method: 'GET', url: '/api/service/ping' });
@@ -27,6 +27,13 @@ assert.equal((await app.inject({ method: 'GET', url: '/api/service/ping', header
 const atletas = (await app.inject({ method: 'GET', url: '/api/service/atletas', headers: h })).json();
 const achado = atletas.find((a: { atletaId: string }) => a.atletaId === atletaId);
 assert.ok(achado && !('email' in achado), 'atleta sem e-mail na lista');
+assert.equal(achado.fotoUrl, `/api/service/atletas/${atletaId}/foto`);
+const foto = await app.inject({ method: 'GET', url: achado.fotoUrl, headers: h });
+assert.equal(foto.statusCode, 200);
+assert.equal(foto.headers['content-type'], 'image/jpeg');
+assert.equal(foto.headers['cache-control'], 'no-store');
+assert.equal(foto.body, 'jpeg-falso');
+assert.equal((await app.inject({ method: 'GET', url: achado.fotoUrl })).statusCode, 401);
 
 const up = await app.inject({ method: 'POST', url: '/api/service/upload-url', headers: h, payload: { objectKey: 'entregas/t/L1.mp4' } });
 assert.equal(up.statusCode, 200);
