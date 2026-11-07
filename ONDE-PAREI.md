@@ -270,3 +270,14 @@ Disse ao Lucas que estou "fechando" a entrega das lutas do Mac (Beta E), sem dat
   (não há foto/vetor na principal; /api/service/vetores não existe aqui). Pedido também: logo 4K, ok do cartão do contador, termos.
 - Home nova: Lucas aprovou (Josué 07/11). P1104-4/-8 aprovados.
 - Repo é PÚBLICO no GitHub e back/src/data (seed com senhas demo) é ignorado: fumaça roda de cópia local commitada no scratchpad.
+
+## 07/11/2026 (~12:10) — Sentry NO AR (back e front), Josué: "o sentry pode fazer"
+- Back: npm install @sentry/node@10.78.0 no servidor (lock antigo em /root/backups/bjjreplay-back-lock-antes-sentry.json), app.ts/server.ts/
+  instrument.ts locais, tsc, pm2 restart --update-env com SENTRY_DSN (bjj-back) + SENTRY_RELEASE=e39a263, pm2 save. Evento de teste: flush true.
+- Front: backup /root/backups/standalone-antes-sentry-20261107-1156 (+ .tgz do package/next.config). Arquivos do Sentry copiados, npm install,
+  build com NEXT_PUBLIC_SENTRY_DSN (bjj-front) + .env.production.local (beta segue ligado), sync-standalone, pm2 restart com SENTRY_DSN, pm2 save.
+  Prova no navegador (chromium na aws-pesado): erro jogado na home -> 5 envelopes ao ingest.us.sentry.io, todos 200.
+  Páginas /, /login, /signup, /minha-luta, /ajude 200; selo "Beta gratuito" no ar; _next/static 200. DSN não ficou em arquivo no servidor.
+- ATENÇÃO: rebuild futuro do front precisa exportar NEXT_PUBLIC_SENTRY_DSN antes do `npm run build` (não está no .env.production.local);
+  SENTRY_DSN/R2_* vivem só no ambiente salvo do pm2 (pm2 save), não no ecosystem.
+- Logo 4K: Josué 07/11 "não precisa"; avisei o Lucas ("esquece a logo em 4K").
