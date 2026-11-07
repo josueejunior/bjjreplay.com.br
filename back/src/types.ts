@@ -126,6 +126,10 @@ export interface LutaBibliotecaRow {
   category: string | null;
   inicio_luta_s: number | null;
   fim_luta_s: number | null;
+  object_key?: string | null;
+  match_label?: string | null;
+  mat?: string | null;
+  duracao_s?: number | null;
 }
 
 export interface FotoBiblioteca {

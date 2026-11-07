@@ -6,6 +6,7 @@ import { verifySupabaseToken } from '../lib/supabase.js';
 import { findById } from '../services/user.service.js';
 import { supabaseEnabled } from '../services/supabase-store.service.js';
 import type { User } from '../types.js';
+import { verificarServiceToken } from '../lib/service-tokens.js';
 
 export interface JwtPayload {
   sub: string;
@@ -24,6 +25,10 @@ declare module 'fastify' {
   interface FastifyInstance {
     authenticate: (request: FastifyRequest, reply: FastifyReply) => Promise<void>;
     requireAdmin: (request: FastifyRequest, reply: FastifyReply) => Promise<void>;
+    requireService: (request: FastifyRequest, reply: FastifyReply) => Promise<void>;
+  }
+  interface FastifyRequest {
+    servico?: { id: string; label: string };
   }
 }
 
@@ -96,5 +101,16 @@ export default fp(async (app: FastifyInstance) => {
     } catch {
       reply.code(401).send({ detail: 'Não autenticado' });
     }
+  });
+
+  /** Token de serviço do Mac (header X-Service-Token), nunca o JWT do admin. Mesmo esquema do campeonato. */
+  app.decorate('requireService', async (request: FastifyRequest, reply: FastifyReply) => {
+    const header = request.headers['x-service-token'];
+    const valor = Array.isArray(header) ? header[0] : header;
+    const token = verificarServiceToken(valor);
+    if (!token) {
+      return reply.code(401).send({ detail: 'Token de serviço ausente ou inválido' });
+    }
+    request.servico = { id: token.id, label: token.label };
   });
 });

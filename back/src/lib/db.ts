@@ -120,6 +120,11 @@ ensureColumn('biblioteca_lutas', 'category', 'category TEXT');
 // Beta: onde a luta começa e termina dentro do vídeo (que traz 1 min antes e 1 min depois).
 ensureColumn('biblioteca_lutas', 'inicio_luta_s', 'inicio_luta_s INTEGER');
 ensureColumn('biblioteca_lutas', 'fim_luta_s', 'fim_luta_s INTEGER');
+// Beta: entrega real do Mac (Lucas 07/11: "tem que ser na principal"). Vídeo no R2 privado, assinado na leitura.
+ensureColumn('biblioteca_lutas', 'object_key', 'object_key TEXT');
+ensureColumn('biblioteca_lutas', 'match_label', 'match_label TEXT');
+ensureColumn('biblioteca_lutas', 'mat', 'mat TEXT');
+ensureColumn('biblioteca_lutas', 'duracao_s', 'duracao_s INTEGER');
 
 // ---- Mapeamento row → modelo ----
 

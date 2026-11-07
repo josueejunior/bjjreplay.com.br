@@ -39,6 +39,7 @@ function resolveCdnUrl(stored: string | null, fallback: string): string | undefi
 }
 
 import { janelaValida } from '../lib/janela-luta.js';
+import { assinarUrlR2 } from '../lib/r2.js';
 
 function rowToApi(
   row: LutaBibliotecaRow,
@@ -61,7 +62,10 @@ function rowToApi(
     ...(janelaValida(row.inicio_luta_s, row.fim_luta_s) ?? {}),
   };
 
-  if (row.status === 'ENTREGUE' && row.url_horizontal) {
+  if (row.status === 'ENTREGUE' && row.object_key) {
+    const url = assinarUrlR2(row.object_key);
+    if (url) item.url_horizontal = url;
+  } else if (row.status === 'ENTREGUE' && row.url_horizontal) {
     item.url_horizontal = resolveCdnUrl(row.url_horizontal, DEMO_HORIZONTAL)!;
     if (isBlackPlan && row.url_reels_vertical) {
       item.url_reels_vertical = resolveCdnUrl(row.url_reels_vertical, DEMO_VERTICAL);
