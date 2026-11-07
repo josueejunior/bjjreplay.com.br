@@ -7,6 +7,7 @@
 import assert from 'node:assert/strict';
 import { buildApp } from '../src/app.js';
 import { db } from '../src/lib/db.js';
+import { criarChamado } from '../src/lib/chamados.db.js';
 import { criarServiceToken } from '../src/lib/service-tokens.js';
 import { getBibliotecaByAluno } from '../src/services/biblioteca.service.js';
 
@@ -47,6 +48,17 @@ assert.equal(e2.statusCode, 200);
 assert.equal(e2.json().jaExistia, true);
 const invertida = await app.inject({ method: 'POST', url: '/api/service/entregas', headers: h, payload: { ...entrega, luta: 'L2', inicio_luta_s: 120, fim_luta_s: 60 } });
 assert.equal(invertida.statusCode, 400);
+
+criarChamado({ userId: atletaId, tipo: 'problema_luta', tela: 'L1', texto: 'corte errado na luta', extra: { opcao: 'corte_errado', luta: 'L1' } });
+const ch = await app.inject({ method: 'GET', url: '/api/service/chamados?tipo=problema_luta', headers: h });
+assert.equal(ch.statusCode, 200);
+const lista = ch.json();
+assert.equal(lista.length, 1);
+assert.equal(lista[0].status, 'recebido');
+assert.ok(!('atleta' in lista[0]) && !('user_id' in lista[0]) && !('temPrint' in lista[0]), 'sem dado de quem abriu');
+assert.ok(!JSON.stringify(lista).includes('fumaca@x.com'), 'sem e-mail');
+assert.equal((await app.inject({ method: 'GET', url: '/api/service/chamados' })).statusCode, 401);
+assert.equal((await app.inject({ method: 'GET', url: '/api/service/chamados?status=xx', headers: h })).statusCode, 400);
 
 const lutas = await getBibliotecaByAluno(atletaId);
 assert.equal(lutas.length, 1);

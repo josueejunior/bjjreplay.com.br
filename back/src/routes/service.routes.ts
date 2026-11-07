@@ -2,7 +2,7 @@
  * Superfície máquina-a-máquina do site principal — o Mac da academia (Sentinela).
  *
  * Lucas 07/11/2026: "Nada de campeonato. Tem que ser na principal." Mesmo contrato do campeonato
- * (`/api/service/ping|atletas|atletas/:id/foto|upload-url|entregas`; sem `vetores`: o Mac vetoriza a foto), para o Mac só trocar o endereço base. A entrega cai
+ * (`/api/service/ping|atletas|atletas/:id/foto|upload-url|entregas|chamados`; sem `vetores`: o Mac vetoriza a foto), para o Mac só trocar o endereço base. A entrega cai
  * em `biblioteca_lutas` com a janela da luta (`inicio_luta_s`/`fim_luta_s`, docs/BETA_CONTRATO_ENTREGAS.md).
  *
  * A lista de atletas sai sem e-mail, telefone, CPF e data de nascimento: o Mac não precisa disso.
@@ -13,6 +13,7 @@ import { z } from 'zod';
 import { db } from '../lib/db.js';
 import { exigirJanela } from '../lib/janela-luta.js';
 import { assinarUrlR2 } from '../lib/r2.js';
+import { CHAMADO_STATUS, CHAMADO_TIPOS, toChamado, type ChamadoStatus, type ChamadoTipo } from '../lib/chamados.db.js';
 import type { LutaBibliotecaRow } from '../types.js';
 
 interface AtletaRow {
@@ -153,4 +154,41 @@ export async function serviceRoutes(app: FastifyInstance) {
       );
     return reply.code(201).send({ id: Number(r.lastInsertRowid), jaExistia: false });
   });
+
+  /**
+   * Chamados ("Relatar um problema", "Não encontrei minha luta", erro no site) só para LEITURA, para o agente do
+   * Lucas (Claude no Mac mini) rastrear os problemas (P1105-4). Sai o que o chamado diz (id, datas, tipo, texto, luta,
+   * status); NÃO sai quem abriu (nome, e-mail, id do usuário), CPF nem print. Mesmo token de serviço do Mac.
+   * Filtros: ?status=recebido&tipo=problema_luta&desde=<ISO>&limite=100 (padrão 100, máximo 500).
+   */
+  app.get<{ Querystring: { status?: string; tipo?: string; desde?: string; limite?: string } }>(
+    '/api/service/chamados',
+    { preHandler: [app.requireService] },
+    async (request, reply) => {
+      const { status, tipo, desde } = request.query;
+      if (status && !CHAMADO_STATUS.includes(status as ChamadoStatus)) {
+        return reply.code(400).send({ detail: `status inválido (${CHAMADO_STATUS.join(', ')})` });
+      }
+      if (tipo && !CHAMADO_TIPOS.includes(tipo as ChamadoTipo)) {
+        return reply.code(400).send({ detail: `tipo inválido (${CHAMADO_TIPOS.join(', ')})` });
+      }
+      if (desde && Number.isNaN(Date.parse(desde))) {
+        return reply.code(400).send({ detail: 'desde deve ser uma data ISO (2026-11-07T12:00:00Z)' });
+      }
+      const limite = Math.min(Math.max(Number(request.query.limite) || 100, 1), 500);
+      const linhas = db
+        .prepare(
+          `SELECT * FROM chamados
+           WHERE (@status IS NULL OR status = @status) AND (@tipo IS NULL OR tipo = @tipo)
+             AND (@desde IS NULL OR created_at >= @desde)
+           ORDER BY created_at DESC LIMIT @limite`,
+        )
+        .all({ status: status ?? null, tipo: tipo ?? null, desde: desde ? new Date(desde).toISOString() : null, limite });
+      return (linhas as Parameters<typeof toChamado>[0][]).map((l) => {
+        const { temPrint, ...resto } = toChamado(l);
+        void temPrint;
+        return resto;
+      });
+    },
+  );
 }

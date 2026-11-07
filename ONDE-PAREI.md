@@ -306,3 +306,10 @@ Disse ao Lucas que estou "fechando" a entrega das lutas do Mac (Beta E), sem dat
   aster-linha3, aster-linha4 e aster-99freelas têm o MESMO ownerJid (554497572270); linha4 mexida 06/11 13:24 UTC.
 - Correção exige reconectar/reiniciar instância na VPS 72 = só com o Josué (não fiz). Enquanto isso, mensagens do Lucas só pelo celular do Josué.
 - ATENÇÃO: os "16:11/16:17" do início desta sessão eram de 06/11 (antes da queda).
+
+## 07/11/2026 (~13:55) — rota de chamados só leitura (P1105-4) + lote do julgador
+- GET /api/service/chamados no bjjreplay.com.br (token de serviço do Mac; filtros status/tipo/desde/limite). Devolve id, tipo, tela (luta), texto,
+  extra, status, resposta, datas; NÃO devolve quem abriu, e-mail, CPF nem print. Fumaça na sandbox OK; produção: [] 200, status inválido 400, sem token 401.
+  Backup /root/backups/service.routes-antes-chamados-20261107.{ts,js}. Hoje há 0 chamados.
+- SSH: porta 22 da aws-pesado e direta ao bjjserver sem resposta hoje ~13:45; usei ssh -J root@72.62.8.242 bjjserver (VPS 72 só como túnel).
+- P1028-1 passou ao Josué (prazo tirado: 30/11, sem urgência). Mensagens ao Lucas: preços painel/disparo (P1104-2, P1105-1) e aviso dos chamados (P1105-4).
