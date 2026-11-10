@@ -313,3 +313,10 @@ Disse ao Lucas que estou "fechando" a entrega das lutas do Mac (Beta E), sem dat
   Backup /root/backups/service.routes-antes-chamados-20261107.{ts,js}. Hoje há 0 chamados.
 - SSH: porta 22 da aws-pesado e direta ao bjjserver sem resposta hoje ~13:45; usei ssh -J root@72.62.8.242 bjjserver (VPS 72 só como túnel).
 - P1028-1 passou ao Josué (prazo tirado: 30/11, sem urgência). Mensagens ao Lucas: preços painel/disparo (P1104-2, P1105-1) e aviso dos chamados (P1105-4).
+
+## 10/11/2026 (~17:35) — estado ao cochilar (chamado do gerente 092827/104802)
+- PENDENTE: P1105-4 aguarda o teste do Lucas no Mac (curl com X-Service-Token em /api/service/chamados). `[]` 200 = certo → fechar o pedido e perguntar o próximo passo do agente; erro → ler a resposta e corrigir em service.routes.ts (backup antes, camada de teste).
+- Já dito a ele hoje (12:04–12:06, lease tmux:p:bjj): rota no ar, 401 sem token é o esperado, comando do teste, "[] é certo". Ele respondeu 12:05 que chegou em SP e testa à tarde. Até 16:21 sem retorno. NÃO mandei de novo (gerente pediu "rota no ar, falta o teste": já estava dito; seria repetição).
+- Horário com o Lucas para o servidor: é do Josué (IA não marca horário); avisei o gerente. Fio jurídico segue pessoal do Josué.
+- PROMETIDO SEM HORA (resposta automática 12:02): "vou acompanhando os acessos e os cadastros hoje". Ainda sem número: access.log do nginx é único para todos os vhosts; contar no back (pm2 bjj-replay-back) e cadastros no banco (só leitura). Se for entregar, antes das 19h, 1 mensagem curta.
+- Próximo passo: ao chegar demanda, conferir se o Lucas respondeu (contexto-clientes/lucas-portela/2026-11-10.md) antes de qualquer envio. Nada enviado nesta janela. Mensagens dele podem não entrar (aster-linha3, ver 07/11): conferir.
