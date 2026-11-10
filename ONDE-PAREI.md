@@ -320,3 +320,10 @@ Disse ao Lucas que estou "fechando" a entrega das lutas do Mac (Beta E), sem dat
 - Horário com o Lucas para o servidor: é do Josué (IA não marca horário); avisei o gerente. Fio jurídico segue pessoal do Josué.
 - PROMETIDO SEM HORA (resposta automática 12:02): "vou acompanhando os acessos e os cadastros hoje". Ainda sem número: access.log do nginx é único para todos os vhosts; contar no back (pm2 bjj-replay-back) e cadastros no banco (só leitura). Se for entregar, antes das 19h, 1 mensagem curta.
 - Próximo passo: ao chegar demanda, conferir se o Lucas respondeu (contexto-clientes/lucas-portela/2026-11-10.md) antes de qualquer envio. Nada enviado nesta janela. Mensagens dele podem não entrar (aster-linha3, ver 07/11): conferir.
+
+## 10/11/2026 (~21:xx) — mutirão da noite (ordem do gerente/Josué)
+- **Entregue:** nada novo de código. Nenhum pedido do Lucas está com a vez nossa: todos em "aguardando" (Lucas ou Josué).
+- **Já resolvido pelo Josué à mão (18:17–19:54):** cadastros de hoje = 20 (planilha bjj_cadastros_hoje_2026-11-10.xlsx mandada 18:45), isso fecha o "acessos/cadastros" prometido às 12:02 (acessos seguem sem número). As 5 perguntas do contrato de entregas foram respondidas por ele; versão final confirmada no código: `metadados` NÃO existe no contrato; `tatame` string; `inicio_luta_s`/`fim_luta_s` inteiros >= 0; `duracaoS` só inteiro (a resposta de 19:49 dizendo "decimal" foi corrigida 19:53); campo desconhecido é ignorado; `entregar:true` só no PATCH. Lucas: "blz". Nada a reenviar.
+- **Agendado p/ amanhã 08–09:30:** nada (nenhuma entrega aprovada pendente).
+- **Travou / depende de outro:** P1105-4 (teste do Lucas no Mac, `[]` 200 = ok); P1104-13 (Lucas apontar o Mac); P1104-5 (pesquisa de cidades é da rodada AWS do SDR/gerente, resultado não está em estado/ — conferir com o gerente); P1104-6/-7 (ok e oferta/logo do Lucas); P1103-2 e P1104-2/P1105-1 (vez do Lucas); P1028-1 e preços = Josué.
+- Pendência de infra do Josué (classe C): aster-linha3 não recebia mensagens do Lucas em 07/11 (reconectar instância na VPS 72). Hoje as mensagens dele chegaram, conferir se voltou ao normal.
