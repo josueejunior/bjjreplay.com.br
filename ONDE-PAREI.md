@@ -327,3 +327,6 @@ Disse ao Lucas que estou "fechando" a entrega das lutas do Mac (Beta E), sem dat
 - **Agendado p/ amanhã 08–09:30:** nada (nenhuma entrega aprovada pendente).
 - **Travou / depende de outro:** P1105-4 (teste do Lucas no Mac, `[]` 200 = ok); P1104-13 (Lucas apontar o Mac); P1104-5 (pesquisa de cidades é da rodada AWS do SDR/gerente, resultado não está em estado/ — conferir com o gerente); P1104-6/-7 (ok e oferta/logo do Lucas); P1103-2 e P1104-2/P1105-1 (vez do Lucas); P1028-1 e preços = Josué.
 - Pendência de infra do Josué (classe C): aster-linha3 não recebia mensagens do Lucas em 07/11 (reconectar instância na VPS 72). Hoje as mensagens dele chegaram, conferir se voltou ao normal.
+
+## 12/11/2026 (~16:05) — cadastros
+- Lucas 15:44 "Como está os cadastros?" (SLA 18 min). Medi no volt.db do bjjserver (só leitura, ssh direto OK): 28 contas, 25 novas desde 07/11 (10/11: 20, 11/11: 3, 12/11: 1; as demais são seed/admin/demo). Respondi pelo zap (HTTP 201, lease tmux:p:bjj): 25 desde o dia 7, 20 no dia 10, 3 ontem, 1 hoje. Sem promessa nova.
