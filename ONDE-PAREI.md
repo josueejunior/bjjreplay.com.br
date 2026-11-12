@@ -41,3 +41,5 @@ Histórico completo e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI
 
 ## Próximo passo
 - Ao chegar demanda: ler ~/contexto-clientes/lucas-portela/<dia>.md antes de qualquer envio. Sem nada novo, não mandar "só passando".
+
+- 12/11 19:38 Lucas "O mac ja puxou esses cadastros?": NÃO. Log nginx do bjjserver: Mac (python-httpx, 170.80.82.69) só chama campeonato (08:45 e 17:30); no principal só o curl de teste dele em 10/11 21:58. Respondido 22:4x; aguarda ele apontar o Mac p/ bjjreplay.com.br (P1104-13) e avisar; conferir no log. Principal: 26 atletas, 22 com foto.
