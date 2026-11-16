@@ -114,7 +114,7 @@ function BibliotecaReplayContent() {
               <div className="card-premium flex aspect-video flex-col items-center justify-center gap-2 rounded-2xl border border-zinc-800 px-6 text-center">
                 <p className="text-lg font-semibold text-zinc-200">Vídeo expirado</p>
                 <p className="max-w-md text-sm text-zinc-500">
-                  O prazo para assistir e baixar esta luta terminou e o arquivo foi apagado.
+                  O prazo para assistir e baixar esta luta terminou.
                 </p>
               </div>
             ) : (
@@ -147,7 +147,7 @@ function BibliotecaReplayContent() {
                 <p className="mt-1 text-sm text-zinc-500">Atleta: {luta.aluno_name}</p>
               )}
               <div className="mt-3 flex flex-wrap items-center gap-2">
-                <Badge variant={delivered ? 'neon' : 'zinc'}>{lutaStatusLabel(luta.status)}</Badge>
+                <Badge variant={delivered ? 'neon' : 'zinc'}>{luta.expirado ? 'Expirado' : lutaStatusLabel(luta.status)}</Badge>
                 <span className="flex items-center gap-1.5 rounded-full border border-zinc-800 bg-surface/70 px-3 py-1 text-xs text-zinc-400">
                   <Calendar className="h-3.5 w-3.5" />
                   {dataDaLuta(luta.data).toLocaleDateString('pt-BR', {
