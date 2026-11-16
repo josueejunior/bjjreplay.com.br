@@ -50,3 +50,11 @@ Histórico completo e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI
 - Front (tela "vídeo expirado") commitado e NÃO publicado: só com ENTREGA_EXPIRA_DIAS>0, quando o Lucas decidir os 4 dias. Regra de apagar no R2 não criada (classe C, espera decisão).
 - Gerente 16/11: aprovado 40 GB no R2 para a pasta do Lucas (chamado 64f3ad) — P1114-1; token/chave segue só com ordem do Josué.
 - 16/11 18:0x prazo LIGADO em produção: ENTREGA_EXPIRA_DIAS=4 só no env salvo do pm2 (não está no ecosystem.config.cjs; restart por ecosystem perde, como já perde R2/Sentry). Front com "Vídeo expirado" publicado (commit aa194fb, esteira APROVADO). Desfazer: `/root/backups/desfazer-P1116-1.sh` (só prazo) ou `--front` (backup em /root/backups/P1116-1-20261116-2059). Lucas 17:44: 4 dias "somente para fase beta" → desligar no fim do beta (data: Josué pergunta). Item 3 (regra R2 que apaga) = Josué.
+
+## Cochilo 16/11 ~18:15 — estado
+- Último envio: 18:03 ao Lucas ("liguei os 4 dias so pra fase beta… arquivo nao e apagado do r2 ainda"). Nada dele depois.
+- Conversa das 18h é do Josué (gerente 17:5x): não escrever ao Lucas sobre ela; se ele mandar algo sobre isso, só avisar o gerente.
+- Pendente (P1116-1, vez de outros): Josué pergunta ao Lucas a data de fim do beta → então `ENTREGA_EXPIRA_DIAS=0` (ou `/root/backups/desfazer-P1116-1.sh`). Item 3 (regra R2 que apaga) = Josué, classe C.
+- P1114-1: gerente aprovou 40 GB no R2 para a pasta do Lucas (chamado 64f3ad); token/chave só com ordem do Josué.
+- Prometido com hora: nada. O lembrete agendado das 17:45 (conversa 18h) já passou.
+- Próximo passo: quando o Mac usar o caminho novo (upload-url com atletaId+luta), conferir no volt.db `versao` e `object_key` em bjj-replay/alliance-parnaiba/…; esperar o Lucas rodar os 6 testes dele.
