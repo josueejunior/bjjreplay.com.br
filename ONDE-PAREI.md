@@ -58,3 +58,8 @@ Histórico completo e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI
 - P1114-1: gerente aprovou 40 GB no R2 para a pasta do Lucas (chamado 64f3ad); token/chave só com ordem do Josué.
 - Prometido com hora: nada. O lembrete agendado das 17:45 (conversa 18h) já passou.
 - Próximo passo: quando o Mac usar o caminho novo (upload-url com atletaId+luta), conferir no volt.db `versao` e `object_key` em bjj-replay/alliance-parnaiba/…; esperar o Lucas rodar os 6 testes dele.
+
+## 16/11 18:3x — PATCH /api/service/entregas/:id no ar (P1116-1)
+- Lucas 18:20: upload-url e entregas OK (ids 1 e 2 sem duplicar); faltava o PATCH `{"entregar": true}` (dava 404). Criado (commit na main) e publicado só no back; backup `/root/backups/back-antes-patch-20261116.tgz`; env do pm2 (ENTREGA_EXPIRA_DIAS=4, R2) conferido depois do restart.
+- Comportamento: 200 `{id, entregue:true, versao, objectKey}`; repetir ok; 404 id inexistente; 401 sem token; aceita janela inicio/fim (400 se inválida). A entrega já nasce ENTREGUE no POST, então o PATCH só confirma (dito ao Lucas, 2 msgs).
+- Teste: fumaça local passou, mas não bateu o PATCH em produção com token real (só 401 sem token). Esperar o Mac chamar e conferir no log.
