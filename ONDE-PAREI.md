@@ -63,3 +63,10 @@ Histórico completo e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI
 - Lucas 18:20: upload-url e entregas OK (ids 1 e 2 sem duplicar); faltava o PATCH `{"entregar": true}` (dava 404). Criado (commit na main) e publicado só no back; backup `/root/backups/back-antes-patch-20261116.tgz`; env do pm2 (ENTREGA_EXPIRA_DIAS=4, R2) conferido depois do restart.
 - Comportamento: 200 `{id, entregue:true, versao, objectKey}`; repetir ok; 404 id inexistente; 401 sem token; aceita janela inicio/fim (400 se inválida). A entrega já nasce ENTREGUE no POST, então o PATCH só confirma (dito ao Lucas, 2 msgs).
 - Teste: fumaça local passou, mas não bateu o PATCH em produção com token real (só 401 sem token). Esperar o Mac chamar e conferir no log.
+
+## Cochilo 16/11 ~18:55 — estado
+- 18:31 Lucas: pausar e-mails e disparar amanhã de manhã com as entregas de hoje. FEITO: cron das 19h do campeonato (bjjserver) comentado como `#PAUSADO-16-11`; backup `/root/backups/crontab-antes-pausa-20261116.txt`. Para despausar: tirar o `#PAUSADO-16-11 ` da linha. Disparo manual: `disparar-avisos-entrega.mjs` (ensaio sem `--valendo`, depois com).
+- Perguntei a hora do disparo (18:3x); Lucas NÃO respondeu a hora. Ele só disse "te aviso se todas de hoje derem certo" (18:34): sem resposta devida.
+- 18:41 enviei o desenho de inferência + suporte (3 msgs, revisar APROVADO, a pedido do gerente via julgador; sem PDF). Tempo/custo por vídeo NÃO medidos (dito ao Lucas); melhorias propostas: tempo do Mac na entrega, aviso agrupado por manhã, painel "luta não encontrada" com motivo.
+- Prometido com hora: nada agendado. Atenção: o disparo de amanhã de manhã depende da hora do Lucas.
+- Próximo passo: quando o Lucas responder a hora (ou amanhã cedo), rodar o ensaio do script, conferir as lutas de hoje, só então `--valendo`, com lease; depois reativar o cron se ele quiser voltar ao lote das 19h. Conferir no log se o Mac chamou o PATCH de entregas (ainda não visto em produção com token real).
