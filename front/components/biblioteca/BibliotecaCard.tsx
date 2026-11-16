@@ -19,7 +19,7 @@ interface BibliotecaCardProps {
 
 export function BibliotecaCard({ luta, index, onClick, showAthleteName = false }: BibliotecaCardProps) {
   const processing = isLutaProcessing(luta.status);
-  const delivered = luta.status === 'ENTREGUE';
+  const delivered = luta.status === 'ENTREGUE' && !luta.expirado;
   const hasReels = Boolean(luta.url_reels_vertical);
 
   return (
@@ -38,6 +38,11 @@ export function BibliotecaCard({ luta, index, onClick, showAthleteName = false }
       <div className="relative aspect-video overflow-hidden bg-zinc-950">
         {processing ? (
           <ProcessingStatus status={luta.status} compact />
+        ) : luta.expirado ? (
+          <div className="flex h-full flex-col items-center justify-center gap-1 px-4 text-center">
+            <p className="text-sm font-semibold text-zinc-300">Vídeo expirado</p>
+            <p className="text-xs text-zinc-500">O prazo para assistir e baixar esta luta terminou.</p>
+          </div>
         ) : (
           <>
             <div className="absolute inset-0 bg-gradient-to-br from-zinc-900 via-zinc-950 to-black" />
@@ -80,14 +85,16 @@ export function BibliotecaCard({ luta, index, onClick, showAthleteName = false }
           </h3>
           <Badge
             variant={
-              luta.status === 'ENTREGUE'
+              luta.expirado
+                ? 'zinc'
+                : luta.status === 'ENTREGUE'
                 ? 'neon'
                 : luta.status === 'PROCESSANDO'
                   ? 'premium'
                   : 'zinc'
             }
           >
-            {lutaStatusLabel(luta.status)}
+            {luta.expirado ? 'Expirado' : lutaStatusLabel(luta.status)}
           </Badge>
         </div>
         <p className="mt-2 flex items-center gap-1.5 text-xs text-zinc-500">

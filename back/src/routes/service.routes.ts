@@ -13,6 +13,7 @@ import { z } from 'zod';
 import { db } from '../lib/db.js';
 import { exigirJanela } from '../lib/janela-luta.js';
 import { assinarUrlR2 } from '../lib/r2.js';
+import { montarObjectKey, proximaVersao, versaoDoObjectKey } from '../lib/caminho-entrega.js';
 import { CHAMADO_STATUS, CHAMADO_TIPOS, toChamado, type ChamadoStatus, type ChamadoTipo } from '../lib/chamados.db.js';
 import type { LutaBibliotecaRow } from '../types.js';
 
@@ -71,24 +72,43 @@ export async function serviceRoutes(app: FastifyInstance) {
     },
   );
 
-  /** URL assinada de PUT no R2: o Mac sobe o vídeo sem ter a chave do bucket. */
+  /**
+   * URL assinada de PUT no R2: o Mac sobe o vídeo sem ter a chave do bucket. Com `atletaId` + `luta` o site monta o
+   * caminho (`bjj-replay/<academia>/<atletaId>/<data>_<hora>_<luta>_v<versao>.mp4`) e devolve `objectKey` e `versao`
+   * para o Mac usar na entrega; `objectKey` pronto continua aceito (caminho antigo do Mac).
+   */
   app.post('/api/service/upload-url', { preHandler: [app.requireService] }, async (request, reply) => {
     const body = z
       .object({
-        objectKey: z.string().min(1).max(400),
+        objectKey: z.string().min(1).max(400).optional(),
+        atletaId: z.string().min(1).optional(),
+        luta: z.string().min(1).max(80).optional(),
+        gravadoEm: z.string().datetime({ offset: true }).optional(),
         ttl: z.number().int().min(1).max(86400).optional(),
       })
+      .refine((b) => b.objectKey || (b.atletaId && b.luta), { message: 'mande objectKey, ou atletaId e luta' })
       .parse(request.body);
 
-    const url = assinarUrlR2(body.objectKey, { metodo: 'PUT', ttl: body.ttl ?? 3600 });
+    let objectKey = body.objectKey;
+    let versao: number | null = objectKey ? versaoDoObjectKey(objectKey) : null;
+    if (!objectKey) {
+      if (!db.prepare('SELECT id FROM users WHERE id = ?').get(body.atletaId)) {
+        return reply.code(404).send({ detail: 'Atleta não encontrado' });
+      }
+      versao = proximaVersao(body.atletaId!, body.luta!);
+      objectKey = montarObjectKey(body.atletaId!, body.luta!, versao, body.gravadoEm ? new Date(body.gravadoEm) : undefined);
+    }
+
+    const url = assinarUrlR2(objectKey, { metodo: 'PUT', ttl: body.ttl ?? 3600 });
     if (!url) return reply.code(503).send({ detail: 'R2 não configurado' });
-    return { url, objectKey: body.objectKey };
+    return { url, objectKey, versao };
   });
 
   /**
    * Registra o vídeo já subido no R2, uma chamada por atleta. Idempotente por `atletaId` + `luta` +
    * `objectKey`: repetir devolve a entrega existente e, se vier janela nova, atualiza só a janela
-   * (o Mac pode refinar a borda depois).
+   * (o Mac pode refinar a borda depois). A resposta traz `versao` (Lucas 16/11): a do nome do arquivo, senão a
+   * próxima da luta do atleta; repetir devolve a mesma.
    */
   app.post('/api/service/entregas', { preHandler: [app.requireService] }, async (request, reply) => {
     const body = z
@@ -128,16 +148,19 @@ export async function serviceRoutes(app: FastifyInstance) {
           repetida.id_luta,
         );
       }
-      return reply.code(200).send({ id: repetida.id_luta, jaExistia: true });
+      return reply
+        .code(200)
+        .send({ id: repetida.id_luta, jaExistia: true, versao: repetida.versao ?? 1, objectKey: repetida.object_key });
     }
 
+    const versao = versaoDoObjectKey(body.objectKey) ?? proximaVersao(body.atletaId, luta);
     const agora = new Date().toISOString();
     const r = db
       .prepare(
         `INSERT INTO biblioteca_lutas (
            aluno_id, status, data, queued_at, include_reels, opponent_name, event_name,
-           object_key, match_label, mat, duracao_s, inicio_luta_s, fim_luta_s
-         ) VALUES (?, 'ENTREGUE', ?, ?, 0, ?, ?, ?, ?, ?, ?, ?, ?)`,
+           object_key, match_label, mat, duracao_s, inicio_luta_s, fim_luta_s, versao
+         ) VALUES (?, 'ENTREGUE', ?, ?, 0, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       )
       .run(
         body.atletaId,
@@ -151,8 +174,11 @@ export async function serviceRoutes(app: FastifyInstance) {
         body.duracaoS ?? null,
         janela?.inicio_luta_s ?? null,
         janela?.fim_luta_s ?? null,
+        versao,
       );
-    return reply.code(201).send({ id: Number(r.lastInsertRowid), jaExistia: false });
+    return reply
+      .code(201)
+      .send({ id: Number(r.lastInsertRowid), jaExistia: false, versao, objectKey: body.objectKey });
   });
 
   /**

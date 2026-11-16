@@ -110,6 +110,13 @@ function BibliotecaReplayContent() {
                   fimLutaS={luta.fim_luta_s}
                 />
               </>
+            ) : luta.expirado ? (
+              <div className="card-premium flex aspect-video flex-col items-center justify-center gap-2 rounded-2xl border border-zinc-800 px-6 text-center">
+                <p className="text-lg font-semibold text-zinc-200">Vídeo expirado</p>
+                <p className="max-w-md text-sm text-zinc-500">
+                  O prazo para assistir e baixar esta luta terminou e o arquivo foi apagado.
+                </p>
+              </div>
             ) : (
               <div className="card-premium top-shine overflow-hidden rounded-2xl border border-zinc-800">
                 <ProcessingStatus status={luta.status} />

@@ -125,6 +125,8 @@ export interface LutaBiblioteca {
   /** Onde a luta começa/termina dentro do vídeo (segundos); ausente = abre do início como antes. */
   inicio_luta_s?: number;
   fim_luta_s?: number;
+  /** O arquivo passou do prazo e foi apagado do bucket: mostrar "vídeo expirado", não o player. */
+  expirado?: boolean;
   /** Preenchido no painel do professor */
   aluno_name?: string;
   aluno_id?: string;

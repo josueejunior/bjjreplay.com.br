@@ -104,6 +104,8 @@ export interface LutaBiblioteca {
   /** Onde a luta começa/termina dentro do vídeo (segundos); ausente = abre do início como antes. */
   inicio_luta_s?: number;
   fim_luta_s?: number;
+  /** Entrega do Mac passou do prazo do bucket: sem URL, a tela mostra "vídeo expirado". */
+  expirado?: boolean;
   aluno_name?: string;
   aluno_id?: string;
 }
@@ -130,6 +132,7 @@ export interface LutaBibliotecaRow {
   match_label?: string | null;
   mat?: string | null;
   duracao_s?: number | null;
+  versao?: number | null;
 }
 
 export interface FotoBiblioteca {

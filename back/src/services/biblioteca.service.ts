@@ -1,3 +1,4 @@
+import { config } from '../config.js';
 import { db } from '../lib/db.js';
 import { normalizeAcademyName } from '../lib/academy.js';
 import {
@@ -41,6 +42,12 @@ function resolveCdnUrl(stored: string | null, fallback: string): string | undefi
 import { janelaValida } from '../lib/janela-luta.js';
 import { assinarUrlR2 } from '../lib/r2.js';
 
+/** Entrega do Mac passou do prazo do bucket (`ENTREGA_EXPIRA_DIAS`; 0 = nunca expira). */
+function entregaExpirada(queuedAt: string): boolean {
+  if (!(config.entregaExpiraDias > 0)) return false;
+  return Date.now() - new Date(queuedAt).getTime() > config.entregaExpiraDias * 86400_000;
+}
+
 function rowToApi(
   row: LutaBibliotecaRow,
   isBlackPlan: boolean,
@@ -62,7 +69,10 @@ function rowToApi(
     ...(janelaValida(row.inicio_luta_s, row.fim_luta_s) ?? {}),
   };
 
-  if (row.status === 'ENTREGUE' && row.object_key) {
+  if (row.status === 'ENTREGUE' && row.object_key && entregaExpirada(row.queued_at)) {
+    // O bucket já apagou (ou vai apagar) o arquivo: sem URL, a tela mostra "vídeo expirado" e não um player quebrado.
+    item.expirado = true;
+  } else if (row.status === 'ENTREGUE' && row.object_key) {
     const url = assinarUrlR2(row.object_key);
     if (url) item.url_horizontal = url;
   } else if (row.status === 'ENTREGUE' && row.url_horizontal) {

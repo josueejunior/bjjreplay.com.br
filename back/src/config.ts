@@ -22,6 +22,13 @@ export const config = {
   r2SecretKey: process.env.R2_SECRET_ACCESS_KEY ?? '',
   /** Validade da URL assinada que o aluno recebe para assistir (o player pede a lista de novo ao abrir). */
   mediaTtlSegundos: Number(process.env.MEDIA_TTL ?? 6 * 3600),
+  /** Pasta da academia no R2 (Lucas 16/11: `bjj-replay/alliance-parnaiba/<atletaId>/...`, fora de "campeonato"). */
+  r2PastaAcademia: process.env.R2_PASTA_ACADEMIA ?? 'alliance-parnaiba',
+  /**
+   * Dias até a entrega do Mac sumir da biblioteca ("vídeo expirado"), casando com a regra de apagar do bucket.
+   * 0 = nunca. Lucas propôs 4 em 16/11, mas falta ele decidir se vale para a entrega final (PREMIUM/BLACK).
+   */
+  entregaExpiraDias: Number(process.env.ENTREGA_EXPIRA_DIAS ?? 0),
 } as const;
 
 export function r2Configurado(): boolean {

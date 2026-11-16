@@ -125,6 +125,8 @@ ensureColumn('biblioteca_lutas', 'object_key', 'object_key TEXT');
 ensureColumn('biblioteca_lutas', 'match_label', 'match_label TEXT');
 ensureColumn('biblioteca_lutas', 'mat', 'mat TEXT');
 ensureColumn('biblioteca_lutas', 'duracao_s', 'duracao_s INTEGER');
+// Lucas 16/11: versão da entrega (o Mac reenvia a mesma luta recortada de novo); antigas contam como 1.
+ensureColumn('biblioteca_lutas', 'versao', 'versao INTEGER');
 
 // ---- Mapeamento row → modelo ----
 
