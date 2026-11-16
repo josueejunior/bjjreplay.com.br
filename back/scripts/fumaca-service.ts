@@ -47,6 +47,16 @@ assert.equal(e1.statusCode, 201, e1.body);
 const e2 = await app.inject({ method: 'POST', url: '/api/service/entregas', headers: h, payload: { ...entrega, inicio_luta_s: 55 } });
 assert.equal(e2.statusCode, 200);
 assert.equal(e2.json().jaExistia, true);
+const idEntrega = e1.json().id;
+const url = `/api/service/entregas/${idEntrega}`;
+for (let i = 0; i < 2; i++) {
+  const lib = await app.inject({ method: 'PATCH', url, headers: h, payload: { entregar: true } });
+  assert.equal(lib.statusCode, 200, lib.body);
+  assert.equal(lib.json().entregue, true);
+}
+assert.equal((await app.inject({ method: 'PATCH', url: '/api/service/entregas/999999', headers: h, payload: { entregar: true } })).statusCode, 404);
+assert.equal((await app.inject({ method: 'PATCH', url, payload: { entregar: true } })).statusCode, 401);
+assert.equal((await app.inject({ method: 'PATCH', url, headers: h, payload: { inicio_luta_s: 9, fim_luta_s: 3 } })).statusCode, 400);
 const invertida = await app.inject({ method: 'POST', url: '/api/service/entregas', headers: h, payload: { ...entrega, luta: 'L2', inicio_luta_s: 120, fim_luta_s: 60 } });
 assert.equal(invertida.statusCode, 400);
 

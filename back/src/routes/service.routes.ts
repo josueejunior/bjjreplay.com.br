@@ -182,6 +182,40 @@ export async function serviceRoutes(app: FastifyInstance) {
   });
 
   /**
+   * Passo seguinte do Mac depois do POST (Lucas 16/11): `{"entregar": true}` libera a luta ao atleta. Hoje a entrega já
+   * nasce `ENTREGUE` no POST, então liberar não muda nada e repetir não dá erro: responde 200 com o estado atual.
+   * Aceita também a janela (`inicio_luta_s` + `fim_luta_s`), como o POST repetido; inválida devolve 400.
+   */
+  app.patch<{ Params: { id: string } }>(
+    '/api/service/entregas/:id',
+    { preHandler: [app.requireService] },
+    async (request, reply) => {
+      const body = z
+        .object({
+          entregar: z.boolean().optional(),
+          inicio_luta_s: z.number().optional(),
+          fim_luta_s: z.number().optional(),
+        })
+        .parse(request.body ?? {});
+      const id = Number(request.params.id);
+      const luta = Number.isInteger(id)
+        ? (db.prepare('SELECT * FROM biblioteca_lutas WHERE id_luta = ?').get(id) as LutaBibliotecaRow | undefined)
+        : undefined;
+      if (!luta) return reply.code(404).send({ detail: 'Entrega não encontrada' });
+
+      if (body.inicio_luta_s !== undefined || body.fim_luta_s !== undefined) {
+        const janela = exigirJanela(body.inicio_luta_s, body.fim_luta_s);
+        db.prepare('UPDATE biblioteca_lutas SET inicio_luta_s = ?, fim_luta_s = ? WHERE id_luta = ?').run(
+          janela.inicio_luta_s,
+          janela.fim_luta_s,
+          id,
+        );
+      }
+      return { id, entregue: true, versao: luta.versao ?? 1, objectKey: luta.object_key };
+    },
+  );
+
+  /**
    * Chamados ("Relatar um problema", "Não encontrei minha luta", erro no site) só para LEITURA, para o agente do
    * Lucas (Claude no Mac mini) rastrear os problemas (P1105-4). Sai o que o chamado diz (id, datas, tipo, texto, luta,
    * status); NÃO sai quem abriu (nome, e-mail, id do usuário), CPF nem print. Mesmo token de serviço do Mac.
