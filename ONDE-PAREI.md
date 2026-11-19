@@ -75,3 +75,4 @@ Histórico completo e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI
 - FEITO: ENTREGA_EXPIRA_DIAS=7 no env salvo do pm2 (bjj-replay-back reiniciado --update-env + pm2 save; online, ping 401 sem token). Desfazer: `/root/backups/desfazer-P1116-1.sh` (zera) ou reiniciar com =4.
 - NÃO FEITO: e-mails. O ensaio do script do campeonato (cron segue PAUSADO desde 16/11) deu "0 a enviar": as lutas novas do Mac estão no volt.db do PRINCIPAL (biblioteca_lutas, ids 3–6, 4 atletas), e o back do principal não tem código de e-mail. Dispor de remetente/provedor e escrever mailer = decisão do Josué; nada foi enviado a atleta.
 - Reunião: Josué marca. Lucas ainda não recebeu resposta (nada enviado pelo zap).
+- 09:2x respondido pelo zap (3 msgs, HTTP 201, revisar APROVADO): 7 dias no ar; e-mails 'deixa eu olhar e te falo hoje' (agendado 16:00); perguntei dia/hora da reunião.
