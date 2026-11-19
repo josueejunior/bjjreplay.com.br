@@ -70,3 +70,8 @@ Histórico completo e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI
 - 18:41 enviei o desenho de inferência + suporte (3 msgs, revisar APROVADO, a pedido do gerente via julgador; sem PDF). Tempo/custo por vídeo NÃO medidos (dito ao Lucas); melhorias propostas: tempo do Mac na entrega, aviso agrupado por manhã, painel "luta não encontrada" com motivo.
 - Prometido com hora: nada agendado. Atenção: o disparo de amanhã de manhã depende da hora do Lucas.
 - Próximo passo: quando o Lucas responder a hora (ou amanhã cedo), rodar o ensaio do script, conferir as lutas de hoje, só então `--valendo`, com lease; depois reativar o cron se ele quiser voltar ao lote das 19h. Conferir no log se o Mac chamou o PATCH de entregas (ainda não visto em produção com token real).
+
+## 19/11 ~09:05 — Lucas: prazo 7 dias + disparar e-mails + reunião
+- FEITO: ENTREGA_EXPIRA_DIAS=7 no env salvo do pm2 (bjj-replay-back reiniciado --update-env + pm2 save; online, ping 401 sem token). Desfazer: `/root/backups/desfazer-P1116-1.sh` (zera) ou reiniciar com =4.
+- NÃO FEITO: e-mails. O ensaio do script do campeonato (cron segue PAUSADO desde 16/11) deu "0 a enviar": as lutas novas do Mac estão no volt.db do PRINCIPAL (biblioteca_lutas, ids 3–6, 4 atletas), e o back do principal não tem código de e-mail. Dispor de remetente/provedor e escrever mailer = decisão do Josué; nada foi enviado a atleta.
+- Reunião: Josué marca. Lucas ainda não recebeu resposta (nada enviado pelo zap).
