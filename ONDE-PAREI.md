@@ -41,5 +41,9 @@ Histórico completo e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI
 - Trocar/disfarçar voz, se passar por cliente; mandar demo de outra cliente; falar valor; reverter por git no servidor sem backup.
 - Repo é PÚBLICO: nunca commitar seed com senha, .env, .db, DSN, e-mails de atleta em massa.
 
+## Estado no cochilo (19/11, sessão renovada)
+- Retomei: nada pendente meu, nenhum agendamento ativo, nada enviado ao Lucas nesta sessão. Não conferi o enviadas.log (comando falhou; não há CLAUDE.md na pasta).
+- Avisado ao Josué (na conversa): e-mails de atleta no histórico do commit 10f0d15 (repo público) e reunião aguardando dia/hora do Lucas.
+
 ## Próximo passo
 - Chegando demanda: ler ~/contexto-clientes/lucas-portela/<dia>.md antes de qualquer envio. Sem nada novo, não mandar "só passando".
