@@ -1,8 +1,12 @@
 import { withSentryConfig } from '@sentry/nextjs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'standalone',
+  // Next 15 sobe ao lockfile da raiz do monorepo e aninha o standalone em front/; fixa a raiz aqui.
+  outputFileTracingRoot: path.dirname(fileURLToPath(import.meta.url)),
   experimental: { instrumentationHook: true },
   // O commit sobe como release também no navegador (o servidor lê SENTRY_RELEASE em runtime).
   env: { NEXT_PUBLIC_SENTRY_RELEASE: process.env.SENTRY_RELEASE || '' },
