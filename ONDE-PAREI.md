@@ -30,7 +30,7 @@ Histórico completo e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI
 
 ## P1120-1 (vigia-deps 20/11, interno, FEITO bjjreplay)
 - @fastify/jwt 10.2.8 (back) e next 15.5.29 (front) no ar desde 11:5x; audit sem crítica. Backup /root/backups/P1120-1 (package*.json + tgz de dist/.next). Reverter: restaurar e rebuild + sync-standalone + pm2 restart. Next 15 pede `outputFileTracingRoot` (commit no front). Conferido: JWT válido passa, adulterado 401, imagem otimizada 200.
-- Resta: campeonato/back e /front (3 críticas cada, mesma lista). Fora deste pedido; fazer à parte.
+- Próximo passo (meu, sem prazo prometido a cliente; alvo interno 24/11 17:00 da lista do vigia): conferir login real aluno/professor e Sentry; depois campeonato/back e /front (3 críticas cada, mesma lista). Fora deste pedido; fazer à parte.
 
 ## Pendências (vez de outros)
 - AVISAR O JOSUÉ: o commit de 19/11 09:3x ("avisos de luta nova…") pôs 4 e-mails de atleta no ONDE-PAREI deste repo PÚBLICO (já tirado do arquivo, segue no histórico). Limpar histórico = decisão dele (classe C).
