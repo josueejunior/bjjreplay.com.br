@@ -28,6 +28,10 @@ Histórico completo e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI
 - Deploy: backup em /root/backups + `rsync -anci` + build + deploy/pm2/sync-standalone.sh + conferir `_next/static` 200 + pm2 restart + pm2 save. Nunca `pkill -f`.
 - SSH: `ssh bjjserver` (se cair, `-J aws-pesado`). No bjjserver não há `rg` (use grep).
 
+## P1120-1 (vigia-deps 20/11, interno, FEITO bjjreplay)
+- @fastify/jwt 10.2.8 (back) e next 15.5.29 (front) no ar desde 11:5x; audit sem crítica. Backup /root/backups/P1120-1 (package*.json + tgz de dist/.next). Reverter: restaurar e rebuild + sync-standalone + pm2 restart. Next 15 pede `outputFileTracingRoot` (commit no front). Conferido: JWT válido passa, adulterado 401, imagem otimizada 200.
+- Resta: campeonato/back e /front (3 críticas cada, mesma lista). Fora deste pedido; fazer à parte.
+
 ## Pendências (vez de outros)
 - AVISAR O JOSUÉ: o commit de 19/11 09:3x ("avisos de luta nova…") pôs 4 e-mails de atleta no ONDE-PAREI deste repo PÚBLICO (já tirado do arquivo, segue no histórico). Limpar histórico = decisão dele (classe C).
 - Reunião: Lucas dizer dia/hora → Josué confirma.
