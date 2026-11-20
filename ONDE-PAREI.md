@@ -60,3 +60,7 @@ Histórico completo e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI
 - Prometido com hora: nada. Nenhum agendamento ativo.
 - Próximo passo: sem demanda nova, não mandar nada. Se o Lucas ou o atleta reclamar de acesso, ler ~/contexto-clientes/lucas-portela/<dia>.md antes de responder; troca obrigatória/"esqueci a senha" no campeonato só se o Lucas pedir (pedido novo). Interno sem prazo a cliente: P1120-1 resto (login real aluno/professor, Sentry; campeonato/back e /front com 3 críticas cada, alvo 24/11 17:00).
 - Lembrete ao Josué ainda aberto: e-mails de atleta no histórico do commit 10f0d15 (repo público); limpar = decisão dele.
+
+## P1120-3 (20/11 ~12:20) aviso de apagar material do campeonato
+- Lucas 12:09 pediu mensagem a todos os cadastros do campeonato (material será apagado, baixem logo) e quer APROVAR antes. Mandei o rascunho + perguntei a DATA do apagamento e se vai por e-mail (cadastros sem telefone). NADA disparado.
+- Próximo: Lucas aprovar texto e dar a data → ensaio do envio (script /root/backups/aviso-portal.mjs como modelo, sem --valendo) → só então disparar e avisar. Apagar o material em si = classe C (Josué).
