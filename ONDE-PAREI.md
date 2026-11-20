@@ -66,3 +66,9 @@ Histórico completo e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI
 - Próximo: Lucas aprovar texto e dar a data → ensaio do envio (script /root/backups/aviso-portal.mjs como modelo, sem --valendo) → só então disparar e avisar. Apagar o material em si = classe C (Josué).
 - 12:12 Lucas: vai por e-mail, "apagado dia 23". Texto final + 49 destinatários (users não-admin do campeonato.db, fora os 4 da lista FORA) mandados ao Lucas pedindo o ok. Script pronto em bjjserver:/root/backups/aviso-apagar.mjs (copiar p/ campeonato/back/scripts, `node --env-file=../.env`, `--valendo` só após ok). Nada disparado.
 - 12:14 Lucas aprovou ("pode sim, faz layout com nossa logo"). Disparado 49 e-mails HTML (logo em faixa escura) ~12:20; 49 ACEITOS no SMTP (1 reenvio por "connection closed"; chegada na caixa não conferida). Log: bjjserver:/root/backups/aviso-apagar-20261120.log. Lucas avisado. P1120-3 FEITO. Apagar o material dia 23 = classe C (Josué), nada agendado por mim.
+
+## Estado no cochilo (20/11, ~12:35)
+- Pendente meu: nada. P1120-3 (aviso de apagar material dia 23) FEITO e avisado ao Lucas. Não conferi chegada nas caixas (SMTP só ACEITO); 1 atleta (naiany) pode ter recebido 2 cópias.
+- Pendente do Josué (classe C): apagar o material do campeonato no dia 23/11; nada agendado por mim. Se o Lucas pedir confirmação depois, medir antes de afirmar que apagou.
+- Prometido com hora: nada. Nenhum agendamento ativo.
+- Próximo passo: chegando demanda, ler ~/contexto-clientes/lucas-portela/<dia>.md antes de qualquer envio. Não mandar "só passando".
