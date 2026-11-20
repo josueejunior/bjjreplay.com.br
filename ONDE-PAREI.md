@@ -54,3 +54,9 @@ Histórico completo e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI
 
 ## P1120-2 (reset de senha, 20/11 ~09:28) FEITO
 - Lucas pediu reset do atleta do campeonato (e-mail no PEDIDOS/log do servidor). Senha aleatória só por e-mail ao atleta; Lucas recebeu "mandei o acesso pro e-mail do atleta". Backup: /root/backups/campeonato-antes-reset-20261120.db. Campeonato não tem "esqueci a senha" nem troca obrigatória (se o Lucas quiser, é pedido novo).
+
+## Estado no cochilo (20/11, ~11:10)
+- Pendente meu: nada. P1120-2 (reset de senha do atleta do campeonato) feito e no-ar; Lucas avisado por zap. Não conferi se o e-mail chegou na caixa do atleta (SMTP só ACEITO).
+- Prometido com hora: nada. Nenhum agendamento ativo.
+- Próximo passo: sem demanda nova, não mandar nada. Se o Lucas ou o atleta reclamar de acesso, ler ~/contexto-clientes/lucas-portela/<dia>.md antes de responder; troca obrigatória/"esqueci a senha" no campeonato só se o Lucas pedir (pedido novo). Interno sem prazo a cliente: P1120-1 resto (login real aluno/professor, Sentry; campeonato/back e /front com 3 críticas cada, alvo 24/11 17:00).
+- Lembrete ao Josué ainda aberto: e-mails de atleta no histórico do commit 10f0d15 (repo público); limpar = decisão dele.
