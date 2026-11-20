@@ -51,3 +51,6 @@ Histórico completo e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI
 
 ## Próximo passo
 - Chegando demanda: ler ~/contexto-clientes/lucas-portela/<dia>.md antes de qualquer envio. Sem nada novo, não mandar "só passando".
+
+## P1120-2 (reset de senha, 20/11 ~09:28) FEITO
+- Lucas pediu reset do atleta do campeonato (e-mail no PEDIDOS/log do servidor). Senha aleatória só por e-mail ao atleta; Lucas recebeu "mandei o acesso pro e-mail do atleta". Backup: /root/backups/campeonato-antes-reset-20261120.db. Campeonato não tem "esqueci a senha" nem troca obrigatória (se o Lucas quiser, é pedido novo).
