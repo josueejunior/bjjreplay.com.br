@@ -64,3 +64,4 @@ Histórico completo e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI
 ## P1120-3 (20/11 ~12:20) aviso de apagar material do campeonato
 - Lucas 12:09 pediu mensagem a todos os cadastros do campeonato (material será apagado, baixem logo) e quer APROVAR antes. Mandei o rascunho + perguntei a DATA do apagamento e se vai por e-mail (cadastros sem telefone). NADA disparado.
 - Próximo: Lucas aprovar texto e dar a data → ensaio do envio (script /root/backups/aviso-portal.mjs como modelo, sem --valendo) → só então disparar e avisar. Apagar o material em si = classe C (Josué).
+- 12:12 Lucas: vai por e-mail, "apagado dia 23". Texto final + 49 destinatários (users não-admin do campeonato.db, fora os 4 da lista FORA) mandados ao Lucas pedindo o ok. Script pronto em bjjserver:/root/backups/aviso-apagar.mjs (copiar p/ campeonato/back/scripts, `node --env-file=../.env`, `--valendo` só após ok). Nada disparado.
