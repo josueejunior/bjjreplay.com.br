@@ -72,3 +72,7 @@ Histórico completo e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI
 - Pendente do Josué (classe C): apagar o material do campeonato no dia 23/11; nada agendado por mim. Se o Lucas pedir confirmação depois, medir antes de afirmar que apagou.
 - Prometido com hora: nada. Nenhum agendamento ativo.
 - Próximo passo: chegando demanda, ler ~/contexto-clientes/lucas-portela/<dia>.md antes de qualquer envio. Não mandar "só passando".
+
+## Estado no cochilo (21/11, ~00:40)
+- Sem mudança desde 20/11 12:35: nada pendente meu, nada prometido com hora, nenhum agendamento. Apagar material do campeonato dia 23/11 segue com o Josué (classe C).
+- Próximo passo: só agir com demanda nova (ler ~/contexto-clientes/lucas-portela/<dia>.md antes).
