@@ -1,4 +1,6 @@
-# lucas-portela (BJJ Replay) — onde parei (21/11/2026 ~13:15)
+# lucas-portela (BJJ Replay) — onde parei (21/11/2026 ~13:45)
+
+Renovação de 13:32: nada pendente meu. Último movimento no fio: Josué enviou v2 às 13:09, Lucas não respondeu depois (conferido na transcrição; enviadas.log não existe em atendimento-lucas-portela). Próximo passo: esperar Lucas fechar (criar grupo só com ele) e o horário da reunião de 23/11; agendamento 23/11 10:00 segue de pé.
 
 Histórico e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI.md e REGRAS.md. Versões antigas deste arquivo: `git log -p ONDE-PAREI.md`.
 
