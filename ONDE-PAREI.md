@@ -1,4 +1,4 @@
-# lucas-portela (BJJ Replay) — onde parei (21/11/2026 ~13:05)
+# lucas-portela (BJJ Replay) — onde parei (21/11/2026 ~13:15)
 
 Histórico e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI.md e REGRAS.md. Versões antigas deste arquivo: `git log -p ONDE-PAREI.md`.
 
@@ -9,19 +9,17 @@ Histórico e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI.md e REG
 - Medir antes de afirmar. Teste de código só via `teste subir|conferir|descer lucas-portela` ou sandbox.
 
 ## HOJE 21/11 — construtora da Sanny (Lucas revende a terceiro)
-- Preço: orçamento enviado 11:00 era R$ 5.400 + R$ 120/mês. 12:04 o JOSUÉ (celular) disse "uns 3 mil, 50% no início". 12:07 Lucas perguntou manutenção → julgar: R$ 147/mês (enviado, revisar ok). 12:11 pediu baixar dev → mantive 3 mil, ofereci tirar escopo p/ fase 2.
-- Depois o Josué me disse: "vamos fazer por uns 2 mil, já monta demo bem responsiva e manda a ele". Gerente: NÃO citar número na demo; se o Lucas perguntar valor, responder "uns 2 mil" (número do Josué). Ainda não falei o 2 mil ao Lucas. Manutenção segue R$ 147 até o Josué dizer outra coisa.
-- 12:13 Lucas: construtor achou caro, pediu esboço → mandei PDF esboço (scratchpad desta sessão, esb/esboco-sistema.pdf) + msg de valor 3 mil (antes do "2 mil").
-- 12:22 Lucas vai marcar reunião com o construtor na SEGUNDA. Respondi "me avisa o horário". AGENDADO: 23/11 10:00 (`20261123-1000-lucas-reuni-o-com-construtor-d`) acorda p:bjj p/ conferir horário/retorno.
+- ESTADO ATUAL DO PREÇO (ordem do Josué, enviado 13:09): PDF v2 com R$ 2.000 de implantação (50% entrada + 50% entrega) + R$ 147/mês, prazo 1 a 2 semanas da assinatura+entrada; msg: "fechando, a gente faz um grupo e eu vou mandando as telas lá". PDF/fonte: ~/atendimento/atendimento-lucas-portela/estado/provas/2026-11-21-demo-construtora/orcamento-v2/ (render: md-para-pdf.sh com rodapé "Asteron Digital").
+- Histórico do preço: 11:00 R$ 5.400 + R$ 120 (15–30 dias úteis) → 12:04 Josué "uns 3 mil" → 12:10 manutenção R$ 147 → 13:05 respondi prazo pela faixa 15–30 → 13:09 v2 de 2 mil / 1–2 semanas (vale este).
+- GRUPO: quando o Lucas fechar (assinar + entrada), criar grupo SÓ com o Lucas (julgador 21/11). Construtor só se o Lucas pedir, e pergunto antes. Depois mandar as telas lá conforme ficam prontas.
+- Reunião Lucas×construtor na SEGUNDA 23/11, horário a confirmar ("me avisa o horário"). AGENDADO: 23/11 10:00 (`20261123-1000-lucas-reuni-o-com-construtor-d`) acorda p:bjj p/ conferir.
+- Esboço PDF enviado 12:13 (scratchpad antigo ed8618e4…/esb/esboco-sistema.pdf).
 - DEMO: código ~/dev/clientes/lucas-portela/demo-construtora (git local, estático: index.html, app.css, tema.css, app.js; tools/ fora do deploy por .vercelignore). v2 visual chamativo (pedido do Josué). Último commit 4fdc7d5 (fix do líder).
   - Link atual enviado ~12:59: https://demo-construtora-p8h9geup0-josueejuniors-projects.vercel.app (v1 de 12:39 ...792si5c7q... segue no ar). Lucas 12:59: "Bem melhor" (não respondi, só conversa).
   - Esteira: prints SÓ pelo sandbox (`sandbox --cpu 4 --mem 8 --disco 10 rodar <repo> "pip install playwright… && python tools/prints.py"`, tar base64 na saída). `entregar bjjreplay --prints …` (gerente mandou; `entregar lucas-portela` é barrado pelo portão visual por falso "identidade errada"). Prova em navegador real: `tools/vivo.py <URL>` na AWS (`~/scripts/teste-aws.sh rodar` + docker mcr.microsoft.com/playwright/python:v1.49.0-noble) → 41/41.
   - Deploy: `vercel deploy --cwd ~/dev/clientes/lucas-portela/demo-construtora --yes` (preview; cada deploy = URL nova). ssoProtection TIRADO só no projeto demo-construtora (autorizado gerente). demo-construtora.vercel.app NÃO é nosso. Endereço fixo demo-construtora-josueejuniors-projects.vercel.app exige deploy prod: perguntei ao Josué, sem resposta.
   - Prova/estado: ~/atendimento/atendimento-lucas-portela/estado/provas/2026-11-21-demo-construtora/LEIA.md.
-- 13:0x RESPONDIDO o prazo do Lucas: "conta da assinatura + 50% iniciais até a entrega; proposta dizia 15 a 30 dias úteis; data mais firme eu te falo" (revisar só aprovou a faixa; NÃO prometer 20 sem o Josué confirmar). Pendente: Lucas dizer horário da reunião de segunda.
 - Erro meu hoje: rodei Playwright no PC (gerente barrou). Nunca mais: print/teste fora do PC.
-
-- 13:09 (ordem do Josué) ENVIADO PDF v2: R$ 2.000 (50%+50%) + R$ 147/mês, prazo 1 a 2 semanas da assinatura+entrada; avisei que, fechando, faço um GRUPO e mando as telas lá. PDF/fonte: ~/atendimento/atendimento-lucas-portela/estado/provas/2026-11-21-demo-construtora/orcamento-v2/. Próximo: Lucas fechar → criar grupo SÓ com o Lucas (julgador 21/11; construtor só se o Lucas pedir, e pergunto antes) e mandar as telas.
 
 ## Onde está cada coisa (medido)
 - Principal: bjjreplay.com.br = pm2 `bjj-replay-front`/`back` em /opt/bjj-replay/bjjreplay.com.br no bjjserver (167.88.44.199). Banco local `back/data/volt.db`. SSH: `ssh bjjserver` (se cair, `-J aws-pesado`); sem `rg` lá (use grep).
