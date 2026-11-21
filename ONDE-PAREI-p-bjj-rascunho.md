@@ -1,30 +1,35 @@
-# ONDE-PAREI — RASCUNHO do modelo pequeno (p:bjj, 19/11/2026 10:23)
-_fonte: transcript /home/josue/.claude/projects/-home-josue-dev-clientes-lucas-portela-bjjreplay/a560d17b-7856-494c-a96a-abf556760ea3.jsonl. Rascunho: confira cada item contra o que você sabe antes de usar._
+# ONDE-PAREI — RASCUNHO do modelo pequeno (p:bjj, 21/11/2026 13:02)
+_fonte: transcript /home/josue/.claude/projects/-home-josue-dev-clientes-lucas-portela-bjjreplay/ed8618e4-8e93-4265-9a3b-136cbd72cefa.jsonl. Rascunho: confira cada item contra o que você sabe antes de usar._
 
 ## Tarefa em andamento
-BJJ Replay 19/11: validade dos vídeos em 7 dias feita, e-mails pontuais aos 4 atletas enviados e Lucas avisado; reunião ficou aguardando Lucas dizer dia/horário.
+Acompanhar o orçamento/demo do sistema da construtora da Sanny para o Lucas. Demo responsiva mais bonita já foi publicada e enviada; Lucas respondeu “Bem melhor”.
 
 ## Pendências
-- Aguardar Lucas responder dia e horário para reunião
-- Quando Lucas responder, passar confirmação da agenda para Josué
-- Se Lucas quiser aviso automático diário de luta nova, tratar como pedido novo
+- Conferir na segunda, 23/11 às 10h, se Lucas mandou o horário da reunião com o construtor
+- Se Lucas pedir preço, o número definido pelo usuário é “uns 2 mil”
+- Se quiser URL fixa da demo, precisa ok antes porque exige deploy de produção que o gerente pediu para evitar
 
 ## Decisões
-- Julgador decidiu ESPERAR antes do disparo: precisava mostrar texto, lista dos 4 atletas/números, gates e ensaio
-- Julgador decidiu FAZER usando o mesmo canal e método do aviso do campeonato, sem trocar linha nem número
-- Agente usou e-mail contato@bjjreplay.com.br porque o aviso do campeonato sai por e-mail e os atletas não têm telefone cadastrado
-- Agente decidiu não responder aos alertas do vigia por serem falso positivo: Lucas já foi respondido e a vez é dele
+- Usuário decidiu baixar o desenvolvimento para “uns 2 mil” e mandar demo responsiva ao Lucas
+- Gerente liberou a demo com condições: prints no sandbox, `entregar` aprovado, preview da Vercel e só depois o código da Guarda
+- Gerente confirmou tirar `ssoProtection` só do projeto `demo-construtora` para o Lucas conseguir abrir o preview
+- Não citar valor antes do Lucas perguntar; se perguntar, o número é “uns 2 mil”
+- Não responder ao “Bem melhor” do Lucas porque foi só confirmação, sem pedido nem pergunta
 
 ## Esperando
-- Lucas informar dia e horário que ficam bons para a reunião
-- Josué confirmar a agenda quando Lucas responder
+- Lucas informar o horário da reunião de segunda-feira com o construtor
+- Ok do usuário/gerente se for necessário usar endereço fixo com deploy de produção
 
 ## Arquivos tocados
-- /home/josue/dev/clientes/lucas-portela/bjjreplay/ONDE-PAREI.md
-- /tmp/claude-1000/-home-josue-dev-clientes-lucas-portela-bjjreplay/a560d17b-7856-494c-a96a-abf556760ea3/scratchpad/aviso.txt
-- /tmp/claude-1000/-home-josue-dev-clientes-lucas-portela-bjjreplay/a560d17b-7856-494c-a96a-abf556760ea3/scratchpad/aviso-portal.mjs
-- /root/backups/aviso-portal.mjs
-- /var/log/campeonato-avisos-entrega.log
+- /home/josue/dev/clientes/lucas-portela/demo-construtora/index.html
+- /home/josue/dev/clientes/lucas-portela/demo-construtora/app.css
+- /home/josue/dev/clientes/lucas-portela/demo-construtora/app.js
+- /home/josue/dev/clientes/lucas-portela/demo-construtora/tema.css
+- /home/josue/dev/clientes/lucas-portela/demo-construtora/.gitignore
+- /home/josue/dev/clientes/lucas-portela/demo-construtora/tools/prints.py
+- /home/josue/dev/clientes/lucas-portela/demo-construtora/tools/vivo.py
+- /home/josue/atendimento/atendimento-lucas-portela/estado/provas/2026-11-21-demo-construtora/LEIA.md
+- /tmp/claude-1000/-home-josue-dev-clientes-lucas-portela-bjjreplay/ed8618e4-8e93-4265-9a3b-136cbd72cefa/scratchpad/esb/esboco-sistema.pdf
 
 ## Próximo passo
-Conferir se Lucas respondeu sobre a reunião; se respondeu, encaminhar/confirmar com Josué, sem novo zap se a vez continuar sendo do Lucas.
+Na volta agendada de 23/11 às 10h, conferir se Lucas mandou horário ou retorno da reunião; se não houver pedido novo, não fazer nada.
