@@ -21,6 +21,8 @@ Histórico e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI.md e REG
 - 13:0x RESPONDIDO o prazo do Lucas: "conta da assinatura + 50% iniciais até a entrega; proposta dizia 15 a 30 dias úteis; data mais firme eu te falo" (revisar só aprovou a faixa; NÃO prometer 20 sem o Josué confirmar). Pendente: Lucas dizer horário da reunião de segunda.
 - Erro meu hoje: rodei Playwright no PC (gerente barrou). Nunca mais: print/teste fora do PC.
 
+- 13:09 (ordem do Josué) ENVIADO PDF v2: R$ 2.000 (50%+50%) + R$ 147/mês, prazo 1 a 2 semanas da assinatura+entrada; avisei que, fechando, faço um GRUPO e mando as telas lá. PDF/fonte: ~/atendimento/atendimento-lucas-portela/estado/provas/2026-11-21-demo-construtora/orcamento-v2/. Próximo: Lucas fechar → criar grupo (Lucas + construtor?) e mandar as telas.
+
 ## Onde está cada coisa (medido)
 - Principal: bjjreplay.com.br = pm2 `bjj-replay-front`/`back` em /opt/bjj-replay/bjjreplay.com.br no bjjserver (167.88.44.199). Banco local `back/data/volt.db`. SSH: `ssh bjjserver` (se cair, `-J aws-pesado`); sem `rg` lá (use grep).
 - ENTREGA_EXPIRA_DIAS=7 só no env salvo do pm2 (não no ecosystem). Desfazer: /root/backups/desfazer-P1116-1.sh.
