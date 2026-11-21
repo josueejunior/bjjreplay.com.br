@@ -14,6 +14,7 @@ Histórico e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI.md e REG
 - Comissão de 10% NÃO foi dita (revisar cita regra de 15%, 6 meses, pago após cliente pagar). Se ele puxar o assunto, é decisão do Josué/gerente.
 - 11:04 Lucas: "Temos que fazer mais barato. Chame o Josué humano". Chamados: 20261121-110536-afe8ac e 20261121-110652-8a9f4d (este foi ao GERENTE, que cuida de negociação de preço).
 - Gerente mandou responder sem número; 11:1x enviei: "beleza Lucas, deixa eu olhar onde dá pra ficar mais em conta e já te falo". NÃO baixei valor nem propus número.
+- Cochilo 21/11 ~12h: sem mudança; inbox sem nada novo do Lucas; enviadas.log não existe na pasta do atendimento (nada a conferir); sem CLAUDE.md na pasta do projeto.
 - PRÓXIMO: esperar o gerente passar o número que o Josué decidir; aí mandar ao Lucas (lease, `--seco`, `revisar`, janela 8–19h) e, se mudar, regerar o PDF. Prometido ao Lucas: "já te falo" (sem hora). Nenhum agendamento ativo; se demorar muito, cobrar o gerente (não o Lucas).
 
 ## Onde está cada coisa (medido)
