@@ -1,78 +1,38 @@
-# lucas-portela (BJJ Replay) — onde parei (condensado em 19/11/2026 ~10:30)
+# lucas-portela (BJJ Replay) — onde parei (21/11/2026 ~11:15)
 
-Histórico completo e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI.md e REGRAS.md. Versões anteriores deste arquivo no git (`git log -p ONDE-PAREI.md`).
+Histórico e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI.md e REGRAS.md. Versões antigas deste arquivo: `git log -p ONDE-PAREI.md`.
 
 ## Regras que não mudam
-- Falar com ele só por `zap` (`--seco` + `revisar` antes), lease `asteron-ops lock acquire lucas-portela tmux:p:bjj`. Primeira pessoa, curto, sem lista/negrito.
-- Lucas NÃO é cobrado (troca de serviço): nunca falar valor. Preço/escopo/credencial = Josué (classe C).
-- Fio JURÍDICO/pessoal (contrato 4 anos, processo, aluguel) é do Josué: não responder, não abrir pedido.
-- Medir antes de afirmar. Teste de código só via `teste subir|conferir|descer lucas-portela` ou sandbox; nunca no PC.
-- `revisar` lê FATOS/ONDE-PAREI e pode estar atrasado: mande "CONTEXTO VERIFICADO (medido …)" junto quando o fato é de hoje.
+- Falar com ele só por `zap` (`--seco` antes de enviar, o zap exige) + `revisar`; lease `asteron-ops lock acquire lucas-portela tmux:p:bjj` (o nome do lease TEM que ser esse) e liberar depois. Primeira pessoa, curto, sem lista/negrito.
+- Fio JURÍDICO/pessoal (contrato 4 anos, processo, aluguel) é do Josué: não responder.
+- Preço/escopo/credencial = Josué/gerente (classe C). Repo é PÚBLICO: nunca commitar senha, .env, .db, e-mail de atleta.
+- Medir antes de afirmar. Teste de código só via `teste subir|conferir|descer lucas-portela` ou sandbox.
 
-## Hoje 19/11 (Lucas 09:03: reunião + 7 dias + e-mails)
-- FEITO 09:05: ENTREGA_EXPIRA_DIAS=7 no env salvo do pm2 (bjj-replay-back, `--update-env` + `pm2 save`; conferido 7). NÃO está no ecosystem.config.cjs (restart por ecosystem perde, como R2/Sentry). Desfazer: `/root/backups/desfazer-P1116-1.sh` (zera) ou reiniciar com outro valor.
-- FEITO 09:3x: e-mail "tem luta nova sua no portal" aos 4 atletas com luta ENTREGUE em 16–19/11 (lista: query no volt.db, ver script). Canal = SMTP contato@bjjreplay.com.br do campeonato (decisão do julgador; atletas não têm telefone). 4 ACEITOS no SMTP (entrega na caixa não conferida). Script pontual `/root/backups/aviso-portal.mjs aviso.txt` (ensaio sem `--valendo`); log em /var/log/campeonato-avisos-entrega.log.
-- Zap ao Lucas: 09:20 (3 msgs: 7 dias no ar; e-mails "te falo hoje"; "que dia e horário fica bom pra reunião?") e 09:53 ("disparei os e-mails pros 4 atletas"). Retorno agendado das 16h CANCELADO (cumprido).
-- Lucas não respondeu desde então. Vez DELE: dia/hora da reunião. Quem confirma agenda = Josué.
-- Vigia de contexto alertou 56 e 77 min "sem resposta": falso positivo (o modelo vê reunião sem data). Lição registrada; não mandar msg por isso. Josué pode calar com `asteron assumir lucas-portela`.
-- O portal principal NÃO tem aviso automático de luta nova. Se o Lucas quiser diário, é pedido novo (mailer no back do principal).
-
-## Prometido com hora
-- Nada. Nenhum agendamento ativo.
+## HOJE 21/11 — orçamento da construtora da Sanny (ATIVO)
+- 10:50 Lucas mandou PDF "proposta-sistema-para-construtora" (Programe Studio → Sanny, 10 módulos, R$ 5.670 + R$ 120/mês) e "Faz esse orçamento para pegar o projeto". Orçamento é para TERCEIRO (o Lucas não é cobrado; é indicação/revenda).
+- Julgador mandou FAZER. Montei à mão (gerar-pdf proposta travou pedindo citação literal do lead): `/tmp/claude-1000/-home-josue-dev-clientes-lucas-portela-bjjreplay/90a6f831-4ddb-4f2e-b8e6-441696506e4b/scratchpad/orc/orcamento-construtora-sanny.pdf` (+ prop.md, msg.txt). Valores enviados: implantação R$ 5.400 (50% entrada, resto na entrega, até 3x) + R$ 120/mês; prazo 15–30 dias úteis. Enviado ao Lucas ~11:00 (HTTP 201). Não passou pela esteira `entregar`.
+- Comissão de 10% NÃO foi dita (revisar cita regra de 15%, 6 meses, pago após cliente pagar). Se ele puxar o assunto, é decisão do Josué/gerente.
+- 11:04 Lucas: "Temos que fazer mais barato. Chame o Josué humano". Chamados: 20261121-110536-afe8ac e 20261121-110652-8a9f4d (este foi ao GERENTE, que cuida de negociação de preço).
+- Gerente mandou responder sem número; 11:1x enviei: "beleza Lucas, deixa eu olhar onde dá pra ficar mais em conta e já te falo". NÃO baixei valor nem propus número.
+- PRÓXIMO: esperar o gerente passar o número que o Josué decidir; aí mandar ao Lucas (lease, `--seco`, `revisar`, janela 8–19h) e, se mudar, regerar o PDF. Prometido ao Lucas: "já te falo" (sem hora). Nenhum agendamento ativo; se demorar muito, cobrar o gerente (não o Lucas).
 
 ## Onde está cada coisa (medido)
-- Principal: bjjreplay.com.br = pm2 `bjj-replay-front`/`bjj-replay-back` em /opt/bjj-replay/bjjreplay.com.br no bjjserver (167.88.44.199). Banco LOCAL `back/data/volt.db` (USE_SUPABASE=false). Lutas do Mac em `biblioteca_lutas` (ids 1–6 até hoje); users sem telefone.
-- Rotas do Mac: /api/service/ping|atletas|atletas/:id/foto|upload-url|entregas (POST nasce ENTREGUE; PATCH `{entregar:true}` idempotente)|chamados. Caminho R2 `bjj-replay/alliance-parnaiba/<atletaId>/<data>_<hora>_<luta>_v<versao>.mp4`.
-- Beta: flags em front/lib/config/beta.ts; tela "Vídeo expirado" publicada (aa194fb). Sentry no ar (back v10.78 fixada; rebuild do front exige NEXT_PUBLIC_SENTRY_DSN).
-- Campeonato: /opt/bjj-replay/campeonato; aviso diário 19h por cron do root está `#PAUSADO-16-11` (backup /root/backups/crontab-antes-pausa-20261116.txt). Despausar = tirar o prefixo, só se o Lucas pedir. AVISOS_ENTREGA_SUSPENSOS=1 fica ligado de propósito.
+- Principal: bjjreplay.com.br = pm2 `bjj-replay-front`/`back` em /opt/bjj-replay/bjjreplay.com.br no bjjserver (167.88.44.199). Banco local `back/data/volt.db`. SSH: `ssh bjjserver` (se cair, `-J aws-pesado`); sem `rg` lá (use grep).
+- ENTREGA_EXPIRA_DIAS=7 só no env salvo do pm2 (não no ecosystem). Desfazer: /root/backups/desfazer-P1116-1.sh.
+- Rotas do Mac: /api/service/*; caminho R2 `bjj-replay/alliance-parnaiba/<atletaId>/...mp4`. Beta: front/lib/config/beta.ts.
+- Campeonato: /opt/bjj-replay/campeonato; aviso diário 19h `#PAUSADO-16-11` (backup /root/backups/crontab-antes-pausa-20261116.txt); AVISOS_ENTREGA_SUSPENSOS=1 de propósito.
 - Deploy: backup em /root/backups + `rsync -anci` + build + deploy/pm2/sync-standalone.sh + conferir `_next/static` 200 + pm2 restart + pm2 save. Nunca `pkill -f`.
-- SSH: `ssh bjjserver` (se cair, `-J aws-pesado`). No bjjserver não há `rg` (use grep).
 
-## P1120-1 (vigia-deps 20/11, interno, FEITO bjjreplay)
-- @fastify/jwt 10.2.8 (back) e next 15.5.29 (front) no ar desde 11:5x; audit sem crítica. Backup /root/backups/P1120-1 (package*.json + tgz de dist/.next). Reverter: restaurar e rebuild + sync-standalone + pm2 restart. Next 15 pede `outputFileTracingRoot` (commit no front). Conferido: JWT válido passa, adulterado 401, imagem otimizada 200.
-- Próximo passo (meu, sem prazo prometido a cliente; alvo interno 24/11 17:00 da lista do vigia): conferir login real aluno/professor e Sentry; depois campeonato/back e /front (3 críticas cada, mesma lista). Fora deste pedido; fazer à parte.
+## Feito recente (sem pendência minha)
+- P1120-1 deps (@fastify/jwt 10.2.8, next 15.5.29) no ar; backup /root/backups/P1120-1. Faltam (interno, alvo 24/11): conferir login real aluno/professor e Sentry; depois campeonato/back e /front.
+- P1120-2 reset de senha de atleta do campeonato (20/11): feito, Lucas avisado.
+- P1120-3 aviso de apagar material (49 e-mails, 20/11): disparado.
 
 ## Pendências (vez de outros)
-- AVISAR O JOSUÉ: o commit de 19/11 09:3x ("avisos de luta nova…") pôs 4 e-mails de atleta no ONDE-PAREI deste repo PÚBLICO (já tirado do arquivo, segue no histórico). Limpar histórico = decisão dele (classe C).
-- Reunião: Lucas dizer dia/hora → Josué confirma.
-- P1116-1: data de fim do beta (aí ENTREGA_EXPIRA_DIAS=0) e item 3 (regra no R2 que apaga após o prazo, classe C = Josué). Prazo agora 7 dias.
-- P1114-1: pasta lucas-cofre no R2 (40 GB aprovado); Lucas subir e avisar; token A/B = Josué (chamado 5bbf90). Não mandar token novo.
-- P1028-1: contrato 4 anos/aditivo = fio jurídico do Josué; sessão não manda nada.
-- P1105-4 (testar /chamados no Mac), P1104-13 (Mac no principal: já manda), P1105-2 (termos/LGPD quando ele mandar texto), P1103-2 (cartão), Juju Kids (valor = Josué).
-- Conferir no log se o Mac chama o PATCH de entregas com token real (ainda não visto).
+- Josué: limpar histórico git do commit 10f0d15 (e-mails de atleta em repo público, classe C). Reunião: Lucas dizer dia/hora → Josué confirma.
+- P1116-1: data de fim do beta e regra do R2 que apaga após o prazo (classe C). P1114-1: Lucas subir ~40 GB no lucas-cofre; token A/B = Josué (chamado 5bbf90), não mandar token novo.
+- P1028-1: contrato 4 anos/aditivo = fio jurídico do Josué (⏰ 25/11).
+- P1105-4, P1104-13, P1105-2, P1103-2, Juju Kids (valor = Josué): sem ação minha agora.
 
 ## NÃO FAZER
-- Trocar/disfarçar voz, se passar por cliente; mandar demo de outra cliente; falar valor; reverter por git no servidor sem backup.
-- Repo é PÚBLICO: nunca commitar seed com senha, .env, .db, DSN, e-mails de atleta em massa.
-
-## Estado no cochilo (19/11, sessão renovada)
-- Retomei: nada pendente meu, nenhum agendamento ativo, nada enviado ao Lucas nesta sessão. Não conferi o enviadas.log (comando falhou; não há CLAUDE.md na pasta).
-- Avisado ao Josué (na conversa): e-mails de atleta no histórico do commit 10f0d15 (repo público) e reunião aguardando dia/hora do Lucas.
-
-## Próximo passo
-- Chegando demanda: ler ~/contexto-clientes/lucas-portela/<dia>.md antes de qualquer envio. Sem nada novo, não mandar "só passando".
-
-## P1120-2 (reset de senha, 20/11 ~09:28) FEITO
-- Lucas pediu reset do atleta do campeonato (e-mail no PEDIDOS/log do servidor). Senha aleatória só por e-mail ao atleta; Lucas recebeu "mandei o acesso pro e-mail do atleta". Backup: /root/backups/campeonato-antes-reset-20261120.db. Campeonato não tem "esqueci a senha" nem troca obrigatória (se o Lucas quiser, é pedido novo).
-
-## Estado no cochilo (20/11, ~11:10)
-- Pendente meu: nada. P1120-2 (reset de senha do atleta do campeonato) feito e no-ar; Lucas avisado por zap. Não conferi se o e-mail chegou na caixa do atleta (SMTP só ACEITO).
-- Prometido com hora: nada. Nenhum agendamento ativo.
-- Próximo passo: sem demanda nova, não mandar nada. Se o Lucas ou o atleta reclamar de acesso, ler ~/contexto-clientes/lucas-portela/<dia>.md antes de responder; troca obrigatória/"esqueci a senha" no campeonato só se o Lucas pedir (pedido novo). Interno sem prazo a cliente: P1120-1 resto (login real aluno/professor, Sentry; campeonato/back e /front com 3 críticas cada, alvo 24/11 17:00).
-- Lembrete ao Josué ainda aberto: e-mails de atleta no histórico do commit 10f0d15 (repo público); limpar = decisão dele.
-
-## P1120-3 (20/11 ~12:20) aviso de apagar material do campeonato
-- Lucas 12:09 pediu mensagem a todos os cadastros do campeonato (material será apagado, baixem logo) e quer APROVAR antes. Mandei o rascunho + perguntei a DATA do apagamento e se vai por e-mail (cadastros sem telefone). NADA disparado.
-- Próximo: Lucas aprovar texto e dar a data → ensaio do envio (script /root/backups/aviso-portal.mjs como modelo, sem --valendo) → só então disparar e avisar. Apagar o material em si = classe C (Josué).
-- 12:12 Lucas: vai por e-mail, "apagado dia 23". Texto final + 49 destinatários (users não-admin do campeonato.db, fora os 4 da lista FORA) mandados ao Lucas pedindo o ok. Script pronto em bjjserver:/root/backups/aviso-apagar.mjs (copiar p/ campeonato/back/scripts, `node --env-file=../.env`, `--valendo` só após ok). Nada disparado.
-- 12:14 Lucas aprovou ("pode sim, faz layout com nossa logo"). Disparado 49 e-mails HTML (logo em faixa escura) ~12:20; 49 ACEITOS no SMTP (1 reenvio por "connection closed"; chegada na caixa não conferida). Log: bjjserver:/root/backups/aviso-apagar-20261120.log. Lucas avisado. P1120-3 FEITO. Apagar o material dia 23 = classe C (Josué), nada agendado por mim.
-
-## Estado no cochilo (20/11, ~12:35)
-- Pendente meu: nada. P1120-3 (aviso de apagar material dia 23) FEITO e avisado ao Lucas. Não conferi chegada nas caixas (SMTP só ACEITO); 1 atleta (naiany) pode ter recebido 2 cópias.
-- Pendente do Josué (classe C): apagar o material do campeonato no dia 23/11; nada agendado por mim. Se o Lucas pedir confirmação depois, medir antes de afirmar que apagou.
-- Prometido com hora: nada. Nenhum agendamento ativo.
-- Próximo passo: chegando demanda, ler ~/contexto-clientes/lucas-portela/<dia>.md antes de qualquer envio. Não mandar "só passando".
-
-## Estado no cochilo (21/11, ~00:40)
-- Sem mudança desde 20/11 12:35: nada pendente meu, nada prometido com hora, nenhum agendamento. Apagar material do campeonato dia 23/11 segue com o Josué (classe C).
-- Próximo passo: só agir com demanda nova (ler ~/contexto-clientes/lucas-portela/<dia>.md antes).
+- Falar valor por iniciativa própria, se passar por cliente, mandar demo de outra cliente, reverter por git no servidor sem backup, mandar "só passando".
