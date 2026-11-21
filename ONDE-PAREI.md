@@ -18,7 +18,7 @@ Histórico e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI.md e REG
   - Esteira: prints SÓ pelo sandbox (`sandbox --cpu 4 --mem 8 --disco 10 rodar <repo> "pip install playwright… && python tools/prints.py"`, tar base64 na saída). `entregar bjjreplay --prints …` (gerente mandou; `entregar lucas-portela` é barrado pelo portão visual por falso "identidade errada"). Prova em navegador real: `tools/vivo.py <URL>` na AWS (`~/scripts/teste-aws.sh rodar` + docker mcr.microsoft.com/playwright/python:v1.49.0-noble) → 41/41.
   - Deploy: `vercel deploy --cwd ~/dev/clientes/lucas-portela/demo-construtora --yes` (preview; cada deploy = URL nova). ssoProtection TIRADO só no projeto demo-construtora (autorizado gerente). demo-construtora.vercel.app NÃO é nosso. Endereço fixo demo-construtora-josueejuniors-projects.vercel.app exige deploy prod: perguntei ao Josué, sem resposta.
   - Prova/estado: ~/atendimento/atendimento-lucas-portela/estado/provas/2026-11-21-demo-construtora/LEIA.md.
-- PENDENTE AGORA (sem resposta, renovação proibiu enviar): 13:02 Lucas: "Eu dou o prazo de quanto tempo? A partir da assinatura do contrato até a entrega final?". Orçamento de 11:00 dizia 15–30 dias úteis; com o valor caindo p/ ~2 mil, prazo/escopo passa pelo `julgar` antes. Responder primeiro ao acordar (lease, --seco, revisar).
+- 13:0x RESPONDIDO o prazo do Lucas: "conta da assinatura + 50% iniciais até a entrega; proposta dizia 15 a 30 dias úteis; data mais firme eu te falo" (revisar só aprovou a faixa; NÃO prometer 20 sem o Josué confirmar). Pendente: Lucas dizer horário da reunião de segunda.
 - Erro meu hoje: rodei Playwright no PC (gerente barrou). Nunca mais: print/teste fora do PC.
 
 ## Onde está cada coisa (medido)
