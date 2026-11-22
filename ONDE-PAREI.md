@@ -1,6 +1,6 @@
-# lucas-portela (BJJ Replay) — onde parei (21/11/2026 ~13:45)
+# lucas-portela (BJJ Replay) — onde parei (21/11/2026 ~23:30)
 
-Renovação de 13:32: nada pendente meu. Último movimento no fio: Josué enviou v2 às 13:09, Lucas não respondeu depois (conferido na transcrição; enviadas.log não existe em atendimento-lucas-portela). Próximo passo: esperar Lucas fechar (criar grupo só com ele) e o horário da reunião de 23/11; agendamento 23/11 10:00 segue de pé.
+Cochilo 23:30: nada pendente meu, nada prometido com hora além do agendamento 23/11 10:00 (segue de pé). Às 23:25 o Lucas respondeu só "segunda feira só" (mostrar o sistema à equipe) e "Aqui" (sobre marcar a reunião de segunda); sem pedido de mudança, não respondi (conferido na transcrição de 21/11). Próximo passo: esperar o Lucas fechar o orçamento v2 (criar grupo só com ele) e dizer o horário da reunião de 23/11; só agir se chegar demanda nova.
 
 Histórico e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI.md e REGRAS.md. Versões antigas deste arquivo: `git log -p ONDE-PAREI.md`.
 
