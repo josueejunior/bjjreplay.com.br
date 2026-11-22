@@ -15,6 +15,7 @@ Histórico e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI.md e REG
 - Histórico do preço: 11:00 R$ 5.400 + R$ 120 (15–30 dias úteis) → 12:04 Josué "uns 3 mil" → 12:10 manutenção R$ 147 → 13:05 respondi prazo pela faixa 15–30 → 13:09 v2 de 2 mil / 1–2 semanas (vale este).
 - GRUPO: quando o Lucas fechar (assinar + entrada), criar grupo SÓ com o Lucas (julgador 21/11). Construtor só se o Lucas pedir, e pergunto antes. Depois mandar as telas lá conforme ficam prontas.
 - Reunião Lucas×construtor na SEGUNDA 23/11, horário a confirmar ("me avisa o horário"). AGENDADO: 23/11 10:00 (`20261123-1000-lucas-reuni-o-com-construtor-d`) acorda p:bjj p/ conferir.
+- 22/11 (SLA 459 min): Lucas mandou "Aqui" (23:25 de 21/11, citando o "vou marcar a reunião segunda"). Sem pergunta/pedido; NÃO respondi (ambíguo, "só passando" é proibido). Nada prometido com hora ao Lucas. Próximo passo: segunda 23/11 10:00 conferir se ele deu o horário da reunião; se vier, confirmar.
 - Esboço PDF enviado 12:13 (scratchpad antigo ed8618e4…/esb/esboco-sistema.pdf).
 - DEMO: código ~/dev/clientes/lucas-portela/demo-construtora (git local, estático: index.html, app.css, tema.css, app.js; tools/ fora do deploy por .vercelignore). v2 visual chamativo (pedido do Josué). Último commit 4fdc7d5 (fix do líder).
   - Link atual enviado ~12:59: https://demo-construtora-p8h9geup0-josueejuniors-projects.vercel.app (v1 de 12:39 ...792si5c7q... segue no ar). Lucas 12:59: "Bem melhor" (não respondi, só conversa).
