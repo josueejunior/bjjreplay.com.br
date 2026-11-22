@@ -1,6 +1,6 @@
-# lucas-portela (BJJ Replay) — onde parei (21/11/2026 ~23:30)
+# lucas-portela (BJJ Replay) — onde parei (22/11/2026 ~10:50)
 
-Cochilo 23:30: nada pendente meu, nada prometido com hora além do agendamento 23/11 10:00 (segue de pé). Às 23:25 o Lucas respondeu só "segunda feira só" (mostrar o sistema à equipe) e "Aqui" (sobre marcar a reunião de segunda); sem pedido de mudança, não respondi (conferido na transcrição de 21/11). Próximo passo: esperar o Lucas fechar o orçamento v2 (criar grupo só com ele) e dizer o horário da reunião de 23/11; só agir se chegar demanda nova.
+Cochilo 22/11 ~10:50: às 10:39 o Lucas perguntou qual token/caminho de entrega do vídeo no R2 para o BJJ Replay (não o campeonato). Respondi só ao Josué (NADA enviado ao Lucas ainda): não há token novo; o Mac usa `POST /api/service/upload-url` com o X-Service-Token que já tem, manda atletaId+luta, o site devolve url PUT assinada + objectKey `bjj-replay/alliance-parnaiba/<atletaId>/<data>_<hora>_<luta>_v<n>.mp4`; depois `POST /api/service/entregas` e `PATCH /api/service/entregas/:id {"entregar":true}`. Rascunho foi dado no chat; quem decide enviar é o Josué (se mandar: zap --seco + lease). Token A/B segue do Josué (chamado 5bbf90). Agendamento 23/11 10:00 segue de pé. Próximo passo: se o Josué pedir, enviar a resposta pelo zap; senão esperar o Lucas fechar o orçamento v2 e o horário da reunião de 23/11.
 
 Histórico e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI.md e REGRAS.md. Versões antigas deste arquivo: `git log -p ONDE-PAREI.md`.
 
