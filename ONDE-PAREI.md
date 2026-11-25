@@ -9,6 +9,8 @@
 - 20:3x gerente: Josué decide produtos/vídeos/negócio ao vivo; eu não espero nada hoje. Amanhã 08:30 (job `20261126-0830-p-bjj-ler-combinado-josue-x-lu`) leio o combinado e registro no P1125-2.
 - Material interno pronto (não enviado): ~/atendimento/atendimento-lucas-portela/material/2026-11-26-esteira-3-produtos-RASCUNHO.md. Lucas 20:24 pediu reunião amanhã antes do disparo e disse que "importante é VSL".
 - Alerta de SLA "Organizando o horário" (14:11) já respondido 15:43; gerente avisado às 20h; não reavisar.
+  Causa (medida 21h): a msg 14:11 veio com @lid SEM remoteJidAlt e o vigia-esperando a separa do telefone. Paliativo: `asteron assumir 202366041215040` até 22:56. Correção proposta NÃO aplicada (Guarda 19aeb4 barrou o teste; `pedir-liberacao` não existe no PATH): ~/atendimento/nucleo/vigia-esperando.sh.proposta-lid-20261125; decisão com o gerente. Depois de 22:56 o alerta pode voltar até 26/11 14:11.
+- Lucas 20:43 propôs a reunião de amanhã às 10h ("Ok, pode ser as 10?"); Josué conduz.
 
 ## Pendências
 - Josué: confirmar se consegue sexta 27/11 13h (chamado 20261125-194059-227c0b; gerente respondeu ao 194844-b81d16: "continue como Josué"). Não prometer presença nem comissão; se perguntar: "amanhã a gente alinha a sexta".
