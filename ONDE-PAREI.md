@@ -48,3 +48,9 @@ Histórico e regras: ~/atendimento/atendimento-lucas-portela/ONDE-PAREI.md e REG
 
 ## NÃO FAZER
 - Falar valor por iniciativa própria, se passar por cliente, mandar demo de outra cliente, reverter por git no servidor sem backup, mandar "só passando".
+
+## 25/11 ~09h — cochilo (toque das 14:00 agendado)
+- Pendente: resposta do Lucas sobre a reunião com a construtora (desmarcada 23/11; ele tentava reagendar para 25/11). Se vier data: avisar o p:vendedor (não feito, aguarda resposta).
+- Prometido com hora: toque único 25/11 14:00, job `20261125-1400-toque-unico-ao-lucas-conseguiu`. Texto (revisar APROVADO): "Lucas, conseguiu marcar com a construtora? Se já tiver o dia, me diz que eu organizo a demo". Script `~/atendimento/atendimento-lucas-portela/toque-1400-25nov.sh`: reconfere a Evolution, pula se ele escreveu desde as 08h, senão lease + zap + solta. Sem preço, sem cobrança.
+- Versão do gerente ("deixo a demo pronta") foi reprovada pelo revisar por prometer demo para a data dele.
+- Próximo passo: depois das 14h, ler a saída do job em ~/.agenda/agenda.log (enviou ou pulou). Se pulou, ler a conversa dele. Token R2 (22/11) segue pendente, sem prazo prometido.
