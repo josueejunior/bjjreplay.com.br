@@ -1,4 +1,10 @@
-# lucas-portela (BJJ Replay) — onde parei (26/11/2026 ~09:15, cochilo)
+# lucas-portela (BJJ Replay) — onde parei (26/11/2026 ~10:20, cochilo)
+
+## ATUALIZAÇÃO 26/11 10:20 (vale sobre tudo abaixo)
+- Lucas mandou áudio 10:00 (transcrito em 2026-11-26.md): REMARCOU a reunião das 10h para início da tarde, ~13h–14h (leva a esposa ao médico). Horário exato NÃO confirmado por ninguém; eu NÃO enviei nada.
+- PRÓXIMO PASSO: Josué confirma o horário com o Lucas (ele conduz). Confirmado o horário, `agendar` lembrete interno antes dela. Depois da reunião: ler 2026-11-26.md, registrar tema/formato/cidades/preço no P1125-2 e mover P1125-1 (demo sex 27/11 13h).
+- Prometido com hora: toque leve sex 27/11 09:00 segue de pé. O lembrete das 09:30 de hoje ficou obsoleto (reunião mudou).
+
 
 ## ATUALIZAÇÃO 26/11 (vale sobre o resto abaixo)
 - Combinado 25/11 JÁ registrado no P1125-2 (3 produtos máx.; Lucas vende/grava, Josué produz; VSL por produto; R$ 1000 tráfego; cidades vizinhas; reunião HOJE 10h). 2026-11-26.md existe: Lucas 08:58 mandou link do Vade Mecum Trabalhista p/ IA (R$ 67) "vamos criar um produto assim" + "só agentes ou só instruções.md?". JOSUÉ respondeu ele mesmo 08:59-09:00 pelo celular. Eu NÃO enviei nada hoje.
