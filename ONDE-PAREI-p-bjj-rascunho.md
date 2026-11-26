@@ -1,35 +1,35 @@
-# ONDE-PAREI — RASCUNHO do modelo pequeno (p:bjj, 21/11/2026 13:02)
-_fonte: transcript /home/josue/.claude/projects/-home-josue-dev-clientes-lucas-portela-bjjreplay/ed8618e4-8e93-4265-9a3b-136cbd72cefa.jsonl. Rascunho: confira cada item contra o que você sabe antes de usar._
+# ONDE-PAREI — RASCUNHO do modelo pequeno (p:bjj, 25/11/2026 20:00)
+_fonte: transcript /home/josue/.claude/projects/-home-josue-dev-clientes-lucas-portela-bjjreplay/1c383a60-b1de-4f92-ad8e-4452dcd0b5cc.jsonl. Rascunho: confira cada item contra o que você sabe antes de usar._
 
 ## Tarefa em andamento
-Acompanhar o orçamento/demo do sistema da construtora da Sanny para o Lucas. Demo responsiva mais bonita já foi publicada e enviada; Lucas respondeu “Bem melhor”.
+Lucas Portela/BJJ Replay: Josué assumiu a conversa ao vivo desde 19:53 por 3h; até 22:57 não enviar nada ao Lucas, só registrar combinados. P1125-2 está em andamento sobre produtos prontos por nicho, tráfego e VSL.
 
 ## Pendências
-- Conferir na segunda, 23/11 às 10h, se Lucas mandou o horário da reunião com o construtor
-- Se Lucas pedir preço, o número definido pelo usuário é “uns 2 mil”
-- Se quiser URL fixa da demo, precisa ok antes porque exige deploy de produção que o gerente pediu para evitar
+- P1125-1: Josué ainda precisa confirmar se consegue sexta 27/11 às 13h para a reunião/demo da BJJ; chamado 20261125-194059-227c0b sem resposta
+- P1125-2: registrar o que Josué e Lucas combinarem sobre site, agentes de IA, sistemas prontos por nicho, esteira de produtos, R$ 1.000 de tráfego e VSL
+- Horário da demo/reunião prévia ainda não ficou definido
+- Vigia ainda conta pendência antiga de 14:11, mas ela já foi respondida; baixa é com o gerente
 
 ## Decisões
-- Usuário decidiu baixar o desenvolvimento para “uns 2 mil” e mandar demo responsiva ao Lucas
-- Gerente liberou a demo com condições: prints no sandbox, `entregar` aprovado, preview da Vercel e só depois o código da Guarda
-- Gerente confirmou tirar `ssoProtection` só do projeto `demo-construtora` para o Lucas conseguir abrir o preview
-- Não citar valor antes do Lucas perguntar; se perguntar, o número é “uns 2 mil”
-- Não responder ao “Bem melhor” do Lucas porque foi só confirmação, sem pedido nem pergunta
+- Gerente 19:5x: PARE; Josué está falando ao vivo com Lucas desde 19:53, assumir ativo por 3h; não enviar nada ao Lucas, só registrar o que for combinado
+- Antes do PARE, foi enviada às 19:51 uma versão aprovada pelo revisar com 2 caminhos: atendente IA WhatsApp e site, com preços conforme PACOTES/FATOS; não foi prometida presença sexta 13h nem comissão
+- Revisor reprovou o texto literal do Josué por conteúdo; agente só enviou versão ajustada e APROVADA
+- Não prometer sexta 13h sem confirmação de Josué; se Lucas perguntar, dizer que amanhã alinham a sexta
 
 ## Esperando
-- Lucas informar o horário da reunião de segunda-feira com o construtor
-- Ok do usuário/gerente se for necessário usar endereço fixo com deploy de produção
+- Resposta do Josué ao chamado 20261125-194059-227c0b sobre sexta 27/11 às 13h
+- Josué concluir/encaminhar a conversa ao vivo com Lucas sobre VSL, tráfego e esteira de produtos
+- Definição de horário para demo/reunião prévia
 
 ## Arquivos tocados
-- /home/josue/dev/clientes/lucas-portela/demo-construtora/index.html
-- /home/josue/dev/clientes/lucas-portela/demo-construtora/app.css
-- /home/josue/dev/clientes/lucas-portela/demo-construtora/app.js
-- /home/josue/dev/clientes/lucas-portela/demo-construtora/tema.css
-- /home/josue/dev/clientes/lucas-portela/demo-construtora/.gitignore
-- /home/josue/dev/clientes/lucas-portela/demo-construtora/tools/prints.py
-- /home/josue/dev/clientes/lucas-portela/demo-construtora/tools/vivo.py
-- /home/josue/atendimento/atendimento-lucas-portela/estado/provas/2026-11-21-demo-construtora/LEIA.md
-- /tmp/claude-1000/-home-josue-dev-clientes-lucas-portela-bjjreplay/ed8618e4-8e93-4265-9a3b-136cbd72cefa/scratchpad/esb/esboco-sistema.pdf
+- /home/josue/atendimento/daily/2026-11-25/p_bjj.md
+- /tmp/claude-1000/-home-josue-dev-clientes-lucas-portela
+- /tmp/claude-1000/-home-josue-dev-clientes-lucas-portela-bjjreplay/1c383a60-b1de-4f92-ad8e-4452dcd0b5cc/scratchpad/m.txt
+- /tmp/claude-1000/-home-josue-dev-clientes-lucas-portela-bjjreplay/1c383a60-b1de-4f92-ad8e-4452dcd0b5cc/scratchpad/m3.txt
+- /tmp/claude-1000/-home-josue-dev-clientes-lucas-portela-bjjreplay/1c383a60-b1de-4f92-ad8e-4452dcd0b5cc/scratchpad/m4.txt
+- /tmp/claude-1000/-home-josue-dev-clientes-lucas-portela-bjjreplay/1c383a60-b1de-4f92-ad8e-4452dcd0b5cc/scratchpad/m5.txt
+- /tmp/claude-1000/-home-josue-dev-clientes-lucas-portela-bjjreplay/1c383a60-b1de-4f92-ad8e-4452dcd0b5cc/scratchpad/m6.txt
+- /tmp/claude-1000/-home-josue-dev-clientes-lucas-portela-bjjreplay/1c383a60-b1de-4f92-ad8e-4452dcd0b5cc/scratchpad/m7.txt
 
 ## Próximo passo
-Na volta agendada de 23/11 às 10h, conferir se Lucas mandou horário ou retorno da reunião; se não houver pedido novo, não fazer nada.
+Conferir contexto e status do assumir; se ainda estiver assumido pelo Josué, não enviar nada e só registrar novos combinados no P1125-2.
