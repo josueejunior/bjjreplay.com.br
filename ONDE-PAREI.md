@@ -1,4 +1,14 @@
-# lucas-portela (BJJ Replay) — onde parei (25/11/2026 ~20h, renovação de contexto)
+# lucas-portela (BJJ Replay) — onde parei (26/11/2026 ~09:15, cochilo)
+
+## ATUALIZAÇÃO 26/11 (vale sobre o resto abaixo)
+- Combinado 25/11 JÁ registrado no P1125-2 (3 produtos máx.; Lucas vende/grava, Josué produz; VSL por produto; R$ 1000 tráfego; cidades vizinhas; reunião HOJE 10h). 2026-11-26.md existe: Lucas 08:58 mandou link do Vade Mecum Trabalhista p/ IA (R$ 67) "vamos criar um produto assim" + "só agentes ou só instruções.md?". JOSUÉ respondeu ele mesmo 08:59-09:00 pelo celular. Eu NÃO enviei nada hoje.
+- Decisão do gerente (chamado 20261126-085922-0933be): produto em 2 degraus: base = acervo .md; acima = agente pronto que usa o acervo (mensal). Tema e preço fecham na reunião 10h, não por chat. Texto sugerido ao Lucas NÃO enviado (Josué conduz); só mandar se o Josué pedir (assumir, lease tmux:p:bjj, --seco, revisar).
+- RESUMO.md do atendimento atualizado (item 0, 26/11). Os 3 vencidos (25/11 10:00): P1028-1 contrato/aditivo, P1114-1 chave R2, P1116-1 ok classe C do item 3: vez do JOSUÉ nos três (registrado nas notas).
+- Prometido com hora: lembrete interno 09:30 de hoje (job `20261126-0930-lembrete-interno-reuni-o-com-l`, chamar-josue); toque leve sex 27/11 09:00 (job 20261127-0900-...) segue de pé.
+- PRÓXIMO PASSO: nada a enviar ao Lucas. Depois da reunião das 10h, ler 2026-11-26.md, registrar o que fechou (tema, formato, cidades, preço) no P1125-2 e mover P1125-1 (demo sex 27/11 13h). Cidades do Lucas ainda não chegaram. Pendente do Josué: textos das VSL e material.
+
+---- (abaixo: estado de 25/11 ~20h) ----
+
 
 ## ESTADO AGORA
 - **Josué assumiu a conversa ao vivo pelo celular desde 19:53** (`asteron assumiu lucas-portela` = até 22:57). A sessão NÃO envia nada ao Lucas; só registra o combinado. Gerente 19:5x: "PARE".
