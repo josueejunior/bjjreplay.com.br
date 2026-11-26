@@ -1,4 +1,9 @@
-# lucas-portela (BJJ Replay) — onde parei (26/11/2026 ~10:20, cochilo)
+# lucas-portela (BJJ Replay) — onde parei (26/11/2026 ~11:15)
+
+## ATUALIZAÇÃO 26/11 11:15 (P1125-2, produto do Lucas)
+- Acervo Trabalhista para IA pronto em ~/dev/clientes/lucas-portela/vademecum-trabalhista (41 normas, roteador, 5 prompts, prévia da página; agente do degrau 2 só como roteiro). Cadastro da esteira: lucas-acervo-trabalhista.
+- Gerente: prévia da reunião é interna (sem esteira). Esteira só na versão final com nome/preço/garantia que o Lucas escolher. NADA enviado ao Lucas. 3 perguntas em material/2026-11-26-reuniao-3-perguntas-acervo.md.
+- PRÓXIMO PASSO: após a reunião, ler 2026-11-26.md, aplicar o escolhido, tirar rótulos de sugestão, checkout, `lider revisar`, avisar o Lucas (lease tmux:p:bjj, --seco, revisar).
 
 ## ATUALIZAÇÃO 26/11 10:20 (vale sobre tudo abaixo)
 - Lucas mandou áudio 10:00 (transcrito em 2026-11-26.md): REMARCOU a reunião das 10h para início da tarde, ~13h–14h (leva a esposa ao médico). Horário exato NÃO confirmado por ninguém; eu NÃO enviei nada.
