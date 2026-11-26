@@ -12,6 +12,8 @@
   Causa (medida 21h): a msg 14:11 veio com @lid SEM remoteJidAlt e o vigia-esperando a separa do telefone. Paliativo: `asteron assumir 202366041215040` até 22:56. Correção proposta NÃO aplicada (Guarda 19aeb4 barrou o teste; `pedir-liberacao` não existe no PATH): ~/atendimento/nucleo/vigia-esperando.sh.proposta-lid-20261125; decisão com o gerente. Depois de 22:56 o alerta pode voltar até 26/11 14:11.
 - Lucas 20:43 propôs a reunião de amanhã às 10h ("Ok, pode ser as 10?"); Josué conduz.
 
+- PRÓXIMO PASSO (cochilo 25/11 ~21h): nada a enviar hoje. 26/11 08:30 o job acorda p:bjj: ler o combinado (reunião 10h? produtos/VSL/cidades) e registrar no P1125-2; se o gerente decidiu sobre a correção do vigia (@lid), seguir a decisão (backup do original: vigia-esperando.sh.bak-20261125-lid).
+
 ## Pendências
 - Josué: confirmar se consegue sexta 27/11 13h (chamado 20261125-194059-227c0b; gerente respondeu ao 194844-b81d16: "continue como Josué"). Não prometer presença nem comissão; se perguntar: "amanhã a gente alinha a sexta".
 - P1125-1 (horário da demo/reunião prévia, "aguardando", prazo sex 09:00). P1125-2 (produtos/tráfego, "fazendo").
