@@ -8,7 +8,6 @@
 > Promessas/jobs com hora: 27/11 11:00 (20261127-1100) acorda p:bjj p/ conferir a demo; 02/12 09:00 (20261202-0900) pausa os 3 vencidos se o dono calar.
 > PRÓXIMO PASSO ao acordar: ler ~/contexto-clientes/lucas-portela/2026-11-27.md. Demo confirmada = fazer às 13h (sem gerente). Veio nome/preço/garantia = aplicar na página do vademecum-trabalhista, tirar banner/rótulos de prévia, ligar checkout, rodar esteira, só então avisar o Lucas.
 
-> Próximo passo ao acordar: se for depois da reunião (~13h-14h), ler ~/contexto-clientes/lucas-portela/2026-11-26.md e seguir "Pendências" 2-3 abaixo.
 
 ## Tarefa em andamento: P1125-2, produto do Lucas "Acervo Trabalhista para IA" (estado: aguardando)
 - PRONTO: ~/dev/clientes/lucas-portela/vademecum-trabalhista (git local, último commit "agente como proposta de 2ª etapa").
