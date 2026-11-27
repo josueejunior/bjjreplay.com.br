@@ -1,4 +1,10 @@
-# lucas-portela (BJJ Replay) — onde parei (27/11/2026 ~13:20)
+# lucas-portela (BJJ Replay) — onde parei (27/11/2026 ~13:30, cochilo)
+> FEITO: P1127-1 orçamento do Sanny ENVIADO 13:13:30 (texto final do Josué, revisar APROVADO): etapa 1 R$ 2.000 (1.000 entrada + 1.000 entrega), 15 dias úteis, R$ 197/mês; etapa 2 +R$ 2.600. Josué mesmo escreveu 13:19 no zap: "Se ficar pesado a segunda parte fazemos por 1 mil o que achar melhor" (etapa 2 pode cair a R$ 1.000, dito pelo Josué). P1125-1 encerrado (reunião feita pelo Lucas 12:20).
+> PENDENTE / O QUE O LUCAS ESPERA: nada nosso; esperamos ele dizer se apresenta assim ao Sanny. Sem prazo dele.
+> PRÓXIMO: resposta do Lucas → aceite = entrada R$ 1.000 + contrato (cobrança/contrato = Josué; `julgar` antes). Prazo de 15 dias úteis conta do aceite. Não repetir valores 5.100/4.500/297 (substituídos). Repasse 35% ao Lucas não vai ao zap.
+> Promessas com hora: nenhuma nova. Segue 02/12 09:00 job (P1028-1/P1114-1/P1116-1 com o Josué).
+
+## anterior (13:20)
 > 12:59 Lucas fez SOZINHO a reunião com o Sanny (ligou 12:20, antecipou) = a "construtora" do P1125-1. Pede valor + mensal + prazo da 1ª etapa (construção = fase 2); "é o primeiro cliente, pra gente startar". Pedido novo P1127-1.
 > Enviado 13:03: "beleza, te passo quanto custa desenvolver a primeira etapa e qual fica a mensalidade dela". NADA de valor enviado ainda.
 > Josué fechou 13:1x (substitui os 5.100/4.500 do gerente): etapa 1 R$ 2.000 (1.000+1.000), 15 dias úteis, R$ 197/mês; etapa 2 +R$ 2.600. Texto final dele: ~/atendimento/atendimento-lucas-portela/material/sanny-2026-11-27/msg-orcamento-josue.txt.
