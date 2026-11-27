@@ -1,4 +1,5 @@
-# lucas-portela (BJJ Replay) — onde parei (27/11/2026 ~13:30, cochilo)
+# lucas-portela (BJJ Replay) — onde parei (27/11/2026 ~13:40)
+> 13:35 Lucas: "Vou ja analisar" (sobre o orçamento do Sanny). Não respondi (nada a dizer); inbox fechado à mão, P1127-1 segue aguardando com nota.
 > FEITO: P1127-1 orçamento do Sanny ENVIADO 13:13:30 (texto final do Josué, revisar APROVADO): etapa 1 R$ 2.000 (1.000 entrada + 1.000 entrega), 15 dias úteis, R$ 197/mês; etapa 2 +R$ 2.600. Josué mesmo escreveu 13:19 no zap: "Se ficar pesado a segunda parte fazemos por 1 mil o que achar melhor" (etapa 2 pode cair a R$ 1.000, dito pelo Josué). P1125-1 encerrado (reunião feita pelo Lucas 12:20).
 > PENDENTE / O QUE O LUCAS ESPERA: nada nosso; esperamos ele dizer se apresenta assim ao Sanny. Sem prazo dele.
 > PRÓXIMO: resposta do Lucas → aceite = entrada R$ 1.000 + contrato (cobrança/contrato = Josué; `julgar` antes). Prazo de 15 dias úteis conta do aceite. Não repetir valores 5.100/4.500/297 (substituídos). Repasse 35% ao Lucas não vai ao zap.
