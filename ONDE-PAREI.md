@@ -3,6 +3,10 @@
 > Ata gerente 27/11: demo confirmada = faz, sem precisar dele. Job 20261127-1100 acorda p:bjj para conferir; sem resposta = avisar p:gerente-atendimento, sem novo toque.
 > P1028-1, P1114-1, P1116-1: decisão pedida ao dono numa mensagem só (chamado 20261127-081758-94ffb1). Sem resposta até 02/12 = pausar com nota (job 20261202-0900). Nada sobre eles foi ao Lucas (P1028-1 é fio jurídico).
 > Jobs 27/11 09:00 (toque leve) e 12:30 cancelados (obsoletos). FATOS.md do revisor ganhou a fala do Lucas 25/11 19:35 (demo 13h).
+> COCHILO 27/11 ~08:5x. Feito: 3 msgs ao Lucas 08:30 (demo 13h mantida? / nome-preço-garantia do Acervo / sugestão R$ 67, 7 dias, ele decide); chamado ao dono 20261127-081758-94ffb1 (P1028-1, P1114-1, P1116-1).
+> Cliente espera de nós: nada prometido com hora. Nós esperamos dele: confirmar a demo de hoje 13h (P1125-1, prazo 11:00) e escolher nome/preço/garantia (P1125-2).
+> Promessas/jobs com hora: 27/11 11:00 (20261127-1100) acorda p:bjj p/ conferir a demo; 02/12 09:00 (20261202-0900) pausa os 3 vencidos se o dono calar.
+> PRÓXIMO PASSO ao acordar: ler ~/contexto-clientes/lucas-portela/2026-11-27.md. Demo confirmada = fazer às 13h (sem gerente). Veio nome/preço/garantia = aplicar na página do vademecum-trabalhista, tirar banner/rótulos de prévia, ligar checkout, rodar esteira, só então avisar o Lucas.
 
 > Próximo passo ao acordar: se for depois da reunião (~13h-14h), ler ~/contexto-clientes/lucas-portela/2026-11-26.md e seguir "Pendências" 2-3 abaixo.
 
