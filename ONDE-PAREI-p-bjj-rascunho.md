@@ -1,35 +1,48 @@
-# ONDE-PAREI — RASCUNHO do modelo pequeno (p:bjj, 25/11/2026 20:00)
-_fonte: transcript /home/josue/.claude/projects/-home-josue-dev-clientes-lucas-portela-bjjreplay/1c383a60-b1de-4f92-ad8e-4452dcd0b5cc.jsonl. Rascunho: confira cada item contra o que você sabe antes de usar._
+# ONDE-PAREI — RASCUNHO do modelo pequeno (p:bjj, 26/11/2026 11:15)
+_fonte: transcript /home/josue/.claude/projects/-home-josue-dev-clientes-lucas-portela-bjjreplay/ab2936ee-5acd-44cd-a06a-9f4a2d5f1b26.jsonl. Rascunho: confira cada item contra o que você sabe antes de usar._
 
 ## Tarefa em andamento
-Lucas Portela/BJJ Replay: Josué assumiu a conversa ao vivo desde 19:53 por 3h; até 22:57 não enviar nada ao Lucas, só registrar combinados. P1125-2 está em andamento sobre produtos prontos por nicho, tráfego e VSL.
+P1125-2 (Lucas): Acervo Trabalhista para IA pronto como prévia interna; aguardando reunião da tarde para Lucas escolher nome, preço e garantia antes de checkout/esteira final.
 
 ## Pendências
-- P1125-1: Josué ainda precisa confirmar se consegue sexta 27/11 às 13h para a reunião/demo da BJJ; chamado 20261125-194059-227c0b sem resposta
-- P1125-2: registrar o que Josué e Lucas combinarem sobre site, agentes de IA, sistemas prontos por nicho, esteira de produtos, R$ 1.000 de tráfego e VSL
-- Horário da demo/reunião prévia ainda não ficou definido
-- Vigia ainda conta pendência antiga de 14:11, mas ela já foi respondida; baixa é com o gerente
+- Josué confirmar horário exato da reunião da tarde com Lucas
+- Após a reunião, ler 2026-11-26.md
+- Aplicar nome, preço e garantia escolhidos pelo Lucas
+- Tirar banner de prévia interna e rótulos de sugestão da página
+- Ligar checkout; botão Comprar ainda não aponta para nada
+- Rodar esteira final por lucas-acervo-trabalhista
+- Avisar Lucas pelo zap com lease, --seco e revisar
+- Agente do degrau 2 ainda não foi montado; só há roteiro
 
 ## Decisões
-- Gerente 19:5x: PARE; Josué está falando ao vivo com Lucas desde 19:53, assumir ativo por 3h; não enviar nada ao Lucas, só registrar o que for combinado
-- Antes do PARE, foi enviada às 19:51 uma versão aprovada pelo revisar com 2 caminhos: atendente IA WhatsApp e site, com preços conforme PACOTES/FATOS; não foi prometida presença sexta 13h nem comissão
-- Revisor reprovou o texto literal do Josué por conteúdo; agente só enviou versão ajustada e APROVADA
-- Não prometer sexta 13h sem confirmação de Josué; se Lucas perguntar, dizer que amanhã alinham a sexta
+- Gerente (20261126-110658-a97836): opção (b); prévia da reunião é interna, Josué/vendedor mostra na tela, e a esteira só roda na versão final com nome, preço e garantia escolhidos pelo Lucas.
+- Gerente: nada ao Lucas antes da reunião.
+- Gerente: Acervo Trabalhista não é produto do BJJ Replay; criou-se cadastro próprio lucas-acervo-trabalhista com identidade Lucas Portela, acervo jurídico trabalhista para IA.
+- P1125-2 foi registrado como aguardando.
 
 ## Esperando
-- Resposta do Josué ao chamado 20261125-194059-227c0b sobre sexta 27/11 às 13h
-- Josué concluir/encaminhar a conversa ao vivo com Lucas sobre VSL, tráfego e esteira de produtos
-- Definição de horário para demo/reunião prévia
+- Lucas escolher nome da marca, preço e garantia na reunião da tarde
+- Josué confirmar horário exato da reunião da tarde
+- Notas da reunião em 2026-11-26.md
 
 ## Arquivos tocados
-- /home/josue/atendimento/daily/2026-11-25/p_bjj.md
-- /tmp/claude-1000/-home-josue-dev-clientes-lucas-portela
-- /tmp/claude-1000/-home-josue-dev-clientes-lucas-portela-bjjreplay/1c383a60-b1de-4f92-ad8e-4452dcd0b5cc/scratchpad/m.txt
-- /tmp/claude-1000/-home-josue-dev-clientes-lucas-portela-bjjreplay/1c383a60-b1de-4f92-ad8e-4452dcd0b5cc/scratchpad/m3.txt
-- /tmp/claude-1000/-home-josue-dev-clientes-lucas-portela-bjjreplay/1c383a60-b1de-4f92-ad8e-4452dcd0b5cc/scratchpad/m4.txt
-- /tmp/claude-1000/-home-josue-dev-clientes-lucas-portela-bjjreplay/1c383a60-b1de-4f92-ad8e-4452dcd0b5cc/scratchpad/m5.txt
-- /tmp/claude-1000/-home-josue-dev-clientes-lucas-portela-bjjreplay/1c383a60-b1de-4f92-ad8e-4452dcd0b5cc/scratchpad/m6.txt
-- /tmp/claude-1000/-home-josue-dev-clientes-lucas-portela-bjjreplay/1c383a60-b1de-4f92-ad8e-4452dcd0b5cc/scratchpad/m7.txt
+- ~/dev/clientes/lucas-portela/vademecum-trabalhista/scripts/montar.py
+- ~/dev/clientes/lucas-portela/vademecum-trabalhista/acervo/_catalog.json
+- ~/dev/clientes/lucas-portela/vademecum-trabalhista/COMO_USAR_NA_IA.md
+- ~/dev/clientes/lucas-portela/vademecum-trabalhista/agente/README.md
+- ~/dev/clientes/lucas-portela/vademecum-trabalhista/site/index.html
+- ~/dev/clientes/lucas-portela/vademecum-trabalhista/previa/landing-390x2400.png
+- ~/dev/clientes/lucas-portela/vademecum-trabalhista/previa/landing-390x2600.png
+- ~/dev/clientes/lucas-portela/vademecum-trabalhista/previa/landing-1280x2300.png
+- ~/dev/clientes/lucas-portela/vademecum-trabalhista/dist/acervo-trabalhista-ia.zip
+- ~/atendimento/nucleo/clientes/lucas-acervo-trabalhista.conf
+- ~/atendimento/atendimento-lucas-acervo-trabalhista/estado
+- ~/atendimento/atendimento-lucas-portela/material/2026-11-26-reuniao-3-perguntas-acervo.md
+- ~/dev/clientes/lucas-portela/bjjreplay/ONDE-PAREI.md
+
+## Promessas com hora
+- Lucas: toque leve — sex 27/11 09:00
+- Lucas: demo da construtora — SEXTA 27/11 13h
 
 ## Próximo passo
-Conferir contexto e status do assumir; se ainda estiver assumido pelo Josué, não enviar nada e só registrar novos combinados no P1125-2.
+Confirmar se a reunião da tarde já aconteceu; se sim, ler 2026-11-26.md e aplicar as escolhas do Lucas.

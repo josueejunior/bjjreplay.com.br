@@ -1,4 +1,5 @@
-# lucas-portela (BJJ Replay) — onde parei (26/11/2026 ~11:30, renovação de contexto)
+# lucas-portela (BJJ Replay) — onde parei (26/11/2026 ~11:30, renovação de contexto; cochilo 11:30: sem mudança, nada enviado, enviadas.log vazio)
+> Próximo passo ao acordar: se for depois da reunião (~13h-14h), ler ~/contexto-clientes/lucas-portela/2026-11-26.md e seguir "Pendências" 2-3 abaixo.
 
 ## Tarefa em andamento: P1125-2, produto do Lucas "Acervo Trabalhista para IA" (estado: aguardando)
 - PRONTO: ~/dev/clientes/lucas-portela/vademecum-trabalhista (git local, último commit "agente como proposta de 2ª etapa").
