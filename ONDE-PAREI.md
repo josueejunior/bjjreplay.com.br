@@ -1,5 +1,6 @@
 # lucas-portela (BJJ Replay) — onde parei (27/11/2026 09:12)
 
+> COCHILO 27/11 ~09:25. Feito: tudo do bloco HOJE abaixo. Cliente espera de nós: a página do Acervo para aprovar (sem hora prometida). Nós esperamos: Lucas confirmar horário da construtora; Josué (valor da reunião 13h, chamado 20261127-085752-6cb876; conta de pagamento); esteira consertada. Promessas/jobs: 11:00 (20261127-1100) conferir construtora; 02/12 09:00 (20261202-0900). PRÓXIMO PASSO ao acordar: ler ~/contexto-clientes/lucas-portela/2026-11-27.md; esteira ok = líder com os 3 prints e envio dos faltantes com lease/--seco.
 ## HOJE 27/11 — conversa e estado
 - O que o Lucas disse: 08:56 "Isso" (construtora hoje 13h) + "Vou confirmar com ele"; 08:57 "Na verdade é uma reunião para entender melhor o que ele precisa e tentar fechar o valor"; 08:57 "Vamos fazer esse" (respondendo à sugestão das 08:30 = Acervo Trabalhista IA, R$ 67, 7 dias).
 - O que saiu (zap, celular, lease tmux:p:bjj, --seco): 08:28-08:30 as 3 perguntas (demo / nome-preço-garantia / sugestão); 08:57 "entendi, me avisa quando ele confirmar o horario"; 08:58 "fechado, vou aplicar na pagina" (revisar APROVADO). Nenhuma imagem foi enviada hoje.
