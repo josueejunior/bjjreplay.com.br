@@ -1,4 +1,8 @@
-# lucas-portela (BJJ Replay) — onde parei (27/11/2026 ~10:25)
+# lucas-portela (BJJ Replay) — onde parei (27/11/2026 ~11:50)
+> 11:50 cochilo: 11:00 cumprido — 13h NÃO confirmada; aviso ENTREGUE ao p:gerente-atendimento 11:00:28; P1125-1 aguardando, falta "confirmação da construtora", prazo 12:30. RESUMO do atendimento atualizado (reunião, 2 degraus, vez nos vencidos). Nada enviado ao Lucas desde 08:58.
+> NOVA REGRA 11:2x (p:gerente): zap recusa texto sem `revisar` APROVADO nas últimas 12 h; revisar no texto EXATO → APROVADO → zap, nunca encadeado sem o gate.
+> PRÓXIMO PASSO ao acordar: ver `zap log lucas-portela` e o arquivo do dia; se Lucas confirmou horário → pedidos P1125-1 e avisar p:gerente-atendimento/Josué (valor/presença = Josué); sem resposta até 12:30 → só registrar, sem novo toque. Vencido P1125-2 (26/11 20:05) = vez do Josué (conta do checkout + ok escopo sem agente). P1028-1/P1114-1/P1116-1 com o Josué até 02/12 09:00 (job 20261202-0900).
+> Prometido com hora: 27/11 13:00 reunião construtora (não confirmada); 02/12 09:00 job. Ao Lucas nada.
 
 > Renovação de contexto. Nada enviado ao Lucas desde 08:58. Lease do zap hoje: `atendimento:lucas-portela` (at:lucas-portela); esta sessão é tmux:p:bjj e NÃO responde pelo zap enquanto outro tiver o lease.
 > 10:25 cochilo: reconferi 09:45 — nada novo do Lucas desde 09:01, enviadas.log sem envio depois; nada enviado por mim.
