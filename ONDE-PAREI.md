@@ -1,4 +1,9 @@
-# lucas-portela (BJJ Replay) — onde parei (26/11/2026 ~11:30, renovação de contexto; cochilo 11:30: sem mudança, nada enviado, enviadas.log vazio)
+# lucas-portela (BJJ Replay) — onde parei (27/11/2026 08:3x, ata do gerente aplicada)
+> 27/11 08:30 enviado ao Lucas (zap, celular, lease tmux:p:bjj, --seco + revisar APROVADO, 3 msgs): "bom dia Lucas vc tinha falado que a demo com a construtora ficou pra hoje 13h ta mantida?" / "e do acervo trabalhista me diz qual nome preço e garantia vc quer na pagina" / "pensei no nome Acervo Trabalhista IA e em cobrar R$ 67 com 7 dias de garantia mas e so sugestao vc decide".
+> Ata gerente 27/11: demo confirmada = faz, sem precisar dele. Job 20261127-1100 acorda p:bjj para conferir; sem resposta = avisar p:gerente-atendimento, sem novo toque.
+> P1028-1, P1114-1, P1116-1: decisão pedida ao dono numa mensagem só (chamado 20261127-081758-94ffb1). Sem resposta até 02/12 = pausar com nota (job 20261202-0900). Nada sobre eles foi ao Lucas (P1028-1 é fio jurídico).
+> Jobs 27/11 09:00 (toque leve) e 12:30 cancelados (obsoletos). FATOS.md do revisor ganhou a fala do Lucas 25/11 19:35 (demo 13h).
+
 > Próximo passo ao acordar: se for depois da reunião (~13h-14h), ler ~/contexto-clientes/lucas-portela/2026-11-26.md e seguir "Pendências" 2-3 abaixo.
 
 ## Tarefa em andamento: P1125-2, produto do Lucas "Acervo Trabalhista para IA" (estado: aguardando)
