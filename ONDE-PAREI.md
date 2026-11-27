@@ -1,4 +1,8 @@
-# lucas-portela (BJJ Replay) — onde parei (27/11/2026 ~14:00, cochilo)
+# lucas-portela (BJJ Replay) — onde parei (27/11/2026 ~14:50, cochilo)
+> FEITO hoje (Sanny, cliente do Lucas): orçamento texto 13:13 (P1127-1); 13:47 lembrete do CRM no painel/etapa 2; 14:13 API oficial da Meta no nome do Sanny pago por uso (P1127-2; agente de IA incluso na etapa 2, Josué 13:48); 14:3x PDF 'Proposta Sanny.pdf' com telas e VALORES EM BRANCO enviado (P1127-3 prévia, líder+revisar APROVADO).
+> PENDENTE / CLIENTE ESPERA: nada nosso. Esperamos o Lucas comentar o PDF e apresentar ao Sanny. Sem prazo dele.
+> Promessas com hora: nenhuma nova; segue job 02/12 09:00 (P1028-1/P1114-1/P1116-1 com o Josué).
+> PRÓXIMO: Lucas pede ajuste → editar ~/atendimento/atendimento-lucas-portela/material/sanny-2026-11-27/orcamento/orcamento-sanny.html, chromium --headless --no-pdf-header-footer --print-to-pdf, `LIDER_PROJETO=<pasta> ~/atendimento/nucleo/lider revisar lucas-sanny --prints pagina-*.png`, revisar, `zap arquivo`. Aceite do Sanny → entrada + contrato (Josué). Vencidos P1125-2 e os 3 do dono seguem parados (ver rodada 14h).
 > FEITO: orçamento Sanny enviado 13:13; Lucas 13:35 "Vou ja analisar"; 13:44 áudio respondido (lembrete do CRM fica no painel do sistema, CRM é etapa 2; revisar APROVADO, enviado).
 > PENDENTE: P1127-1 aguardando o Lucas decidir/apresentar ao Sanny. P1127-2 valor/mensalidade do agente de IA do Sanny = Josué (chamado 20261127-134809-ebb9c1). Não dar valor de agente antes dele.
 > CLIENTE ESPERA: retorno do valor do agente (sem prazo dito). Promessas com hora: nenhuma nova; segue job 02/12 09:00.
