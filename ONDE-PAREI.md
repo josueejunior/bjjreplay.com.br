@@ -3,7 +3,8 @@
 > PENDENTE: P1127-1 aguardando o Lucas decidir/apresentar ao Sanny. P1127-2 valor/mensalidade do agente de IA do Sanny = Josué (chamado 20261127-134809-ebb9c1). Não dar valor de agente antes dele.
 > CLIENTE ESPERA: retorno do valor do agente (sem prazo dito). Promessas com hora: nenhuma nova; segue job 02/12 09:00.
 > 14:0x: Josué respondeu DIRETO ao Lucas 13:48: agente de IA INCLUSO na etapa 2; falta ver tokens (cabe na mensalidade ou o Sanny contrata a API). Gerente mandou 900+397 à parte: NÃO enviado (contradiz o Josué), gerente avisado.
-> PRÓXIMO: decisão dos tokens (Josué) → revisar → zap --para celular → P1127-2 em frente. Aceite do Lucas → entrada R$ 1.000 + contrato (Josué).
+> 14:10 Lucas: prefere API oficial da Meta paga conforme uso do Sanny (= Josué 13:49). Não respondi: revisar reprovou 2x (FATOS sem agente na etapa 2); gerente avisado com texto pronto.
+> PRÓXIMO: FATOS atualizado → revisar → enviar o texto pronto (P1127-2) → revisar → zap --para celular → P1127-2 em frente. Aceite do Lucas → entrada R$ 1.000 + contrato (Josué).
 > 13:44 Lucas (áudio): incluir agente de IA no orçamento do Sanny para depois (nova sede) + lembrete do CRM é no sistema? ENVIADO: lembrete fica no painel, CRM é etapa 2 (revisar APROVADO). P1127-2 aguardando valor do agente = Josué (chamar-josue). Não falar valor de agente antes dele.
 > 13:35 Lucas: "Vou ja analisar" (sobre o orçamento do Sanny). Não respondi (nada a dizer); inbox fechado à mão, P1127-1 segue aguardando com nota.
 > FEITO: P1127-1 orçamento do Sanny ENVIADO 13:13:30 (texto final do Josué, revisar APROVADO): etapa 1 R$ 2.000 (1.000 entrada + 1.000 entrega), 15 dias úteis, R$ 197/mês; etapa 2 +R$ 2.600. Josué mesmo escreveu 13:19 no zap: "Se ficar pesado a segunda parte fazemos por 1 mil o que achar melhor" (etapa 2 pode cair a R$ 1.000, dito pelo Josué). P1125-1 encerrado (reunião feita pelo Lucas 12:20).
