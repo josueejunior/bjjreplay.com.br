@@ -2,7 +2,7 @@
 > 12:59 Lucas fez SOZINHO a reunião com o Sanny (ligou 12:20, antecipou) = a "construtora" do P1125-1. Pede valor + mensal + prazo da 1ª etapa (construção = fase 2); "é o primeiro cliente, pra gente startar". Pedido novo P1127-1.
 > Enviado 13:03: "beleza, te passo quanto custa desenvolver a primeira etapa e qual fica a mensalidade dela". NADA de valor enviado ainda.
 > Josué fechou 13:1x (substitui os 5.100/4.500 do gerente): etapa 1 R$ 2.000 (1.000+1.000), 15 dias úteis, R$ 197/mês; etapa 2 +R$ 2.600. Texto final dele: ~/atendimento/atendimento-lucas-portela/material/sanny-2026-11-27/msg-orcamento-josue.txt.
-> BLOQUEIO 13:2x: revisar REPROVA só a última linha "o que você acha?"; linhas 1-5 juntas APROVADO. Perguntei ao p:gerente: (a) mandar 1-5 e segurar a pergunta ou (b) Josué trocar a linha. NÃO enviar sem resposta; se alguma versão sair, não reenviar.
+> ENVIADO (enviadas.log 13:13:30): versão final do Josué, última linha "o que você acha desse valor pra apresentar pro Sanny?", revisar APROVADO. P1127-1 aguardando o Lucas; P1125-1 feito. PRÓXIMO: resposta do Lucas; aceite = entrada de R$ 1.000 (cobrança/contrato é do Josué).
 > Escopo/esforço: material/sanny-2026-11-27/escopo-fase1.md. FATOS.md do revisor: seção do Sanny marcada SUBSTITUÍDO (5.100/4.500/297 não citar). Repasse de 35% ao Lucas NÃO vai na mensagem.
 
 ## anterior (11:50)
