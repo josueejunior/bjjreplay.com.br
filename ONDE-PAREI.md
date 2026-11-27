@@ -1,4 +1,11 @@
-# lucas-portela (BJJ Replay) — onde parei (27/11/2026 ~11:50)
+# lucas-portela (BJJ Replay) — onde parei (27/11/2026 ~13:20)
+> 12:59 Lucas fez SOZINHO a reunião com o Sanny (ligou 12:20, antecipou) = a "construtora" do P1125-1. Pede valor + mensal + prazo da 1ª etapa (construção = fase 2); "é o primeiro cliente, pra gente startar". Pedido novo P1127-1.
+> Enviado 13:03: "beleza, te passo quanto custa desenvolver a primeira etapa e qual fica a mensalidade dela". NADA de valor enviado ainda.
+> Josué fechou 13:1x (substitui os 5.100/4.500 do gerente): etapa 1 R$ 2.000 (1.000+1.000), 15 dias úteis, R$ 197/mês; etapa 2 +R$ 2.600. Texto final dele: ~/atendimento/atendimento-lucas-portela/material/sanny-2026-11-27/msg-orcamento-josue.txt.
+> BLOQUEIO 13:2x: revisar REPROVA só a última linha "o que você acha?"; linhas 1-5 juntas APROVADO. Perguntei ao p:gerente: (a) mandar 1-5 e segurar a pergunta ou (b) Josué trocar a linha. NÃO enviar sem resposta; se alguma versão sair, não reenviar.
+> Escopo/esforço: material/sanny-2026-11-27/escopo-fase1.md. FATOS.md do revisor: seção do Sanny marcada SUBSTITUÍDO (5.100/4.500/297 não citar). Repasse de 35% ao Lucas NÃO vai na mensagem.
+
+## anterior (11:50)
 > 11:50 cochilo: 11:00 cumprido — 13h NÃO confirmada; aviso ENTREGUE ao p:gerente-atendimento 11:00:28; P1125-1 aguardando, falta "confirmação da construtora", prazo 12:30. RESUMO do atendimento atualizado (reunião, 2 degraus, vez nos vencidos). Nada enviado ao Lucas desde 08:58.
 > NOVA REGRA 11:2x (p:gerente): zap recusa texto sem `revisar` APROVADO nas últimas 12 h; revisar no texto EXATO → APROVADO → zap, nunca encadeado sem o gate.
 > PRÓXIMO PASSO ao acordar: ver `zap log lucas-portela` e o arquivo do dia; se Lucas confirmou horário → pedidos P1125-1 e avisar p:gerente-atendimento/Josué (valor/presença = Josué); sem resposta até 12:30 → só registrar, sem novo toque. Vencido P1125-2 (26/11 20:05) = vez do Josué (conta do checkout + ok escopo sem agente). P1028-1/P1114-1/P1116-1 com o Josué até 02/12 09:00 (job 20261202-0900).
